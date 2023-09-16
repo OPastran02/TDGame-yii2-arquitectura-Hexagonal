@@ -1,0 +1,483 @@
+players - id                       -api\Shared\Domain\ValueObject\UUID 
+players - idwallet                 -api\Shared\Domain\ValueObject\UUID Obj: wallets
+players - idavatar                 -api\Shared\Domain\ValueObject\UUID Obj: avatars
+players - idmetrics                -api\Shared\Domain\ValueObject\UUID Obj: metrics
+players - idrankedMetrics          -api\Shared\Domain\ValueObject\UUID Obj: rankedMetrics
+players - idstatus                 -api\Shared\Domain\ValueObject\UUID Obj: status
+players - idland                   -api\Shared\Domain\ValueObject\UUID Obj: lands
+players - experience               -api\Shared\Domain\ValueObject\Experience
+players - level                    -api\Shared\Domain\ValueObject\Level
+players - available                -api\Shared\Domain\ValueObject\Available   
+players - createdAt                -api\Shared\Domain\ValueObject\Timestamp
+players - updatedAt                -api\Shared\Domain\ValueObject\Timestamp
+players - createdBy                -api\Shared\Domain\ValueObject\UUID  Obj: user
+players - updatedBy                -api\Shared\Domain\ValueObject\UUID  Obj: user
+status - id                        -api\Shared\Domain\ValueObject\UUID
+status - honor                     -api\Core\status\Domain\ValueObject\MetricsHonor 
+status - battlePass                -api\Core\status\Domain\ValueObject\BattlePass
+status - ultraPass                 -api\Core\status\Domain\ValueObject\UltraPass
+status - dailyAdsViewed            -api\Core\status\Domain\ValueObject\DailyAdsViewed
+status - adsViewed                 -api\Core\status\Domain\ValueObject\AdsViewed
+status - lastLogin                 -api\Shared\Domain\ValueObject\Timestamp
+status - active                    -api\Shared\Domain\ValueObject\Active
+status - available                 -api\Shared\Domain\ValueObject\Available   
+status - createdAt                 -api\Shared\Domain\ValueObject\Timestamp
+status - updatedAt                 -api\Shared\Domain\ValueObject\Timestamp
+status - createdBy                 -api\Shared\Domain\ValueObject\UUID Obj: user
+status - updatedBy                 -api\Shared\Domain\ValueObject\UUID Obj: user
+metrics - id                       -api\Shared\Domain\ValueObject\UUID
+metrics - honor                    -api\Core\status\Domain\ValueObject\MetricsHonor  
+metrics - win                      -api\Shared\Domain\ValueObject\Win
+metrics - loss                     -api\Shared\Domain\ValueObject\Loss
+metrics - Handicap                 -api\Shared\Domain\ValueObject\Handicap
+metrics - timePlayed               -api\Shared\Domain\ValueObject\timePlayed  
+metrics - maxPoints                -api\Core\status\Domain\ValueObject\Primitives\maxPoints 
+metrics - damageDealt              -api\Core\status\Domain\ValueObject\Primitives\damageDealt 
+metrics - landsDestroyed           -api\Core\status\Domain\ValueObject\Primitives\landsDestroyed 
+metrics - mobskilled               -api\Core\status\Domain\ValueObject\Primitives\mobskilled 
+metrics - available                -api\Shared\Domain\ValueObject\Available   
+metrics - createdAt                -api\Shared\Domain\ValueObject\Timestamp
+metrics - updatedAt                -api\Shared\Domain\ValueObject\Timestamp
+metrics - createdBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+metrics - updatedBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+rankedMetrics - id                 -api\Shared\Domain\ValueObject\UUID
+rankedMetrics - win                -api\Shared\Domain\ValueObject\Win
+rankedMetrics - loss               -api\Shared\Domain\ValueObject\Loss
+rankedMetrics - Handicap           -api\Shared\Domain\ValueObject\Handicap
+rankedMetrics - timePlayed         -api\Shared\Domain\ValueObject\timePlayed 
+rankedMetrics - rank               -api\Shared\Domain\ValueObject\id Obj: ranks
+rankedMetrics - maxPosition        -api\Core\rankedMetrics\Domain\ValueObject\Primitives\MaxPosition
+rankedMetrics - maxPoints          -api\Core\rankedMetrics\Domain\ValueObject\Primitives\MaxPoints 
+rankedMetrics - damageDealt        -api\Core\rankedMetrics\Domain\ValueObject\Primitives\DamageDealt
+rankedMetrics - landsDestroyed     -api\Core\rankedMetrics\Domain\ValueObject\Primitives\LandsDestroyed
+rankedMetrics - mobskilled         -api\Core\rankedMetrics\Domain\ValueObject\Primitives\MobsKilled
+rankedMetrics - available          -api\Shared\Domain\ValueObject\Available   
+rankedMetrics - createdAt          -api\Shared\Domain\ValueObject\Timestamp
+rankedMetrics - updatedAt          -api\Shared\Domain\ValueObject\Timestamp
+rankedMetrics - createdBy          -api\Shared\Domain\ValueObject\UUID Obj: user
+rankedMetrics - updatedBy          -api\Shared\Domain\ValueObject\UUID Obj: user
+ranks - id                         -api\Shared\Domain\ValueObject\UUID
+ranks - idObjects                  -api\Shared\Domain\ValueObject\id Obj: objects
+ranks - available                  -api\Shared\Domain\ValueObject\Available   
+ranks - createdAt                  -api\Shared\Domain\ValueObject\Timestamp
+ranks - updatedAt                  -api\Shared\Domain\ValueObject\Timestamp
+ranks - createdBy                  -api\Shared\Domain\ValueObject\UUID Obj: user
+ranks - updatedBy                  -api\Shared\Domain\ValueObject\UUID Obj: user
+wallets - id                       -api\Shared\Domain\ValueObject\UUID
+wallets - bronze                   -api\Shared\Domain\ValueObject\Bronze     
+wallets - silver                   -api\Shared\Domain\ValueObject\Silver 
+wallets - gold                     -api\Shared\Domain\ValueObject\Gold 
+wallets - crystal                  -api\Shared\Domain\ValueObject\Crystal   
+wallets - available                -api\Shared\Domain\ValueObject\Available   
+wallets - createdAt                -api\Shared\Domain\ValueObject\Timestamp
+wallets - updatedAt                -api\Shared\Domain\ValueObject\Timestamp
+wallets - createdBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+wallets - updatedBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+avatars - id                       -api\Shared\Domain\ValueObject\UUID
+avatars - idAvatar                 -api\Shared\Domain\ValueObject\id Obj: objects
+avatars - idBlock                  -api\Shared\Domain\ValueObject\id Obj: objects
+avatars - available                -api\Shared\Domain\ValueObject\Available   
+avatars - createdAt                -api\Shared\Domain\ValueObject\Timestamp
+avatars - updatedAt                -api\Shared\Domain\ValueObject\Timestamp
+avatars - createdBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+avatars - updatedBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+heroes - id                        -api\Shared\Domain\ValueObject\UUID
+heroes - idPlayer                  -api\Shared\Domain\ValueObject\UUID  Obj: players 
+heroes - name                      -api\Shared\Domain\ValueObject\GameText   
+heroes - description               -api\Shared\Domain\ValueObject\GameText
+heroes - rarity                    -api\Shared\Domain\ValueObject\id Obj: rarities  
+heroes - nature                    -api\Shared\Domain\ValueObject\id Obj: natures   
+heroes - type                      -api\Shared\Domain\ValueObject\id Obj: types   
+heroes - race                      -api\Shared\Domain\ValueObject\id Obj: races 
+heroes - abilities                 -api\Shared\Domain\ValueObject\id Obj: abilities  
+heroes - stats                     -api\Shared\Domain\ValueObject\UUID Obj: stats         
+heroes - experience                -api\Shared\Domain\ValueObject\Experience
+heroes - level                     -api\Shared\Domain\ValueObject\Level
+heroes - isLanded                  -api\Core\heroes\Domain\ValueObject\IsLanded
+heroes - land                      -api\Shared\Domain\ValueObject\UUID Obj: lands   
+heroes - available                 -api\Shared\Domain\ValueObject\Available   
+heroes - createdAt                 -api\Shared\Domain\ValueObject\Timestamp
+heroes - updatedAt                 -api\Shared\Domain\ValueObject\Timestamp
+heroes - createdBy                 -api\Shared\Domain\ValueObject\UUID Obj: user
+heroes - updatedBy                 -api\Shared\Domain\ValueObject\UUID Obj: user
+rarities - id                      -api\Shared\Domain\ValueObject\id
+rarities - idObject                -api\Shared\Domain\ValueObject\id Obj: objects      
+rarities - available               -api\Shared\Domain\ValueObject\Available   
+rarities - createdAt               -api\Shared\Domain\ValueObject\Timestamp
+rarities - updatedAt               -api\Shared\Domain\ValueObject\Timestamp
+rarities - createdBy               -api\Shared\Domain\ValueObject\UUID Obj: user
+rarities - updatedBy               -api\Shared\Domain\ValueObject\UUID Obj: user
+natures - id                       -api\Shared\Domain\ValueObject\id
+natures - idObject                 -api\Shared\Domain\ValueObject\id Obj: objects 
+natures - idBoost                  -api\Shared\Domain\ValueObject\id Obj: boosts   
+natures - available                -api\Shared\Domain\ValueObject\Available   
+natures - createdAt                -api\Shared\Domain\ValueObject\Timestamp
+natures - updatedAt                -api\Shared\Domain\ValueObject\Timestamp
+natures - createdBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+natures - updatedBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+types - id                         -api\Shared\Domain\ValueObject\id
+types - idObject                   -api\Shared\Domain\ValueObject\id Obj: objects
+types - idBoost                    -api\Shared\Domain\ValueObject\id Obj: boosts 
+types - horoscope                  -api\Shared\Domain\ValueObject\GameText    
+types - available                  -api\Shared\Domain\ValueObject\Available   
+types - createdAt                  -api\Shared\Domain\ValueObject\Timestamp
+types - updatedAt                  -api\Shared\Domain\ValueObject\Timestamp
+types - createdBy                  -api\Shared\Domain\ValueObject\UUID Obj: user
+types - updatedBy                  -api\Shared\Domain\ValueObject\UUID Obj: user
+races - id                         -api\Shared\Domain\ValueObject\id
+races - idObject                   -api\Shared\Domain\ValueObject\id Obj: objects
+races - idBoost                    -api\Shared\Domain\ValueObject\id Obj: boosts 
+races - available                  -api\Shared\Domain\ValueObject\Available   
+races - createdAt                  -api\Shared\Domain\ValueObject\Timestamp
+races - updatedAt                  -api\Shared\Domain\ValueObject\Timestamp
+races - createdBy                  -api\Shared\Domain\ValueObject\UUID Obj: user
+races - updatedBy                  -api\Shared\Domain\ValueObject\UUID Obj: user
+abilities - id                     -api\Shared\Domain\ValueObject\id
+abilities - idObject               -api\Shared\Domain\ValueObject\id Obj: objects
+abilities - available              -api\Shared\Domain\ValueObject\Available   
+abilities - createdAt              -api\Shared\Domain\ValueObject\Timestamp
+abilities - updatedAt              -api\Shared\Domain\ValueObject\Timestamp
+abilities - createdBy              -api\Shared\Domain\ValueObject\UUID Obj: user
+abilities - updatedBy              -api\Shared\Domain\ValueObject\UUID Obj: user
+boosts - id                        -api\Shared\Domain\ValueObject\id
+boosts - attack                    -api\Shared\Domain\ValueObject\Stats
+boosts - defense                   -api\Shared\Domain\ValueObject\Stats
+boosts - hp                        -api\Shared\Domain\ValueObject\Stats
+boosts - towerAttack               -api\Shared\Domain\ValueObject\Stats
+boosts - towerDefense              -api\Shared\Domain\ValueObject\Stats
+boosts - accuracy                  -api\Shared\Domain\ValueObject\Stats
+boosts - speed                     -api\Shared\Domain\ValueObject\Stats
+boosts - farming                   -api\Shared\Domain\ValueObject\Stats
+boosts - steeling                  -api\Shared\Domain\ValueObject\Stats
+boosts - wooding                   -api\Shared\Domain\ValueObject\Stats
+boosts - available                 -api\Shared\Domain\ValueObject\Available
+boosts - createdAt                 -api\Shared\Domain\ValueObject\Timestamp
+boosts - updatedAt                 -api\Shared\Domain\ValueObject\Timestamp
+boosts - createdBy                 -api\Shared\Domain\ValueObject\UUID Obj: user
+boosts - updatedBy                 -api\Shared\Domain\ValueObject\UUID Obj: user
+stats - id                         -api\Shared\Domain\ValueObject\UUID
+stats - attack                     -api\Shared\Domain\ValueObject\Stats
+stats - defense                    -api\Shared\Domain\ValueObject\Stats
+stats - hp                         -api\Shared\Domain\ValueObject\Stats
+stats - towerAttack                -api\Shared\Domain\ValueObject\Stats
+stats - towerDefense               -api\Shared\Domain\ValueObject\Stats
+stats - accuracy                   -api\Shared\Domain\ValueObject\Stats
+stats - speed                      -api\Shared\Domain\ValueObject\Stats
+stats - farming                    -api\Shared\Domain\ValueObject\Stats
+stats - steeling                   -api\Shared\Domain\ValueObject\Stats
+stats - wooding                    -api\Shared\Domain\ValueObject\Stats
+stats - incAttack                  -api\Shared\Domain\ValueObject\Increment  
+stats - incDefense                 -api\Shared\Domain\ValueObject\Increment  
+stats - inchp                      -api\Shared\Domain\ValueObject\Increment
+stats - incTowerAttack             -api\Shared\Domain\ValueObject\Increment
+stats - incTowerdefense            -api\Shared\Domain\ValueObject\Increment
+stats - incaccuracy                -api\Shared\Domain\ValueObject\Increment
+stats - incspeed                   -api\Shared\Domain\ValueObject\Increment
+stats - incfarming                 -api\Shared\Domain\ValueObject\Increment
+stats - incsteeling                -api\Shared\Domain\ValueObject\Increment
+stats - incwooding                 -api\Shared\Domain\ValueObject\Increment
+stats - available                  -api\Shared\Domain\ValueObject\Available
+stats - createdAt                  -api\Shared\Domain\ValueObject\Timestamp
+stats - updatedAt                  -api\Shared\Domain\ValueObject\Timestamp
+stats - createdBy                  -api\Shared\Domain\ValueObject\UUID Obj: user
+stats - updatedBy                  -api\Shared\Domain\ValueObject\UUID Obj: user
+memberships - id                   -api\Shared\Domain\ValueObject\id
+memberships - idPlayer             -api\Shared\Domain\ValueObject\UUID Obj: players 
+memberships - idGuild              -api\Shared\Domain\ValueObject\UUID Obj: guilds  
+memberships - guildTitle           -api\Shared\Domain\ValueObject\id
+memberships - weeklydamage         -api\Shared\Domain\ValueObject\Damage   
+memberships - totaldamage          -api\Shared\Domain\ValueObject\Damage 
+memberships - wood                 -api\Shared\Domain\ValueObject\Wood          
+memberships - steel                -api\Shared\Domain\ValueObject\Steel
+memberships - farm                 -api\Shared\Domain\ValueObject\Farm  
+memberships - available            -api\Shared\Domain\ValueObject\Available
+memberships - createdAt            -api\Shared\Domain\ValueObject\Timestamp
+memberships - updatedAt            -api\Shared\Domain\ValueObject\Timestamp
+memberships - createdBy            -api\Shared\Domain\ValueObject\UUID Obj: user
+memberships - updatedBy            -api\Shared\Domain\ValueObject\UUID Obj: user
+guildTitles - id                   -api\Shared\Domain\ValueObject\id
+guildTitles - idObject             -api\Shared\Domain\ValueObject\id Obj: objects
+guildTitles - available            -api\Shared\Domain\ValueObject\Available
+guildTitles - createdAt            -api\Shared\Domain\ValueObject\Timestamp
+guildTitles - updatedAt            -api\Shared\Domain\ValueObject\Timestamp
+guildTitles - createdBy            -api\Shared\Domain\ValueObject\UUID Obj: user
+guildTitles - updatedBy            -api\Shared\Domain\ValueObject\UUID Obj: user
+guilds - id                        -api\Shared\Domain\ValueObject\UUID
+guilds - idObject                  -api\Shared\Domain\ValueObject\id Obj: objects
+guilds - stash                     -api\Shared\Domain\ValueObject\UUID Obj: stashes
+guilds - metrics                   -api\Shared\Domain\ValueObject\UUID Obj: metrics
+guilds - rankedMetrics             -api\Shared\Domain\ValueObject\UUID Obj: rankedMetrics
+guilds - maxMembers                -api\Core\guilds\Domain\ValueObject\maxMembers     
+guilds - experience                -api\Shared\Domain\ValueObject\Experience
+guilds - level                     -api\Shared\Domain\ValueObject\Level
+guilds - available                 -api\Shared\Domain\ValueObject\Available
+guilds - createdAt                 -api\Shared\Domain\ValueObject\Timestamp
+guilds - updatedAt                 -api\Shared\Domain\ValueObject\Timestamp
+guilds - createdBy                 -api\Shared\Domain\ValueObject\UUID Obj: user
+guilds - updatedBy                 -api\Shared\Domain\ValueObject\UUID Obj: user
+stashes - id                       -api\Shared\Domain\ValueObject\UUID
+stashes - wood                     -api\Shared\Domain\ValueObject\Wood          
+stashes - steel                    -api\Shared\Domain\ValueObject\Steel
+stashes - farm                     -api\Shared\Domain\ValueObject\Farm  
+stashes - available                -api\Shared\Domain\ValueObject\Available
+stashes - createdAt                -api\Shared\Domain\ValueObject\Timestamp
+stashes - updatedAt                -api\Shared\Domain\ValueObject\Timestamp
+stashes - createdBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+stashes - updatedBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+guildMetrics - id                  -api\Shared\Domain\ValueObject\UUID 
+guildMetrics - win                 -api\Shared\Domain\ValueObject\Win
+guildMetrics - loss                -api\Shared\Domain\ValueObject\Loss
+guildMetrics - Handicap            -api\Shared\Domain\ValueObject\Handicap
+guildMetrics - timePlayed          -api\Shared\Domain\ValueObject\timePlayed  
+guildMetrics - maxPoints           -api\Shared\Domain\ValueObject\Primitives\IntValueObject 
+guildMetrics - damageDealt         -api\Shared\Domain\ValueObject\Primitives\IntValueObject 
+guildMetrics - landsDestroyed      -api\Shared\Domain\ValueObject\Primitives\IntValueObject 
+guildMetrics - mobskilled          -api\Shared\Domain\ValueObject\Primitives\IntValueObject 
+guildMetrics - available           -api\Shared\Domain\ValueObject\Available   
+guildMetrics - createdAt           -api\Shared\Domain\ValueObject\Timestamp
+guildMetrics - updatedAt           -api\Shared\Domain\ValueObject\Timestamp
+guildMetrics - createdBy           -api\Shared\Domain\ValueObject\UUID Obj: user
+guildMetrics - updatedBy           -api\Shared\Domain\ValueObject\UUID Obj: user
+guildRankedMetrics - id            -api\Shared\Domain\ValueObject\UUID 
+guildRankedMetrics - win           -api\Shared\Domain\ValueObject\Win
+guildRankedMetrics - loss          -api\Shared\Domain\ValueObject\Loss
+guildRankedMetrics - Handicap      -api\Shared\Domain\ValueObject\Handicap
+guildRankedMetrics - timePlayed    -api\Shared\Domain\ValueObject\timePlayed  
+guildRankedMetrics - maxPosition   -api\Core\guildRankedMetrics\Domain\ValueObject\Primitives\MaxPosition
+guildRankedMetrics - maxPoints     -api\Core\guildRankedMetrics\Domain\ValueObject\Primitives\MaxPoints 
+guildRankedMetrics - damageDealt   -api\Core\guildRankedMetrics\Domain\ValueObject\Primitives\DamageDealt
+guildRankedMetrics - landsDestroyed-api\Core\guildRankedMetrics\Domain\ValueObject\Primitives\LandsDestroyed
+guildRankedMetrics - mobskilled    -api\Core\guildRankedMetrics\Domain\ValueObject\Primitives\MobsKilled
+guildRankedMetrics - available     -api\Shared\Domain\ValueObject\Available   
+guildRankedMetrics - createdAt     -api\Shared\Domain\ValueObject\Timestamp
+guildRankedMetrics - updatedAt     -api\Shared\Domain\ValueObject\Timestamp
+guildRankedMetrics - createdBy     -api\Shared\Domain\ValueObject\UUID Obj: user
+guildRankedMetrics - updatedBy     -api\Shared\Domain\ValueObject\UUID Obj: user
+playerParcel - id                  -api\Shared\Domain\ValueObject\id
+playerParcel - idParcel            -api\Shared\Domain\ValueObject\id Obj: parcels
+playerParcel - idPlayer            -api\Shared\Domain\ValueObject\UUID Obj: players
+playerParcel - quantity            -api\Core\playerParcel\Domain\ValueObject\Quantity 
+playerParcel - available           -api\Shared\Domain\ValueObject\Available   
+playerParcel - createdAt           -api\Shared\Domain\ValueObject\Timestamp
+playerParcel - updatedAt           -api\Shared\Domain\ValueObject\Timestamp
+playerParcel - createdBy           -api\Shared\Domain\ValueObject\UUID Obj: user
+playerParcel - updatedBy           -api\Shared\Domain\ValueObject\UUID Obj: user
+parcels - id                       -api\Shared\Domain\ValueObject\id
+parcels - idObject                 -api\Shared\Domain\ValueObject\id Obj: objects
+parcels - generation               -api\Core\parcels\Domain\ValueObject\Generation  
+parcels - rarity                   -api\Shared\Domain\ValueObject\id Obj: rarities  
+parcels - type                     -api\Shared\Domain\ValueObject\id Obj: types 
+parcels - bronze                   -api\Shared\Domain\ValueObject\Bronze     
+parcels - silver                   -api\Shared\Domain\ValueObject\Silver 
+parcels - gold                     -api\Shared\Domain\ValueObject\Gold 
+parcels - crystal                  -api\Shared\Domain\ValueObject\Crystal  
+parcels - maxQuantity              -api\Core\parcels\Domain\ValueObject\Quantity
+parcels - shop                     -api\Shared\Domain\ValueObject\id Obj: shops
+parcels - requirements             -api\Shared\Domain\ValueObject\id Obj: requirements
+parcels - available                -api\Shared\Domain\ValueObject\Available   
+parcels - createdAt                -api\Shared\Domain\ValueObject\Timestamp
+parcels - updatedAt                -api\Shared\Domain\ValueObject\Timestamp
+parcels - createdBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+parcels - updatedBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+shops - id                         -api\Shared\Domain\ValueObject\id
+shops - idObject                   -api\Shared\Domain\ValueObject\id Obj: objects
+shops - available                  -api\Shared\Domain\ValueObject\Available   
+shops - createdAt                  -api\Shared\Domain\ValueObject\Timestamp
+shops - updatedAt                  -api\Shared\Domain\ValueObject\Timestamp
+shops - createdBy                  -api\Shared\Domain\ValueObject\UUID Obj: user
+shops - updatedBy                  -api\Shared\Domain\ValueObject\UUID Obj: user
+parcelType - id                    -api\Shared\Domain\ValueObject\id
+parcelType - idObject              -api\Shared\Domain\ValueObject\id Obj: objects
+parcelType - available             -api\Shared\Domain\ValueObject\Available   
+parcelType - createdAt             -api\Shared\Domain\ValueObject\Timestamp
+parcelType - updatedAt             -api\Shared\Domain\ValueObject\Timestamp
+parcelType - createdBy             -api\Shared\Domain\ValueObject\UUID Obj: user
+parcelType - updatedBy             -api\Shared\Domain\ValueObject\UUID Obj: user
+parcelRarities - id                -api\Shared\Domain\ValueObject\id
+parcelRarities - idObject          -api\Shared\Domain\ValueObject\id Obj: objects
+parcelRarities - available         -api\Shared\Domain\ValueObject\Available   
+parcelRarities - createdAt         -api\Shared\Domain\ValueObject\Timestamp
+parcelRarities - updatedAt         -api\Shared\Domain\ValueObject\Timestamp
+parcelRarities - createdBy         -api\Shared\Domain\ValueObject\UUID Obj: user
+parcelRarities - updatedBy         -api\Shared\Domain\ValueObject\UUID Obj: user
+requirements - id                  -api\Shared\Domain\ValueObject\id
+requirements - guildLevel          -api\Core\requirements\Domain\ValueObject\IntValue
+requirements - guildExperience     -api\Core\requirements\Domain\ValueObject\IntValue
+requirements - guildRank           -api\Core\requirements\Domain\ValueObject\IntValue  
+requirements - guildWins           -api\Core\requirements\Domain\ValueObject\IntValue
+requirements - guildMonsterKilled  -api\Core\requirements\Domain\ValueObject\IntValue
+requirements - guildBossKilled     -api\Core\requirements\Domain\ValueObject\IntValue
+requirements - playerOnGuildRank   -api\Core\requirements\Domain\ValueObject\IntValue
+requirements - playerOnGuildfights -api\Core\requirements\Domain\ValueObject\IntValue
+requirements - playerOnGuildWins   -api\Core\requirements\Domain\ValueObject\IntValue
+requirements - playerRank          -api\Core\requirements\Domain\ValueObject\IntValue
+requirements - playerLevel         -api\Core\requirements\Domain\ValueObject\IntValue
+requirements - playerExperience    -api\Core\requirements\Domain\ValueObject\IntValue    
+requirements - chapterFinished     -api\Core\requirements\Domain\ValueObject\IntValue
+requirements - battlePass          -api\Core\requirements\Domain\ValueObject\BattlePass    
+requirements - ultraPass           -api\Core\requirements\Domain\ValueObject\UltraPass
+requirements - available           -api\Shared\Domain\ValueObject\Available   
+requirements - createdAt           -api\Shared\Domain\ValueObject\Timestamp
+requirements - updatedAt           -api\Shared\Domain\ValueObject\Timestamp
+requirements - createdBy           -api\Shared\Domain\ValueObject\UUID Obj: user
+requirements - updatedBy           -api\Shared\Domain\ValueObject\UUID Obj: user
+lands - id                         -api\Shared\Domain\ValueObject\id
+lands - height                     -api\Core\lands\Domain\ValueObject\height
+lands - weight                     -api\Core\lands\Domain\ValueObject\weight
+lands - code                       -api\Core\lands\Domain\ValueObject\Code
+lands - order                      -api\Core\lands\Domain\ValueObject\Order
+lands - chat                       -api\Core\lands\Domain\ValueObject\Chat
+lands - idObject                   -api\Shared\Domain\ValueObject\id Obj: objects
+lands - available                  -api\Shared\Domain\ValueObject\Available   
+lands - createdAt                  -api\Shared\Domain\ValueObject\Timestamp
+lands - updatedAt                  -api\Shared\Domain\ValueObject\Timestamp
+lands - createdBy                  -api\Shared\Domain\ValueObject\UUID Obj: user
+lands - updatedBy                  -api\Shared\Domain\ValueObject\UUID Obj: user
+worlds - id                        -api\Shared\Domain\ValueObject\id
+worlds - idObject                  -api\Shared\Domain\ValueObject\id Obj: objects
+worlds - idGuild                   -api\Shared\Domain\ValueObject\UUID Obj: guilds
+worlds - order                     -api\Shared\Domain\ValueObject\Order
+worlds - active                    -api\Shared\Domain\ValueObject\Active
+worlds - available                 -api\Shared\Domain\ValueObject\Available   
+worlds - createdAt                 -api\Shared\Domain\ValueObject\Timestamp
+worlds - updatedAt                 -api\Shared\Domain\ValueObject\Timestamp
+worlds - createdBy                 -api\Shared\Domain\ValueObject\UUID Obj: user
+worlds - updatedBy                 -api\Shared\Domain\ValueObject\UUID Obj: user
+guildlands - id                    -api\Shared\Domain\ValueObject\id
+guildlands - idMembership          -api\Shared\Domain\ValueObject\id Obj: memberships
+guildlands - idWorld               -api\Shared\Domain\ValueObject\id Obj: worlds
+guildlands - idland                -api\Shared\Domain\ValueObject\UUID Obj: lands
+guildlands - available             -api\Shared\Domain\ValueObject\Available   
+guildlands - createdAt             -api\Shared\Domain\ValueObject\Timestamp
+guildlands - updatedAt             -api\Shared\Domain\ValueObject\Timestamp
+guildlands - createdBy             -api\Shared\Domain\ValueObject\UUID Obj: user
+guildlands - updatedBy             -api\Shared\Domain\ValueObject\UUID Obj: user
+conquers - idGuild                 -api\Shared\Domain\ValueObject\UUID Obj: guilds
+conquers - idConquer               -api\Shared\Domain\ValueObject\id Obj: conquers
+conquers - damageDealt             -api\Core\conquers\Domain\ValueObject\damageDealt
+conquers - active                  -api\Core\conquers\Domain\ValueObject\active 
+conquers - week                    -api\Core\conquers\Domain\ValueObject\week 
+conquers - isKilled                -api\Core\conquers\Domain\ValueObject\isKilled 
+conquers - amountOfKills           -api\Core\conquers\Domain\ValueObject\amountOfKills 
+conquers - available               -api\Shared\Domain\ValueObject\Available   
+conquers - createdAt               -api\Shared\Domain\ValueObject\Timestamp
+conquers - updatedAt               -api\Shared\Domain\ValueObject\Timestamp
+conquers - createdBy               -api\Shared\Domain\ValueObject\UUID Obj: user
+conquers - updatedBy               -api\Shared\Domain\ValueObject\UUID Obj: user
+conquerWorlds - id                 -api\Shared\Domain\ValueObject\id
+conquerWorlds - order              -api\Shared\Domain\ValueObject\Order
+conquerWorlds - available          -api\Shared\Domain\ValueObject\Available   
+conquerWorlds - createdAt          -api\Shared\Domain\ValueObject\Timestamp
+conquerWorlds - updatedAt          -api\Shared\Domain\ValueObject\Timestamp
+conquerWorlds - createdBy          -api\Shared\Domain\ValueObject\UUID Obj: user
+conquerWorlds - updatedBy          -api\Shared\Domain\ValueObject\UUID Obj: user
+conquerLands - id                  -api\Shared\Domain\ValueObject\id
+conquerLands - idWorld             -api\Shared\Domain\ValueObject\id Obj: worlds
+conquerLands - idland              -api\Shared\Domain\ValueObject\UUID Obj: lands
+conquerLands - available           -api\Shared\Domain\ValueObject\Available   
+conquerLands - createdAt           -api\Shared\Domain\ValueObject\Timestamp
+conquerLands - updatedAt           -api\Shared\Domain\ValueObject\Timestamp
+conquerLands - createdBy           -api\Shared\Domain\ValueObject\UUID Obj: user
+conquerLands - updatedBy           -api\Shared\Domain\ValueObject\UUID Obj: user
+conquerMobs - id                   -api\Shared\Domain\ValueObject\id
+conquerMobs - stats                -api\Shared\Domain\ValueObject\UUID Obj: stats
+conquerMobs - idConquerLand        -api\Shared\Domain\ValueObject\id Obj: conquerLands    
+conquerMobs - order                -api\Shared\Domain\ValueObject\Order
+conquerMobs - available            -api\Shared\Domain\ValueObject\Available   
+conquerMobs - createdAt            -api\Shared\Domain\ValueObject\Timestamp
+conquerMobs - updatedAt            -api\Shared\Domain\ValueObject\Timestamp
+conquerMobs - createdBy            -api\Shared\Domain\ValueObject\UUID Obj: user
+conquerMobs - updatedBy            -api\Shared\Domain\ValueObject\UUID Obj: user
+instanceMonsters - idGuild         -api\Shared\Domain\ValueObject\UUID Obj: guilds
+instanceMonsters - idMonsters      -api\Shared\Domain\ValueObject\id Obj: monsters
+instanceMonsters - damageDealt     -api\Core\instanceMonsters\Domain\ValueObject\damageDealt
+instanceMonsters - active          -api\Core\instanceMonsters\Domain\ValueObject\active 
+instanceMonsters - week            -api\Core\instanceMonsters\Domain\ValueObject\week 
+instanceMonsters - isKilled        -api\Core\instanceMonsters\Domain\ValueObject\isKilled 
+instanceMonsters - amountOfKills   -api\Core\instanceMonsters\Domain\ValueObject\amountOfKills 
+instanceMonsters - available       -api\Shared\Domain\ValueObject\Available   
+instanceMonsters - createdAt       -api\Shared\Domain\ValueObject\Timestamp
+instanceMonsters - updatedAt       -api\Shared\Domain\ValueObject\Timestamp
+instanceMonsters - createdBy       -api\Shared\Domain\ValueObject\UUID Obj: user
+instanceMonsters - updatedBy       -api\Shared\Domain\ValueObject\UUID Obj: user
+monsters - id                      -api\Shared\Domain\ValueObject\id
+monsters - idObject                -api\Shared\Domain\ValueObject\id Obj: objects
+monsters - stats                   -api\Shared\Domain\ValueObject\UUID Obj: stats
+monsters - available               -api\Shared\Domain\ValueObject\Available   
+monsters - createdAt               -api\Shared\Domain\ValueObject\Timestamp
+monsters - updatedAt               -api\Shared\Domain\ValueObject\Timestamp
+monsters - createdBy               -api\Shared\Domain\ValueObject\UUID Obj: user
+monsters - updatedBy               -api\Shared\Domain\ValueObject\UUID Obj: user
+instanceChapters - idPlayer        -api\Shared\Domain\ValueObject\UUID Obj: players
+instanceChapters - idChapter       -api\Shared\Domain\ValueObject\id Obj: chapters 
+instanceChapters - finished        -api\Core\instanceMonsters\Domain\ValueObject\finished 
+instanceChapters - amountOfFinished-api\Core\instanceMonsters\Domain\ValueObject\amountOfFinished
+instanceChapters - maxStars        -api\Core\instanceMonsters\Domain\ValueObject\maxStars
+instanceChapters - available       -api\Shared\Domain\ValueObject\Available   
+instanceChapters - createdAt       -api\Shared\Domain\ValueObject\Timestamp
+instanceChapters - updatedAt       -api\Shared\Domain\ValueObject\Timestamp
+instanceChapters - createdBy       -api\Shared\Domain\ValueObject\UUID Obj: user
+instanceChapters - updatedBy       -api\Shared\Domain\ValueObject\UUID Obj: user
+chapters - id                      -api\Shared\Domain\ValueObject\id
+chapters - idObject                -api\Shared\Domain\ValueObject\id Obj: objects
+chapters - reward                  -api\Shared\Domain\ValueObject\id Obj: rewards 
+chapters - available               -api\Shared\Domain\ValueObject\Available   
+chapters - createdAt               -api\Shared\Domain\ValueObject\Timestamp
+chapters - updatedAt               -api\Shared\Domain\ValueObject\Timestamp
+chapters - createdBy               -api\Shared\Domain\ValueObject\UUID Obj: user
+chapters - updatedBy               -api\Shared\Domain\ValueObject\UUID Obj: user
+chapterLands - id                  -api\Shared\Domain\ValueObject\id
+chapterLands - idchapter           -api\Shared\Domain\ValueObject\id  Obj: chapters 
+chapterLands - idland              -api\Shared\Domain\ValueObject\UUID Obj: lands
+chapterLands - available           -api\Shared\Domain\ValueObject\Available   
+chapterLands - createdAt           -api\Shared\Domain\ValueObject\Timestamp
+chapterLands - updatedAt           -api\Shared\Domain\ValueObject\Timestamp
+chapterLands - createdBy           -api\Shared\Domain\ValueObject\UUID Obj: user
+chapterLands - updatedBy           -api\Shared\Domain\ValueObject\UUID Obj: user
+chapterMobs - id                   -api\Shared\Domain\ValueObject\id
+chapterMobs - idObject             -api\Shared\Domain\ValueObject\id Obj: objects
+chapterMobs - idChapterLand        -api\Shared\Domain\ValueObject\id  Obj: chapterLands 
+chapterMobs - stats                -api\Shared\Domain\ValueObject\UUID Obj: stats
+chapterMobs - available            -api\Shared\Domain\ValueObject\Available   
+chapterMobs - createdAt            -api\Shared\Domain\ValueObject\Timestamp
+chapterMobs - updatedAt            -api\Shared\Domain\ValueObject\Timestamp
+chapterMobs - createdBy            -api\Shared\Domain\ValueObject\UUID Obj: user
+chapterMobs - updatedBy            -api\Shared\Domain\ValueObject\UUID Obj: user
+rewards - id                       -api\Shared\Domain\ValueObject\id
+rewards - idObject                 -api\Shared\Domain\ValueObject\id Obj: objects
+rewards - bronze                   -api\Shared\Domain\ValueObject\Bronze     
+rewards - silver                   -api\Shared\Domain\ValueObject\Silver 
+rewards - gold                     -api\Shared\Domain\ValueObject\Gold 
+rewards - crystal                  -api\Shared\Domain\ValueObject\Crystal   
+rewards - quantity                 -api\Core\rewards\Domain\ValueObject\Quantity 
+rewards - available                -api\Shared\Domain\ValueObject\Available   
+rewards - createdAt                -api\Shared\Domain\ValueObject\Timestamp
+rewards - updatedAt                -api\Shared\Domain\ValueObject\Timestamp
+rewards - createdBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+rewards - updatedBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+boxes - id                         -api\Shared\Domain\ValueObject\id
+boxes - idObject                   -api\Shared\Domain\ValueObject\id Obj: objects
+boxes - booster                    -api\Core\rewards\Domain\ValueObject\Quantity
+boxes - bronze                     -api\Shared\Domain\ValueObject\Bronze     
+boxes - silver                     -api\Shared\Domain\ValueObject\Silver 
+boxes - gold                       -api\Shared\Domain\ValueObject\Gold 
+boxes - crystal                    -api\Shared\Domain\ValueObject\Crystal   
+boxes - requirements               -api\Shared\Domain\ValueObject\id Obj: requirements
+boxes - race                       -api\Shared\Domain\ValueObject\id Obj: races 
+boxes - available                  -api\Shared\Domain\ValueObject\Available   
+boxes - createdAt                  -api\Shared\Domain\ValueObject\Timestamp
+boxes - updatedAt                  -api\Shared\Domain\ValueObject\Timestamp
+boxes - createdBy                  -api\Shared\Domain\ValueObject\UUID Obj: user
+boxes - updatedBy                  -api\Shared\Domain\ValueObject\UUID Obj: user
+objects - id                       -api\Shared\Domain\ValueObject\id
+objects - name                     -api\Shared\Domain\ValueObject\GameText   
+objects - description              -api\Shared\Domain\ValueObject\GameText
+objects - color                    -api\Shared\Domain\ValueObject\Color    
+objects - model                    -api\Shared\Domain\ValueObject\Model 
+objects - image                    -api\Shared\Domain\ValueObject\Image 
+objects - available                -api\Shared\Domain\ValueObject\Available   
+objects - createdAt                -api\Shared\Domain\ValueObject\Timestamp
+objects - updatedAt                -api\Shared\Domain\ValueObject\Timestamp
+objects - createdBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+objects - updatedBy                -api\Shared\Domain\ValueObject\UUID Obj: user
+

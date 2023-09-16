@@ -1,0 +1,620 @@
+
+Table User{
+  id varchar(36) [pk, unique, not null, ref: - players.id]
+  username varchar(16) [not null, unique]
+  password_hash varchar(50)
+  password_reset_token varchar(50)
+  verification_token varchar(50)
+  mail varchar(50) [not null, unique]
+  auth_key varchar(50) 
+  status integer(2)
+  password text [not null]
+}
+
+Table players{
+  id varchar(36) [pk,unique, not null, note: 'uuid']
+  idwallet varchar(36) [not null, ref: - wallets.id]
+  idavatar varchar(36) [not null, ref: - avatars.id]
+  idmetrics varchar(36) [not null, ref: - metrics.id]
+  idrankedMetrics varchar(36) [not null, ref: - rankedMetrics.id]
+  idstatus varchar(36) [not null, ref: - status.id]
+  idland varchar (36) [not null, ref: - lands.id]
+  experience integer [not null, default: 0]
+  level integer [not null, default: 0]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table status {
+  id varchar(36) [pk,unique, not null, note: 'uuid']
+  honor integer [not null, default: 0]
+  lastLogin timestamp [not null, default: 'now()']
+  battlePass integer(1) [not null, default: 0]
+  ultraPass integer(1) [not null, default: 0]
+  dailyAdsViewed integer [not null, default: 0]
+  adsViewed integer [not null, default: 0]
+  active integer(1) [not null, default: 1]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table metrics {
+  id varchar(36) [pk,unique, not null, note: 'uuid']
+  win integer [not null, default: 0]
+  loss integer [not null, default: 0]
+  handicap integer [not null, default: 0]
+  timePlayed integer [not null, default: 0]
+  maxPoints integer [not null, default: 0, note: 'puntaje maximo en una pelea']
+  damageDealt integer [not null, default: 0, note: 'daño hecho en toda su vida']
+  landsDestroyed integer [not null, default: 0, note: 'tierras destruidas en toda su vida']
+  mobskilled integer [not null, default: 0, note: 'mobs destruidos en toda su vida']
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table rankedMetrics {
+  id varchar(36) [pk,unique, not null, note: 'uuid']
+  win integer [not null, default: 0]
+  loss integer [not null, default: 0]
+  handicap integer [not null, default: 0]
+  timePlayed integer [not null, default: 0]
+  rank integer [not null, ref: > ranks.id]
+  maxPosition integer [not null, default: 0]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table ranks {
+  id integer [pk, unique, not null]
+  idObject integer [not null, ref: - objects.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table wallets {
+  id archar(36) [pk,unique, not null, note: 'uuid']
+  bronze integer [not null, default: 0]
+  silver integer [not null, default: 0]
+  gold integer [not null, default: 0]
+  crystal integer [not null, default: 0]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table avatars {
+  id varchar(36) [pk,unique, not null, note: 'uuid']
+  idObject integer [not null, ref: - objects.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table Heroes {
+  id varchar(36) [pk, unique, not null, note: 'uuid']
+  idPlayer varchar(36) [not null, ref: > players.id]
+  idObject integer [not null, ref: - objects.id]
+  rarity integer [not null, ref: > rarities.id]
+  nature integer [not null, ref: > natures.id]
+  type integer [not null, ref: > types.id]
+  race integer [not null, ref: > races.id]
+  abilities integer [not null, ref: - abilities.id]
+  stats varchar(36) [unique, not null, note: 'uuid', ref: - stats.id]
+  experience integer [not null, default: 0]
+  level integer [not null, default: 0]
+  isLanded integer(1) [not null, default: 0]
+  land varchar(36)
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table rarities {
+  id integer(2) [pk, unique, not null]
+  idObject integer [not null, ref: - objects.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table natures {
+  id integer(2) [pk, unique, not null]
+  idObject integer [not null, ref: - objects.id]
+  idBoost integer [ref: - boosts.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table types {
+  id integer [pk, unique, not null]
+  idObject integer [not null, ref: - objects.id]
+  horoscope varchar(20)
+  idBoost integer [ref: - boosts.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table races {
+  id integer [pk, unique, not null]
+  idObject integer [not null, ref: - objects.id]
+  idBoost integer [ref: - boosts.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table abilities {
+  id integer [pk, unique, not null]
+  idObject integer [not null, ref: - objects.id]
+  blockAttack text
+  melee integer(1)
+  ranged integer(1)
+  fly integer(1)
+  stealth integer(1)
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table boosts {
+  id integer [pk, unique, not null]
+  attack integer [not null, default: 0]
+  defense integer [not null, default: 0]
+  towerAttack integer [not null, default: 0]
+  towerDefense integer [not null, default: 0]
+  hp integer [not null, default: 0]
+  accuracy integer [not null, default: 0]
+  speed integer [not null, default: 0]
+  farming integer [not null, default: 0]
+  steeling integer [not null, default: 0]
+  wooding integer [not null, default: 0]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table stats {
+  id varchar(36) [pk, unique, not null, note: 'uuid']
+  attack integer [not null, default: 0]
+  defense integer [not null, default: 0]
+  towerAttack integer [not null, default: 0]
+  towerDefense integer [not null, default: 0]
+  hp integer [not null, default: 0]
+  accuracy integer [not null, default: 0]
+  speed integer [not null, default: 0]
+  farming integer [not null, default: 0]
+  steeling integer [not null, default: 0]
+  wooding integer [not null, default: 0]
+  incAttack integer [not null, default: 0]
+  incDefense integer [not null, default: 0]
+  inchp integer [not null, default: 0]
+  incTowerAttack integer [not null, default: 0]
+  incTowerdefense integer [not null, default: 0]
+  incaccuracy integer [not null, default: 0]
+  incspeed integer [not null, default: 0]
+  incfarming integer [not null, default: 0]
+  incsteeling integer [not null, default: 0]
+  incwooding integer [not null, default: 0]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table memberships{
+  id int [pk]
+  idPlayer varchar(36) [not null, unique, ref: - players.id]
+  idGuild varchar(36) [not null, ref: > guilds.id]
+  guildTitle integer [pk, ref: > guildTitles.id]
+  weeklydamage integer [not null, default: 0]
+  totaldamage integer [not null, default: 0]
+  wood integer [not null, default: 0]
+  steel integer [not null, default: 0]
+  farm integer [not null, default: 0]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table guildTitles{
+  id integer 
+  idObject integer [not null, ref: - objects.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table guilds{
+  id varchar(36) [pk, unique, not null, note: 'uuid']
+  idObject integer [not null, ref: - objects.id]
+  stash varchar(36) [unique, not null, ref: - stashes.id, note: 'uuid']
+  metrics varchar(36) [unique, not null, ref: - guildmetrics.id, note: 'uuid']
+  maxMembers integer [not null, default: 20]
+  experience integer [not null, default: 0]
+  level integer [not null, default: 0]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table stashes {
+  id varchar(36) [pk, unique, not null, note: 'uuid']
+  wood integer [not null, default: 0]
+  steel integer [not null, default: 0]
+  farm integer [not null, default: 0]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']  
+}
+
+Table guildmetrics {
+  id varchar(36) [pk, unique, not null, note: 'uuid']
+  win integer [not null, default: 0]
+  loss integer [not null, default: 0]
+  handicap integer [not null, default: 0]
+  timePlayed integer [not null, default: 0]
+  maxPoints integer [not null, default: 0, note: 'puntaje maximo en una pelea']
+  damageDealt integer [not null, default: 0, note: 'daño hecho en toda su vida']
+  landsDestroyed integer [not null, default: 0, note: 'tierras destruidas en toda su vida']
+  mobskilled integer [not null, default: 0, note: 'mobs destruidos en toda su vida']
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table playerParcel{
+  id integer [pk, unique, not null]
+  idParcel integer [unique, not null, ref: > parcels.id]
+  idPlayer varchar(36) [unique, not null, ref: > players.id, note: 'uuid']
+  quantity integer [not null, default: 0]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table parcels{
+  id integer [pk, unique, not null]  
+  idObject integer [not null, ref: - objects.id]
+  generation integer(2) [not null, default: 1]
+  type integer [pk, ref: > parcelType.id]
+  rarity integer [pk, ref: > parcelRarities.id]
+  bronze integer [not null, default: 0]
+  silver integer [not null, default: 0]
+  gold integer [not null, default: 0]
+  crystal integer [not null, default: 0]
+  maxQuantity integer [not null, default: 0]
+  shop integer [pk, ref: > shops.id]
+  requirements integer [pk, ref: - requirements.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table shops {
+  id integer 
+  idObject integer [not null, ref: - objects.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table parcelType {
+  id integer
+  name varchar(20)
+  description varchar(255)
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+
+Table parcelRarities {
+  id integer [pk, unique, not null]
+  name varchar(14) [not null, default: 'no name']
+  idObject integer [not null, ref: - objects.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table requirements{
+  id integer [pk, unique, not null]
+  guildLevel integer [not null, default: 0]
+  guildExperience integer [not null, default: 0]
+  guildRank integer [not null, default: 0]
+  guildWins integer [not null, default: 0]
+  guildMonsterKilled integer [not null, default: 0]
+  guildBossKilled integer [not null, default: 0]
+  playerOnGuildRank integer [not null, default: 0]
+  playerOnGuildfights integer [not null, default: 0]
+  playerOnGuildWins integer [not null, default: 0]
+  playerRank integer [not null, default: 0]
+  playerLevel integer [not null, default: 0]
+  playerExperience integer [not null, default: 0]
+  chapterFinished integer [not null, default: 0]
+  battlePass integer(1) [not null, default: 1]
+  ultraPass integer(1) [not null, default: 1]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table lands{
+  id varchar(36) [pk, unique, not null, note: 'uuid']
+  height integer [not null, default: 50]
+  weight integer [not null, default: 50]
+  code integer
+  order longtext
+  idObject integer [not null, ref: - objects.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table worlds{
+  id integer [pk, unique, not null]
+  idObject integer [not null, ref: - objects.id]
+  idGuild varchar(36) [pk, unique, not null, ref: - guilds.id]
+  order integer
+  active integer(1) [not null, default: 1]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table guildlands{
+  id integer [pk, unique, not null]
+  idMembership integer [ref: - memberships.id]
+  idWorld integer [ref: > worlds.id]
+  idland varchar (36) [not null, ref: - lands.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+table instanceConquer{
+  idGuild varchar(36) [pk, unique, not null, ref: > guilds.id]
+  idConquer integer [ref: > conquers.id]
+  damageDealt integer [not null, default: 0]
+  active integer(1) [not null, default: 1]
+  week integer [not null, default: 0]
+  isKilled integer(1) [not null, default: 0]
+  amountOfKills integer [not null, default: 0]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+table conquers{
+  id integer [pk, unique, not null]
+  name varchar(20)
+  description varchar(255)
+  idConquerWorlds integer [ref: - conquerWorlds.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table conquerWorlds{
+  id integer [pk, unique, not null]
+  order integer
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table conquerLands{
+  id integer [pk, unique, not null]
+  idWorld integer [unique, ref: > conquerWorlds.id]
+  idland varchar (36) [not null, ref: - lands.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table conquerMobs{
+  id integer [pk, unique, not null]
+  stats varchar(36) [unique, not null, ref: > stats.id, note: 'uuid']
+  idConquerLand integer [unique, ref: > conquerLands.id]
+  idObject integer [not null, ref: - objects.id]
+  ability integer [not null, ref: - abilities.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+table instanceMonsters{
+  idGuild text [ref: > guilds.id]
+  idMonsters integer [ref: - monsters.id]
+  damageDealt integer [not null, default: 0]
+  active integer [not null, default: 0]
+  week integer [not null, default: 0]
+  isKilled integer [not null, default: 0]
+  amountOfKills integer [not null, default: 0]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+table monsters{
+  id integer [pk, unique, not null]
+  idObject integer [not null, ref: - objects.id]
+  stats varchar(36) [unique, not null, ref: > stats.id, note: 'uuid']
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+table instanceChapters{
+  idPlayer text [ref: > players.id]
+  idChapter integer [ref: > chapters.id]
+  finished integer [not null, default: 0]
+  amountOfFinished integer [not null, default: 0]
+  maxStars integer [not null, default: 0]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+table chapters{
+  id integer [pk, unique, not null]
+  idObject integer [not null, ref: - objects.id]
+  reward integer [ref: - rewards.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table chapterLands{
+  id integer [pk, unique, not null]
+  idchapter text [unique, ref: > chapters.id]
+  idland varchar (36) [not null, ref: - lands.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table chapterMobs{
+  id integer [pk, unique, not null]
+  idObject integer [not null, ref: - objects.id]
+  idChapterLand integer [ ref: > chapterLands.id]
+  stats varchar(36) [not null, ref: - stats.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+table rewards{
+  id integer [pk, unique, not null]
+  idObject integer [not null, ref: - objects.id]
+  bronze integer [not null, default: 0]
+  silver integer [not null, default: 0]
+  gold integer [not null, default: 0]
+  crystal integer [not null, default: 0]
+  quantity integer [not null, default: 0]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table boxes{
+  id integer [pk, unique, not null]
+  idObject integer [not null, ref: - objects.id]
+  booster text
+  bronze integer [not null, default: 0]
+  silver integer [not null, default: 0]
+  gold integer [not null, default: 0]
+  crystal integer [not null, default: 0]
+  requirements integer [ref: > requirements.id]
+  race integer [not null, ref: > races.id]
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+Table objects {
+  id integer [pk, unique, not null]
+  name varchar(14) [not null, default: 'no name']
+  description varchar(14) [not null, default: 'no description']
+  color varchar(6) [not null, default: 'FFFFFF']
+  model varchar(18) [not null, note: 'code models']
+  image varchar(18) [not null, note: 'code models']
+  available integer(1) [not null, default: 1]
+  createdAt timestamp
+  updatedAt timestamp
+  createdBy varchar(36) [note: 'relacion con usuario']
+  updatedBy varchar(36) [note: 'relacion con usuario']
+}
+
+
+
