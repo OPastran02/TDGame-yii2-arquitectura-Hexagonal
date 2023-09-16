@@ -24,10 +24,6 @@ class m230914_013641_create_status_table extends Migration
             'adsViewed' => $this->integer()->notNull()->defaultValue(0),
             'active' => $this->integer(1)->notNull()->defaultValue(1),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         $this->addPrimaryKey('pk_status', 'status', 'id');

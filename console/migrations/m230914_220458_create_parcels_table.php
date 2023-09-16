@@ -28,10 +28,6 @@ class m230914_220458_create_parcels_table extends Migration
             'shop' => $this->integer()->notNull(),
             'requirements' => $this->integer()->notNull(),
             'available' => $this->tinyInteger(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
 

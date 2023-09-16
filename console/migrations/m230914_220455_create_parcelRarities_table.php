@@ -20,10 +20,6 @@ class m230914_220455_create_parcelRarities_table extends Migration
             'name' => $this->string(14)->notNull()->defaultValue('no name'),
             'idObject' => $this->integer()->notNull(),
             'available' => $this->tinyInteger(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         // Add foreign key constraint

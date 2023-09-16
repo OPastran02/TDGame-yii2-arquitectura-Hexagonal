@@ -22,10 +22,6 @@ class m230914_010311_create_objects_table extends Migration
             'model' => $this->string(18)->notNull()->comment('code models'),
             'image' => $this->string(18)->notNull()->comment('code models'),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36)->comment('relacion con usuario'),
-            'updatedBy' => $this->string(36)->comment('relacion con usuario'),
         ], $tableOptions);
     }
 

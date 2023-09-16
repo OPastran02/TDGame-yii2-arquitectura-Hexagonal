@@ -18,10 +18,6 @@ class m230914_220457_create_shops_table extends Migration
             'id' => $this->primaryKey(),
             'idObject' => $this->integer()->notNull(),
             'available' => $this->tinyInteger(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         // Add foreign key constraint

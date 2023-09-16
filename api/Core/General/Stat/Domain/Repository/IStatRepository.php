@@ -15,7 +15,7 @@ interface IStatRepository
     *and createStat
     */
     
-    public function save($stat): ?string;
+    public function save($stat): Stat;
 
     public function getbyId(string $id): ?Stat;
 

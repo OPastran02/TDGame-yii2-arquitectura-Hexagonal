@@ -21,10 +21,6 @@ class m230914_020205_create_guildTitles_table extends Migration
             'id' => $this->primaryKey(),
             'idObject' => $this->integer()->notNull(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         // creates index for column `idObject`

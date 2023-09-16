@@ -38,10 +38,6 @@ class m230914_010824_create_stats_table extends Migration
             'incSteeling' => $this->integer(2)->notNull()->defaultValue(0),
             'incWooding' => $this->integer(2)->notNull()->defaultValue(0),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ], $tableOptions);
 
         $this->addPrimaryKey('pk_stats', 'stats', 'id');

@@ -19,10 +19,6 @@ class m230914_160431_create_conquerLands_table extends Migration
             'idWorld' => $this->integer(),
             'idland' => $this->string(36)->notNull(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         // Crear índice y clave foránea para la relación con conquerWorlds

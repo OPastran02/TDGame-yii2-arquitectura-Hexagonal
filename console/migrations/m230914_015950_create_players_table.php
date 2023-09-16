@@ -33,10 +33,6 @@ class m230914_015950_create_players_table extends Migration
             'experience' => $this->integer()->notNull()->defaultValue(0),
             'level' => $this->integer()->notNull()->defaultValue(0),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         $this->addPrimaryKey('pk_players', 'players', 'id');

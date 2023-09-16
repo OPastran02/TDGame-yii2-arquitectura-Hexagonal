@@ -61,6 +61,8 @@ class Stat extends \yii\db\ActiveRecord
         ];
     }
 
+
+
     /**
      * {@inheritdoc}
      */

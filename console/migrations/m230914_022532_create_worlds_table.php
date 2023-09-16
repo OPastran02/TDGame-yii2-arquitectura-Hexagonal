@@ -21,10 +21,6 @@ class m230914_022532_create_worlds_table extends Migration
             'order' => $this->integer(),
             'active' => $this->integer(1)->notNull()->defaultValue(1),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
         
         // Add foreign key for table `{{%objects}}`

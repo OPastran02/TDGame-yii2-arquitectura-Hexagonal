@@ -20,10 +20,6 @@ class m230914_161336_create_conquerMobs_table extends Migration
             'idConquerLand' => $this->integer(),
             'idObject' => $this->integer()->notNull(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         // Crear clave foránea para la relación con objects

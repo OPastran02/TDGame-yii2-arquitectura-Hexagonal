@@ -21,10 +21,6 @@ class m230914_014422_create_wallets_table extends Migration
             'gold' => $this->integer()->notNull()->defaultValue(0),
             'crystal' => $this->integer()->notNull()->defaultValue(0),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
         
         $this->addPrimaryKey('pk_wallets', 'wallets', 'id');

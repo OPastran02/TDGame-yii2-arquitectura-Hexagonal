@@ -24,10 +24,6 @@ class m230914_161843_create_instanceMonsters_table extends Migration
             'isKilled' => $this->integer()->notNull()->defaultValue(0),
             'amountOfKills' => $this->integer()->notNull()->defaultValue(0),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
         
         // Creates index for column `idGuild`

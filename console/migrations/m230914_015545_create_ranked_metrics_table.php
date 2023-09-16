@@ -26,10 +26,6 @@ class m230914_015545_create_ranked_metrics_table extends Migration
             'rank' => $this->integer()->notNull(),
             'maxPosition' => $this->integer()->notNull()->defaultValue(0),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         $this->addPrimaryKey('pk_ranked_metrics', 'ranked_metrics', 'id');

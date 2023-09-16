@@ -21,10 +21,6 @@ class m230914_014646_create_avatars_table extends Migration
             'id' => $this->string(36)->notNull()->unique(),
             'idObject' => $this->integer()->notNull(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         $this->addPrimaryKey('pk_avatars', 'avatars', 'id');

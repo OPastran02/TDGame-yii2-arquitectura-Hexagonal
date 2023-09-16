@@ -32,10 +32,6 @@ class m230914_220452_create_requirements_table extends Migration
             'battlePass' => $this->tinyInteger(1)->notNull()->defaultValue(1),
             'ultraPass' => $this->tinyInteger(1)->notNull()->defaultValue(1),
             'available' => $this->tinyInteger(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
     }
 

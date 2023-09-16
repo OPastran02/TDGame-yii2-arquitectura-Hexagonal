@@ -20,10 +20,6 @@ class m230914_023329_create_conquers_table extends Migration
             'description' => $this->string(255),
             'idConquerWorlds' => $this->integer(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         $this->addForeignKey(

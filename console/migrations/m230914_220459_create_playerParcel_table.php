@@ -18,10 +18,6 @@ class m230914_220459_create_playerParcel_table extends Migration
             'idPlayer' => $this->string(36)->notNull()->unique()->comment('uuid'),
             'quantity' => $this->integer()->notNull()->defaultValue(0),
             'available' => $this->tinyInteger(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ]);
 
         // Add unique key constraints

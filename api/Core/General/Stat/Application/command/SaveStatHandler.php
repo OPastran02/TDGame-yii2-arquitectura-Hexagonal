@@ -18,9 +18,8 @@ final class SaveStatHandler
         $this->repository = $repository;
     }
 
-    public function __invoke($arr){
-        //var_dump($arr);
-        //exit();
+    public function __invoke($arr): Stat
+    {
         $id=$this->repository->save($arr);
         return $id;
     }

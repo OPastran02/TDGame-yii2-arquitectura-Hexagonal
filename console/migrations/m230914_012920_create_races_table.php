@@ -23,10 +23,6 @@ class m230914_012920_create_races_table extends Migration
             'idObject' => $this->integer()->notNull(),
             'idBoost' => $this->integer(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         // creates index for column `idObject`

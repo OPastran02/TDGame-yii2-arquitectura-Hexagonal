@@ -19,10 +19,6 @@ class m230914_161842_create_monsters_table extends Migration
             'idObject' => $this->integer()->notNull(),
             'stats' => $this->string(36)->unique()->notNull(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         // Creates index for column `idObject`

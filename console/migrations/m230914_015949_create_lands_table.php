@@ -25,10 +25,6 @@ class m230914_015949_create_lands_table extends Migration
             'order' => $this->text(),
             'idObject' => $this->integer()->notNull()->comment('Relación con objects'),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         $this->addPrimaryKey('pk_lands', 'lands', 'id');

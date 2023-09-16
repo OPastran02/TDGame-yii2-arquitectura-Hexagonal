@@ -24,10 +24,6 @@ class m230914_012617_create_types_table extends Migration
             'horoscope' => $this->string(20),
             'idBoost' => $this->integer(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         // creates index for column `idObject`

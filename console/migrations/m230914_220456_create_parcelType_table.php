@@ -19,10 +19,6 @@ class m230914_220456_create_parcelType_table extends Migration
             'name' => $this->string(20),
             'description' => $this->string(255),
             'available' => $this->tinyInteger(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
     }
 

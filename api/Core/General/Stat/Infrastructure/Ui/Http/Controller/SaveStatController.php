@@ -30,14 +30,19 @@ class SaveStatController
 
     public function __invoke($arr)
     {    
+        $response = Yii::$app->response;
+        $response->format = Response::FORMAT_JSON;
+
         $arr['id']=Uuid::uuid4()->toString();
         $arr['created_at']=null;
         $arr['updated_at']=null;
         $arr['created_by']=null;
         $arr['updated_by']=null;
 
-        $object = ($this->handler)($arr);
+        $obj = ($this->handler)($arr);
 
+        $response->data = $obj->toPrimitives();
+        
         return $response;
     }
 

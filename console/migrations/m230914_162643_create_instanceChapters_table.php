@@ -22,10 +22,6 @@ class m230914_162643_create_instanceChapters_table extends Migration
             'amountOfFinished' => $this->integer()->notNull()->defaultValue(0),
             'maxStars' => $this->integer()->notNull()->defaultValue(0),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
             // Creates index for column `idPlayer`

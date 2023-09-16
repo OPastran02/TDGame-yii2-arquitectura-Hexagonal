@@ -23,10 +23,6 @@ class m230914_162641_create_rewards_table extends Migration
             'crystal' => $this->integer()->notNull()->defaultValue(0),
             'quantity' => $this->integer()->notNull()->defaultValue(0),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         // Creates index for column `idObject`

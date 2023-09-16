@@ -26,11 +26,6 @@ class m230914_012513_create_boosts_table extends Migration
             'farming' => $this->integer()->notNull()->defaultValue(0),
             'steeling' => $this->integer()->notNull()->defaultValue(0),
             'wooding' => $this->integer()->notNull()->defaultValue(0),
-            'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table );
     }
 

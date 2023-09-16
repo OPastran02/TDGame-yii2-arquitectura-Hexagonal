@@ -29,10 +29,6 @@ class m230914_220454_create_heroes_table extends Migration
             'isLanded' => $this->tinyInteger(1)->notNull()->defaultValue(0),
             'land' => $this->string(36),
             'available' => $this->tinyInteger(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         // Add foreign key constraints

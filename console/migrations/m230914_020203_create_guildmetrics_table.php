@@ -25,10 +25,6 @@ class m230914_020203_create_guildmetrics_table extends Migration
             'landsDestroyed' => $this->integer()->notNull()->defaultValue(0),
             'mobskilled' => $this->integer()->notNull()->defaultValue(0),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
                 
         $this->addPrimaryKey('pk_guildmetrics', 'guildmetrics', 'id');

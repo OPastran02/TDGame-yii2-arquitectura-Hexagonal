@@ -20,10 +20,6 @@ class m230914_022942_create_guildlands_table extends Migration
             'idWorld' => $this->integer(),
             'idland' => $this->string(36)->notNull(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
-            'createdAt' => $this->integer(11),
-            'updatedAt' => $this->integer(11),
-            'createdBy' => $this->string(36),
-            'updatedBy' => $this->string(36),
         ],$table);
 
         // Creates index for column `idMembership`
