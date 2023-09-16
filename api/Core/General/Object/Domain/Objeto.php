@@ -13,10 +13,7 @@ use api\Core\General\Object\Domain\ValueObject\Color;
 use api\Core\General\Object\Domain\ValueObject\Image;
 use api\Core\General\Object\Domain\ValueObject\Model;
 
-
 use api\Shared\Domain\Aggregate\AggregateRoot;
-use DateTime;
-
 
 final class Objeto extends AggregateRoot
 {
