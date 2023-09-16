@@ -6,7 +6,7 @@ namespace api\Core\Shared\Domain\ValueObject;
 
 use api\Shared\Domain\ValueObject\Primitives\IntValueObject;
 
-final class Bronze extends IntValueObject
+final class Increment extends IntValueObject
 {
 
     protected int $value;

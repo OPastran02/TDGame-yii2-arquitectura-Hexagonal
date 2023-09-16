@@ -1,0 +1,22 @@
+<?php   
+
+namespace api\Core\General\Stat\Domain\Repository;
+
+use api\Core\General\Stat\Domain\Stat;
+use api\Core\General\Stat\Domain\Stats;
+
+interface IStatRepository
+{
+    /*
+    *what can i do with an Stat?
+    *Every time a hero, mob or monster is created, it will create a set of random stats.
+    *
+    *can get stat by id
+    *and createStat
+    */
+    
+    public function save($stat): ?string;
+
+    public function getbyId(string $id): ?Stat;
+
+}

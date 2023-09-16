@@ -16,4 +16,5 @@ interface IObjetoRepository
     
     public function getbyId(int $id): ?Objeto;
 
+
 }

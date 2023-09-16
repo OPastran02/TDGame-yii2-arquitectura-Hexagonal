@@ -101,10 +101,10 @@ final class Objeto extends AggregateRoot
             'model'                =>           $this->model->value(),
             'image      '           =>          $this->image->value(),
             'available'             =>          $this->available->value(),
-            'created_at'            =>          isset($createdAt) ? $this->createdAt->getTimestamp() : null,
-            'updated_at'            =>          isset($updatedAt) ? $this->updatedAt->getTimestamp() : null,
-            'created_by'            =>          isset($createdBy) ? $this->createdBy->value() : null,
-            'updated_by'            =>          isset($updatedBy) ? $this->updatedBy->value() : null
+            'created_at'            =>          isset($this->createdAt) ? $this->createdAt->value() : null,
+            'updated_at'            =>          isset($this->updatedAt) ? $this->updatedAt->value() : null,
+            'created_by'            =>          isset($this->createdBy) ? $this->createdBy->value() : null,
+            'updated_by'            =>          isset($this->updatedBy) ? $this->updatedBy->value() : null
         ];
     }
 }

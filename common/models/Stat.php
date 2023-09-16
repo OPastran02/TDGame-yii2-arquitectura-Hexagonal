@@ -41,14 +41,6 @@ use Yii;
  */
 class Stat extends \yii\db\ActiveRecord
 {
-    public function behaviors()
-    {
-        return [
-            \yii\behaviors\TimestampBehavior::class,
-            \yii\behaviors\BlameableBehavior::class,
-        ];
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -63,7 +55,6 @@ class Stat extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id'], 'required'],
             [['attack', 'defense', 'towerAttack', 'towerDefense', 'hp', 'accuracy', 'speed', 'farming', 'steeling', 'wooding', 'incAttack', 'incDefense', 'inchp', 'incTowerAttack', 'incTowerDefense', 'incAccuracy', 'incSpeed', 'incFarming', 'incSteeling', 'incWooding', 'available', 'createdAt', 'updatedAt'], 'integer'],
             [['id', 'createdBy', 'updatedBy'], 'string', 'max' => 36],
             [['id'], 'unique'],
