@@ -37,10 +37,6 @@ final class Stat extends AggregateRoot
         private Increment $incSteeling,
         private Increment $incWooding,
         private Available $available,
-        private UnixTimestampDate|null $createdAt,
-        private UnixTimestampDate|null $updatedAt,
-        private UUID|null $createdBy,
-        private UUID|null $updatedBy
     )
     {
     }
@@ -68,10 +64,6 @@ final class Stat extends AggregateRoot
         Increment $incSteeling,
         Increment $incWooding,
         Available $available,
-        UnixTimestampDate|null $createdAt,
-        UnixTimestampDate|null $updatedAt,
-        UUID|null $createdBy,
-        UUID|null $updatedBy
     ): self 
     {
         return $obj = new Objeto(
@@ -127,10 +119,6 @@ final class Stat extends AggregateRoot
         int $incSteeling,
         int $incWooding,
         int $available,
-        ?int $createdAt,
-        ?int $updatedAt,
-        ?string $createdBy,
-        ?string $updatedBy
     ): self
     {
         return new Stat(
@@ -156,10 +144,6 @@ final class Stat extends AggregateRoot
             new Increment ($incSteeling),
             new Increment ($incWooding),
             new Available ($available),
-            isset($createdAt) ? new UnixTimestampDate($createdAt):null,
-            isset($updatedAt) ? new UnixTimestampDate($updatedAt):null,
-            isset($createdBy) ? new UUID($createdBy):null,
-            isset($updatedBy) ? new UUID($updatedBy):null,
         );
     }
 
@@ -188,10 +172,6 @@ final class Stat extends AggregateRoot
             'incSteeling'           =>          $this->incSteeling->value(),
             'incWooding'            =>          $this->incWooding->value(),
             'available'             =>          $this->available->value(),
-            'created_at'            =>           isset($this->createdAt) ? $this->createdAt->value() : null,
-            'updated_at'            =>           isset($this->updatedAt) ? $this->updatedAt->value() : null,
-            'created_by'            =>           isset($this->createdBy) ? $this->createdBy->value() : null,
-            'updated_by'            =>           isset($this->updatedBy) ? $this->updatedBy->value() : null
         ];
     }
 }

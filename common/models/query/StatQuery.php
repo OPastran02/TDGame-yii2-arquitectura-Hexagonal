@@ -7,7 +7,7 @@ namespace common\models\query;
  *
  * @see \common\models\Stat
  */
-class StatsQuery extends \yii\db\ActiveQuery
+class StatQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {

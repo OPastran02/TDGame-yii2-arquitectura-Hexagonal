@@ -34,10 +34,6 @@ class SaveStatController
         $response->format = Response::FORMAT_JSON;
 
         $arr['id']=Uuid::uuid4()->toString();
-        $arr['created_at']=null;
-        $arr['updated_at']=null;
-        $arr['created_by']=null;
-        $arr['updated_by']=null;
 
         $obj = ($this->handler)($arr);
 

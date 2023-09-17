@@ -29,10 +29,6 @@ use Yii;
  * @property int $incSteeling
  * @property int $incWooding
  * @property int $available
- * @property int|null $createdAt
- * @property int|null $updatedAt
- * @property string|null $createdBy
- * @property string|null $updatedBy
  *
  * @property Chaptermobs[] $chaptermobs
  * @property Conquermobs $conquermobs
@@ -55,13 +51,12 @@ class Stat extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['attack', 'defense', 'towerAttack', 'towerDefense', 'hp', 'accuracy', 'speed', 'farming', 'steeling', 'wooding', 'incAttack', 'incDefense', 'inchp', 'incTowerAttack', 'incTowerDefense', 'incAccuracy', 'incSpeed', 'incFarming', 'incSteeling', 'incWooding', 'available', 'createdAt', 'updatedAt'], 'integer'],
-            [['id', 'createdBy', 'updatedBy'], 'string', 'max' => 36],
+            [['id'], 'required'],
+            [['attack', 'defense', 'towerAttack', 'towerDefense', 'hp', 'accuracy', 'speed', 'farming', 'steeling', 'wooding', 'incAttack', 'incDefense', 'inchp', 'incTowerAttack', 'incTowerDefense', 'incAccuracy', 'incSpeed', 'incFarming', 'incSteeling', 'incWooding', 'available'], 'integer'],
+            [['id'], 'string', 'max' => 36],
             [['id'], 'unique'],
         ];
     }
-
-
 
     /**
      * {@inheritdoc}
@@ -91,10 +86,6 @@ class Stat extends \yii\db\ActiveRecord
             'incSteeling' => 'Inc Steeling',
             'incWooding' => 'Inc Wooding',
             'available' => 'Available',
-            'createdAt' => 'Created At',
-            'updatedAt' => 'Updated At',
-            'createdBy' => 'Created By',
-            'updatedBy' => 'Updated By',
         ];
     }
 
@@ -140,10 +131,10 @@ class Stat extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return \common\models\query\StatsQuery the active query used by this AR class.
+     * @return \common\models\query\StatQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \common\models\query\StatsQuery(get_called_class());
+        return new \common\models\query\StatQuery(get_called_class());
     }
 }

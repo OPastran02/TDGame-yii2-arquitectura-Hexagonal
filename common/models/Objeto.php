@@ -14,10 +14,6 @@ use Yii;
  * @property string $model code models
  * @property string $image code models
  * @property int $available
- * @property string|null $createdAt
- * @property string|null $updatedAt
- * @property string|null $createdBy relacion con usuario
- * @property string|null $updatedBy relacion con usuario
  *
  * @property Abilities[] $abilities
  * @property Avatars[] $avatars
@@ -43,14 +39,6 @@ use Yii;
  */
 class Objeto extends \yii\db\ActiveRecord
 {
-    public function behaviors()
-    {
-        return [
-            \yii\behaviors\TimestampBehavior::class,
-            \yii\behaviors\BlameableBehavior::class,
-        ];
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -67,11 +55,9 @@ class Objeto extends \yii\db\ActiveRecord
         return [
             [['model', 'image'], 'required'],
             [['available'], 'integer'],
-            [['createdAt', 'updatedAt'], 'safe'],
             [['name', 'description'], 'string', 'max' => 14],
             [['color'], 'string', 'max' => 6],
             [['model', 'image'], 'string', 'max' => 18],
-            [['createdBy', 'updatedBy'], 'string', 'max' => 36],
         ];
     }
 
@@ -88,10 +74,6 @@ class Objeto extends \yii\db\ActiveRecord
             'model' => 'Model',
             'image' => 'Image',
             'available' => 'Available',
-            'createdAt' => 'Created At',
-            'updatedAt' => 'Updated At',
-            'createdBy' => 'Created By',
-            'updatedBy' => 'Updated By',
         ];
     }
 
@@ -307,10 +289,10 @@ class Objeto extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return \common\models\query\ObjetosQuery the active query used by this AR class.
+     * @return \common\models\query\ObjetoQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \common\models\query\ObjetosQuery(get_called_class());
+        return new \common\models\query\ObjetoQuery(get_called_class());
     }
 }

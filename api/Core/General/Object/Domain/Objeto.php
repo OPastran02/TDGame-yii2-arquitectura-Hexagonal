@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace api\Core\General\Object\Domain;
 
-use api\Shared\Domain\ValueObject\UUID;
 use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\UnixTimestampDate;
 use api\Shared\Domain\ValueObject\Available;
 use api\Shared\Domain\ValueObject\GameText;
 use api\Core\General\Object\Domain\ValueObject\Color;
@@ -25,10 +23,6 @@ final class Objeto extends AggregateRoot
         private Model $model,
         private Image $image,
         private Available $available,
-        private UnixTimestampDate|null $createdAt,
-        private UnixTimestampDate|null $updatedAt,
-        private UUID|null $createdBy,
-        private UUID|null $updatedBy
     )
     {
     }
@@ -41,10 +35,6 @@ final class Objeto extends AggregateRoot
         Model $model,
         Image $image,
         Available $available,
-        ?UnixTimestampDate $createdAt,
-        ?UnixTimestampDate $updatedAt,
-        ?UUID $createdBy,
-        ?UUID $updatedBy
     ): self 
     {
         return $obj = new Objeto(
@@ -55,10 +45,6 @@ final class Objeto extends AggregateRoot
             $model,
             $image,
             $available,
-            $createdAt,
-            $updatedAt,
-            $createdBy,
-            $updatedBy
         );
     }
 
@@ -70,10 +56,6 @@ final class Objeto extends AggregateRoot
         string $model,
         string $image,
         int $available,
-        ?int $createdAt,
-        ?int $updatedAt,
-        ?string $createdBy,
-        ?string $updatedBy
     ): self
     {
         return new Objeto(
@@ -84,10 +66,6 @@ final class Objeto extends AggregateRoot
             new Model($model),
             new Image($image),
             new Available($available),
-            isset($createdAt) ? new UnixTimestampDate($createdAt):null,
-            isset($updatedAt) ? new UnixTimestampDate($updatedAt):null,
-            isset($createdBy) ? new UUID($createdBy):null,
-            isset($updatedBy) ? new UUID($updatedBy):null,
         );
     }
 
@@ -101,10 +79,6 @@ final class Objeto extends AggregateRoot
             'model'                =>           $this->model->value(),
             'image      '           =>          $this->image->value(),
             'available'             =>          $this->available->value(),
-            'created_at'            =>          isset($this->createdAt) ? $this->createdAt->value() : null,
-            'updated_at'            =>          isset($this->updatedAt) ? $this->updatedAt->value() : null,
-            'created_by'            =>          isset($this->createdBy) ? $this->createdBy->value() : null,
-            'updated_by'            =>          isset($this->updatedBy) ? $this->updatedBy->value() : null
         ];
     }
 }

@@ -7,7 +7,7 @@ namespace common\models\query;
  *
  * @see \common\models\Objeto
  */
-class ObjetosQuery extends \yii\db\ActiveQuery
+class ObjetoQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
