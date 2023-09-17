@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace api\Core\General\Object\Domain;
+namespace api\Core\General\Rarity\Domain;
 
 use api\Shared\Domain\Collection;
 
-final class Objetos extends Collection
+final class Rarities extends Collection
 {
     protected function type(): string
     {
-        return Objeto::class;
+        return Rarity::class;
     }
 }
