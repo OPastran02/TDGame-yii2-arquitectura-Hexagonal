@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace api\Core\General\Boost\Domain;
+namespace api\Core\Hero\Boost\Domain;
 
 use api\Shared\Domain\Collection;
 

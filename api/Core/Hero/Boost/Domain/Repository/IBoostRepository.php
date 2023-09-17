@@ -1,9 +1,9 @@
 <?php   
 
-namespace api\Core\General\Boost\Domain\Repository;
+namespace api\Core\Hero\Boost\Domain\Repository;
 
-use api\Core\General\Boost\Domain\Boost;
-use api\Core\General\Boost\Domain\Boosts;
+use api\Core\Hero\Boost\Domain\Boost;
+use api\Core\Hero\Boost\Domain\Boosts;
 
 interface IBoostRepository
 {
@@ -12,7 +12,7 @@ interface IBoostRepository
     *just get, mandatory
     */
     
-    public function getbyId(int $id): ?Rarity;
+    public function getbyId(int $id): ?Boost;
 
 
 }

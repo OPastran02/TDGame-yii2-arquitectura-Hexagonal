@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace api\Core\General\Rarity\Infrastructure\Ui\Http\Controller;
+namespace api\Core\Hero\Boost\Infrastructure\Ui\Http\Controller;
 
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use api\Core\General\Rarity\Domain\Rarity; 
-use api\Core\General\Rarity\Domain\Repository\IRarityRepository;
-use api\Core\General\Rarity\Infrastructure\Persistence\ActiveRecord\RarityRepositoryActiveRecord;
-use api\Core\General\Rarity\Application\Query\GetRarityByIdHandler;
+use api\Core\Hero\Boost\Domain\Boost; 
+use api\Core\Hero\Boost\Domain\Repository\IBoostRepository;
+use api\Core\Hero\Boost\Infrastructure\Persistence\ActiveRecord\BoostRepositoryActiveRecord;
+use api\Core\Hero\Boost\Application\Query\GetBoostByIdHandler;
 use yii\helpers\Json;
 use yii\web\Response;
 use Yii;
 
-class GetRarityByIdController
+class GetBoostByIdController
 {
-    private GetRarityByIdHandler $handler;
+    private GetBoostByIdHandler $handler;
 
     public function __construct()
     { 
-        $repository = new RarityRepositoryActiveRecord();
-        $this->handler = new GetRarityByIdHandler($repository);
+        $repository = new BoostRepositoryActiveRecord();
+        $this->handler = new GetBoostByIdHandler($repository);
     }
 
     public function __invoke(int $id)

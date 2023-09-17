@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace api\Core\General\Boost\Domain;
+namespace api\Core\Hero\Boost\Domain;
 
 use api\Shared\Domain\ValueObject\NID;
 use api\Shared\Domain\ValueObject\Available;
 use api\Core\Shared\Domain\ValueObject\Stats;
-use api\Core\General\Object\Domain\Repository\IBoostRepository;
+use api\Core\Hero\Boost\Domain\Repository\IBoostRepository;
 
 use api\Shared\Domain\Aggregate\AggregateRoot;
 
