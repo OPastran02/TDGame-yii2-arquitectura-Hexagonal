@@ -5,9 +5,10 @@ use yii\web\Response;
 use yii\helpers\Json; // Asegúrate de importar el uso de la clase Json
 use Yii;
 
-use api\Core\General\Object\Infrastructure\Ui\Http\Controller\GetObjetoByIdController;
+use api\Core\General\Rarity\Infrastructure\Ui\Http\Controller\GetRarityByIdController;
 
-class ObjetoController extends \yii\web\Controller
+
+class RarityController extends \yii\web\Controller
 {
     public function actionIndex()
     {
@@ -16,8 +17,7 @@ class ObjetoController extends \yii\web\Controller
 
     public function actionGet($id)
     {
-        return (new GetObjetoByIdController())($id);
+        return (new GetRarityByIdController())($id);
     }
-
 
 }

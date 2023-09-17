@@ -19,12 +19,12 @@ class StatController extends \yii\web\Controller
         return $this->render('index');
     }
 
-    public function actionGetStat($id)
+    public function actionGet($id)
     {
         return (new GetStatByIdController())($id);
     }
 
-    public function actionSaveStat()
+    public function actionSave()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $data = Yii::$app->request->getBodyParams(); 
