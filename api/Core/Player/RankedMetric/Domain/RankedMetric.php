@@ -2,24 +2,20 @@
 
 declare(strict_types=1);
 
-namespace api\Core\Player\Metric\Domain;
+namespace api\Core\Player\RankedMetric\Domain;
 
 use api\Shared\Domain\ValueObject\NID;
 use api\Shared\Domain\ValueObject\UUID;
 use api\Shared\Domain\ValueObject\Available;
 use api\Shared\Domain\ValueObject\UnixTimestampDate;
-use api\Core\Player\Metric\Domain\ValueObject\DamageDealt;
-use api\Core\Player\Metric\Domain\ValueObject\Honor;
-use api\Core\Player\Metric\Domain\ValueObject\LandsDestroyed;
-use api\Core\Player\Metric\Domain\ValueObject\MaxPoints;
-use api\Core\Player\Metric\Domain\ValueObject\MobsKilled;
+use api\Core\Player\Metric\Domain\ValueObject\MaxPosition;
 use api\Core\Shared\Domain\ValueObject\Win;
 use api\Core\Shared\Domain\ValueObject\Handicap;
 use api\Core\Shared\Domain\ValueObject\Loss;
 use api\Core\Shared\Domain\ValueObject\timePlayed;
 use api\Shared\Domain\Aggregate\AggregateRoot;
 
-final class Metric extends AggregateRoot
+final class RankedMetric extends AggregateRoot
 {
     public function __construct(
         private UUID $id,
@@ -27,10 +23,8 @@ final class Metric extends AggregateRoot
         private Loss $loss,
         private Handicap $handicap,
         private timePlayed $timePlayed,
-        private MaxPoints $maxPoints,
-        private DamageDealt $damageDealt,
-        private LandsDestroyed $landsDestroyed,
-        private MobsKilled $mobsKilled,
+        private UUID $rank,
+        private MaxPosition $maxPosition,
         private Available $available,
     )
     {}
@@ -41,10 +35,8 @@ final class Metric extends AggregateRoot
         Loss $loss,
         Handicap $handicap,
         timePlayed $timePlayed,
-        MaxPoints $maxPoints,
-        DamageDealt $damageDealt,
-        LandsDestroyed $landsDestroyed,
-        MobsKilled $mobsKilled,
+        UUID $rank,
+        MaxPosition $maxPosition,
         Available $available,
     ): self 
     {
@@ -54,10 +46,8 @@ final class Metric extends AggregateRoot
             $loss,
             $handicap,
             $timePlayed,
-            $maxPoints,
-            $damageDealt,
-            $landsDestroyed,
-            $mobsKilled,
+            $rank,
+            $maxPosition,
             $available,
         );
     }
@@ -68,23 +58,20 @@ final class Metric extends AggregateRoot
         int $loss,
         int $handicap,
         int $timePlayed,
-        int $maxPoints,
-        int $damageDealt,
-        int $landsDestroyed,
-        int $mobsKilled,
+        int $rank,
+        int $maxPosition,
         int $available,
     ): self
     {
         return new Objeto(
             isset($id) ? new UUID($id):   null,
-            new Win ($win),
-            new Loss ($loss),
-            new Handicap ($handicap),
-            new timePlayed ($timePlayed),
-            new MaxPoints ($maxPoints),
-            new DamageDealt ($damageDealt),
-            new LandsDestroyed ($landsDestroyed),
-            new MobsKilled ($mobsKilled),
+            new Win($win),
+            new Win($win),
+            new Loss($loss),
+            new Handicap($handicap),
+            new timePlayed($timePlayed),
+            new UUID($rank),
+            new MaxPosition($maxPosition),
             new Available($available),
         );
     }
@@ -97,10 +84,8 @@ final class Metric extends AggregateRoot
             'loss'                  =>          $this->loss->value(),
             'handicap'              =>          $this->handicap->value(),
             'timePlayed'            =>          $this->timePlayed->value(),
-            'maxPoints'             =>          $this->maxPoints->value(),
-            'damageDealt'           =>          $this->damageDealt->value(),
-            'landsDestroyed'        =>          $this->landsDestroyed->value(),
-            'mobsKilled'            =>          $this->mobsKilled->value(),
+            'rank'                  =>          $this->rank->value(),
+            'maxPosition'           =>          $this->maxPosition->value(),
             'available'             =>          $this->available->value(),
         ];
     }
