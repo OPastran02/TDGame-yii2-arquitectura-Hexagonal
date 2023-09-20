@@ -1,0 +1,53 @@
+<?php
+
+declare(strict_types=1);
+
+namespace api\Core\General\Membership\Infrastructure\Ui\Http\Controller;
+
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+use api\Core\General\Membership\Domain\Membership; 
+use api\Core\General\Membership\Domain\Repository\IMembershipRepository;
+use api\Core\General\Membership\Infrastructure\Persistence\ActiveRecord\MembershipRepositoryActiveRecord;
+use api\Core\General\Membership\Application\Query\GetMembershipByIdHandler;
+use yii\helpers\Json;
+use yii\web\Response;
+use Yii;
+
+class GetMembershipByIdController
+{
+    private GetMembershipByIdHandler $handler;
+
+    public function __construct()
+    { 
+        $repository = new MembershipRepositoryActiveRecord();
+        $this->handler = new GetMembershipByIdHandler($repository);
+    }
+
+    public function __invoke(int $id)
+    {    
+        $response = Yii::$app->response;
+        $response->format = Response::FORMAT_JSON;
+    
+        try {
+            $object = ($this->handler)($id);
+            $status = 'ok';
+            $hits = ($object !== null) ? [$object->toPrimitives()] : ['no data'];
+        } catch (InvalidRequestValueException $e) {
+            $status = 'error';
+            $hits = ['no data'];
+        }
+    
+        $data = [
+            'status' => $status,
+            'hits' => $hits,
+        ];
+    
+        $response->data = $data;
+        
+        return $response;
+    }
+
+}  
+
