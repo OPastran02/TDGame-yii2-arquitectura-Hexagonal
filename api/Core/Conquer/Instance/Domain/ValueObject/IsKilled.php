@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace api\Core\Conquer\Conquer\Domain\ValueObject;
+namespace api\Core\Conquer\Instance\Domain\ValueObject;
 
 use api\Shared\Domain\ValueObject\Primitives\IntValueObject;
 
