@@ -23,16 +23,16 @@ class m230914_015950_create_players_table extends Migration
         $table = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
 
         $this->createTable('{{%players}}', [
-            'id' => $this->string(36)->notNull()->unique(),
-            'idwallet' => $this->string(36)->notNull(),
-            'idavatar' => $this->string(36)->notNull(),
-            'idmetrics' => $this->string(36)->notNull(),
-            'idrankedMetrics' => $this->string(36)->notNull(),
-            'idstatus' => $this->string(36)->notNull(),
-            'idland' => $this->string(36)->notNull(),
-            'experience' => $this->integer()->notNull()->defaultValue(0),
-            'level' => $this->integer()->notNull()->defaultValue(0),
-            'available' => $this->integer(1)->notNull()->defaultValue(1),
+            'id'                => $this->string(36)->notNull()->unique(),
+            'idwallet'          => $this->string(36)->notNull(),
+            'idavatar'          => $this->string(36)->notNull(),
+            'idmetrics'         => $this->string(36)->notNull(),
+            'idrankedMetrics'   => $this->string(36)->notNull(),
+            'idstatus'          => $this->string(36)->notNull(),
+            'idland'            => $this->string(36)->notNull(),
+            'experience'        => $this->integer()->notNull()->defaultValue(0),
+            'level'             => $this->integer()->notNull()->defaultValue(0),
+            'available'         => $this->integer(1)->notNull()->defaultValue(1),
         ],$table);
 
         $this->addPrimaryKey('pk_players', 'players', 'id');
