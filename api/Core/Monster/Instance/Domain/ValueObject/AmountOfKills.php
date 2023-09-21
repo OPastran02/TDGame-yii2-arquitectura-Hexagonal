@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace api\Monster\Instance\Domain\ValueObject;
+namespace api\Core\Monster\Instance\Domain\ValueObject;
 
-use api\Shared\Domain\ValueObject\Primitives\IntValueObject;
+use api\Shared\Domain\ValueObject\Primitives\intvalueObject;
+use Error;
 
-final class AmountOfKills extends IntValueObject
+final class AmountOfKills extends intvalueObject
 {
-
     protected int $value;
 
-    private const MIN_VALUE = 0;
-    private const MAX_VALUE = 4000000;    
+    private const MIN_VALUE = 1;
+    private const MAX_VALUE = 99;
 
-    public function __construct( int $value)
+    public function __construct(int $value)
     {
         parent::__construct($value);
         $this->ensureIsBetweenAcceptedValues($value);
@@ -24,7 +24,7 @@ final class AmountOfKills extends IntValueObject
     public function ensureIsBetweenAcceptedValues(int $value): void
     {
         if ($value < self::MIN_VALUE || $value > self::MAX_VALUE) {
-            throw new DomainException(
+            throw new Error(
                 sprintf(
                     'The value (%s) must be between %s and %s',
                     $value,
@@ -39,4 +39,5 @@ final class AmountOfKills extends IntValueObject
     {
         return $this->value;
     }
+
 }

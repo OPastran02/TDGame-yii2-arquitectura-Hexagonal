@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace api\Monster\Instance\Domain\ValueObject;
+namespace api\Core\Monster\Instance\Domain\ValueObject;
 
 use api\Shared\Domain\ValueObject\Primitives\IntValueObject;
 
-final class IsKilled extends IntValueObject
+final class isKilled extends IntValueObject
 {
     const TRUE_VALUE = 1;
     const FALSE_VALUE = 0;
