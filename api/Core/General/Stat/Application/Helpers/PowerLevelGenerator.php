@@ -12,6 +12,7 @@ class PowerLevelGenerator
 
     public function __invoke($arr): int
     {
+
         $power = ($arr["attack"] +
         $arr["defense"] +
         $arr["towerAttack"] +
@@ -28,8 +29,8 @@ class PowerLevelGenerator
         $arr["incAccuracy"] +
         $arr["incSpeed"])/7;
 
-        $powerLevel = intval(round($power * (1+($increment / 100))));
 
+        $powerLevel = intval(round($power * (1+($increment / 100))));
         return $powerLevel;
     }
 }

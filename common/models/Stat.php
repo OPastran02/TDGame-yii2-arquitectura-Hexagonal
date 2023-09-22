@@ -52,7 +52,7 @@ class Stat extends \yii\db\ActiveRecord
     {
         return [
             [['id'], 'required'],
-            [['attack', 'defense', 'towerAttack', 'towerDefense', 'hp', 'accuracy', 'speed', 'farming', 'steeling', 'wooding', 'incAttack', 'incDefense', 'inchp', 'incTowerAttack', 'incTowerDefense', 'incAccuracy', 'incSpeed', 'incFarming', 'incSteeling', 'incWooding', 'available'], 'integer'],
+            [['attack', 'defense', 'towerAttack', 'towerDefense', 'hp', 'accuracy', 'speed', 'farming', 'steeling', 'wooding', 'incAttack', 'incDefense', 'inchp', 'incTowerAttack', 'incTowerDefense', 'incAccuracy', 'incSpeed', 'incFarming', 'incSteeling', 'incWooding', 'available','powerLevel'], 'integer'],
             [['id'], 'string', 'max' => 36],
             [['id'], 'unique'],
         ];
@@ -85,6 +85,7 @@ class Stat extends \yii\db\ActiveRecord
             'incFarming' => 'Inc Farming',
             'incSteeling' => 'Inc Steeling',
             'incWooding' => 'Inc Wooding',
+            'powerLevel' => 'power Level',
             'available' => 'Available',
         ];
     }

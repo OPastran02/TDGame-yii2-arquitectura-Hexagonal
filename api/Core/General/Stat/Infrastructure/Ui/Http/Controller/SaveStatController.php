@@ -4,18 +4,22 @@ declare(strict_types=1);
 
 namespace api\Core\General\Stat\Infrastructure\Ui\Http\Controller;
 
-use Ramsey\Uuid\Uuid;
-use yii\helpers\Json;
-use yii\web\Response;
-use Yii;
 
+use Yii;
+use yii\web\Response;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\helpers\Json;
 use yii\filters\VerbFilter;
+
 use api\Core\General\Stat\Domain\Stat; 
 use api\Core\General\Stat\Domain\Repository\IStatRepository;
-use api\Core\General\Stat\Infrastructure\Persistence\ActiveRecord\StatRepositoryActiveRecord;
 use api\Core\General\Stat\Application\Command\SaveStatHandler;
+use api\Core\General\Stat\Application\Helpers\IncrementRandomizer;
+use api\Core\General\Stat\Application\Helpers\PowerLevelGenerator;
+use api\Core\General\Stat\Application\Helpers\StatRandomizer;
+use api\Core\General\Stat\Infrastructure\Persistence\ActiveRecord\StatRepositoryActiveRecord;
+
 
 
 class SaveStatController
@@ -25,16 +29,15 @@ class SaveStatController
     public function __construct()
     { 
         $repository = new StatRepositoryActiveRecord();
-        $this->handler = new SaveStatHandler($repository);
+        $incrementRandomizer = new IncrementRandomizer();
+        $statsRandomizer = new StatRandomizer();
+        $this->handler = new SaveStatHandler($repository,$statsRandomizer,$incrementRandomizer);
     }
 
     public function __invoke($id,$rarity)
     {    
         $response = Yii::$app->response;
         $response->format = Response::FORMAT_JSON;
-
-        $id=Uuid::uuid4()->toString();
-        $rarity=1;
 
         $obj = ($this->handler)($id,$rarity);
 

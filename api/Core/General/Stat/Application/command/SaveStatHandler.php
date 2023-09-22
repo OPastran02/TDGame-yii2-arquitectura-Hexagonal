@@ -16,6 +16,7 @@ final class SaveStatHandler
 {
     private IStatRepository $repository;
     private StatRandomizer $statRandomizer;
+    private IncrementRandomizer $incrementRandomizer;
 
     public function __construct(
         IStatRepository $repository, 
