@@ -20,7 +20,7 @@ final class GameText extends StringValueObject
 
     private function ensureIsValidJSON(string $value): void
     {
-        // Intenta decodificar la cadena JSON
+        // Intenta decodificar la cadena JSON como un array de objetos JSON
         $decoded = json_decode($value);
 
         // Verifica si la decodificación fue exitosa y es un array
@@ -28,10 +28,10 @@ final class GameText extends StringValueObject
             throw new \InvalidArgumentException("'$value' no es un JSON válido.");
         }
 
-        // Verifica si cada elemento del array tiene un campo 'id' y un campo 'text'
+        // Verifica si cada elemento del array es un objeto JSON con propiedades 'id' y 'text'
         foreach ($decoded as $item) {
-            if (!isset($item['id']) || !isset($item['text'])) {
-                throw new \InvalidArgumentException("Cada elemento del JSON debe tener un campo 'id' y un campo 'text'.");
+            if (!is_object($item) || !property_exists($item, 'id') || !property_exists($item, 'text')) {
+                throw new \InvalidArgumentException("Cada elemento del JSON debe ser un objeto con propiedades 'id' y 'text'.");
             }
         }
     }

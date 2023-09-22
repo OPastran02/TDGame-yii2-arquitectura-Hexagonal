@@ -11,8 +11,8 @@ final class Stats extends IntValueObject
 
     protected int $value;
 
-    private const MIN_VALUE = 0;
-    private const MAX_VALUE = 50000;    
+    private const MIN_VALUE = 2000;
+    private const MAX_VALUE = 30000;    
 
     public function __construct( int $value)
     {

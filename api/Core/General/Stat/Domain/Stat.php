@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace api\Core\General\Stat\Domain;
 
 use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\UnixTimestampDate;
 use api\Shared\Domain\ValueObject\Available;
 use api\Core\Shared\Domain\ValueObject\Stats;
 use api\Core\Shared\Domain\ValueObject\Increment;
@@ -36,6 +35,7 @@ final class Stat extends AggregateRoot
         private Increment $incFarming,
         private Increment $incSteeling,
         private Increment $incWooding,
+        private Stats $powerLevel,
         private Available $available,
     )
     {
@@ -63,6 +63,7 @@ final class Stat extends AggregateRoot
         Increment $incFarming,
         Increment $incSteeling,
         Increment $incWooding,
+        Stats $powerLevel,
         Available $available,
     ): self 
     {
@@ -92,6 +93,7 @@ final class Stat extends AggregateRoot
             $createdAt,
             $updatedAt,
             $createdBy,
+            $powerLevel,
             $updatedBy
         );
     }
@@ -118,6 +120,7 @@ final class Stat extends AggregateRoot
         int $incFarming,
         int $incSteeling,
         int $incWooding,
+        int $powerLevel,
         int $available,
     ): self
     {
@@ -143,6 +146,7 @@ final class Stat extends AggregateRoot
             new Increment ($incFarming),
             new Increment ($incSteeling),
             new Increment ($incWooding),
+            new Stats ($powerLevel),
             new Available ($available),
         );
     }
@@ -171,6 +175,7 @@ final class Stat extends AggregateRoot
             'incFarming'            =>          $this->incFarming->value(),
             'incSteeling'           =>          $this->incSteeling->value(),
             'incWooding'            =>          $this->incWooding->value(),
+            'powerLevel'            =>          $this->powerLevel->value(),
             'available'             =>          $this->available->value(),
         ];
     }

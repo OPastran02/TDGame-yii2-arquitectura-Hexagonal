@@ -11,7 +11,7 @@ final class Increment extends IntValueObject
 
     protected int $value;
 
-    private const MIN_VALUE = 0;
+    private const MIN_VALUE = 1;
     private const MAX_VALUE = 50;    
 
     public function __construct( int $value)

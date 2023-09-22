@@ -20,7 +20,7 @@ final class Color extends StringValueObject
 
     public function ensureIsColor(string $value): void
     {
-        if (!preg_match('/^#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})$/', $value)) {
+        if (!preg_match('/^([0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})$/', $value)) {
             throw new \InvalidArgumentException("'$value' no es un código de color hexadecimal válido.");
         }
     }

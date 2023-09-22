@@ -28,14 +28,15 @@ class SaveStatController
         $this->handler = new SaveStatHandler($repository);
     }
 
-    public function __invoke($arr)
+    public function __invoke($id,$rarity)
     {    
         $response = Yii::$app->response;
         $response->format = Response::FORMAT_JSON;
 
-        $arr['id']=Uuid::uuid4()->toString();
+        $id=Uuid::uuid4()->toString();
+        $rarity=1;
 
-        $obj = ($this->handler)($arr);
+        $obj = ($this->handler)($id,$rarity);
 
         $response->data = $obj->toPrimitives();
         
