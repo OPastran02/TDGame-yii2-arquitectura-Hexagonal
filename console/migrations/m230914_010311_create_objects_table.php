@@ -16,8 +16,8 @@ class m230914_010311_create_objects_table extends Migration
 
         $this->createTable('{{%objects}}', [
             'id' => $this->primaryKey(),
-            'name' => $this->string(14)->notNull()->defaultValue('no name'),
-            'description' => $this->string(14)->notNull()->defaultValue('no description'),
+            'name' => $this->string()->notNull()->defaultValue('no name'),
+            'description' => $this->string()->notNull()->defaultValue('no description'),
             'color' => $this->string(6)->notNull()->defaultValue('FFFFFF'),
             'model' => $this->string(18)->notNull()->comment('code models'),
             'image' => $this->string(18)->notNull()->comment('code models'),
