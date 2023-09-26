@@ -31,9 +31,9 @@ class GetRarityByIdController
         $response->format = Response::FORMAT_JSON;
     
         try {
-            $object = ($this->handler)($id);
+            $obj = ($this->handler)($id);
             $status = 'ok';
-            $hits = ($object !== null) ? [$object->toPrimitives()] : ['no data'];
+            $hits = ($obj !== null) ? [$obj->toPrimitives()] : ['no data'];
         } catch (InvalidRequestValueException $e) {
             $status = 'error';
             $hits = ['no data'];
