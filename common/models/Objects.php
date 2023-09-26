@@ -37,7 +37,7 @@ use Yii;
  * @property Types[] $types
  * @property Worlds[] $worlds
  */
-class Objeto extends \yii\db\ActiveRecord
+class Objects extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

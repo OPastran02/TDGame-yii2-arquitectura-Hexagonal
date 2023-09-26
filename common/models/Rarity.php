@@ -49,6 +49,11 @@ class Rarity extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getObject()
+    {
+        return $this->hasOne(Objects::class, ['id' => 'idObject']);
+    }
+
     /**
      * Gets query for [[Heroes]].
      *
@@ -59,15 +64,6 @@ class Rarity extends \yii\db\ActiveRecord
         return $this->hasMany(Heroes::class, ['rarity' => 'id']);
     }
 
-    /**
-     * Gets query for [[IdObject0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\ObjectsQuery
-     */
-    public function getIdObject0()
-    {
-        return $this->hasOne(Objects::class, ['id' => 'idObject']);
-    }
 
     /**
      * {@inheritdoc}
