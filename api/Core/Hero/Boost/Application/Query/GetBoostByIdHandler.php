@@ -18,7 +18,7 @@ class GetBoostByIdHandler
  
     public function __invoke(int $id): ?Boost
     {
-        $hero = $this->repository->getbyId($id);
-        return $hero;
+        $boost = $this->repository->getbyId($id);
+        return $boost;
     }
 }

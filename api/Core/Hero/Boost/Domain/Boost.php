@@ -6,7 +6,7 @@ namespace api\Core\Hero\Boost\Domain;
 
 use api\Shared\Domain\ValueObject\NID;
 use api\Shared\Domain\ValueObject\Available;
-use api\Core\Shared\Domain\ValueObject\Stats;
+use api\Core\Shared\Domain\ValueObject\Increment;
 use api\Core\Hero\Boost\Domain\Repository\IBoostRepository;
 
 use api\Shared\Domain\Aggregate\AggregateRoot;
@@ -15,40 +15,46 @@ final class Boost extends AggregateRoot
 {
     public function __construct(
         private NID   $id,
-        private Stats $attack, 
-        private Stats $defense, 
-        private Stats $towerAttack, 
-        private Stats $towerDefense, 
-        private Stats $hp, 
-        private Stats $accuracy, 
-        private Stats $speed, 
-        private Stats $farming, 
-        private Stats $steeling, 
-        private Stats $wooding, 
-        private Available $available,
+        private Increment $attack, 
+        private Increment $defense, 
+        private Increment $towerAttack, 
+        private Increment $towerDefense, 
+        private Increment $hp, 
+        private Increment $accuracy, 
+        private Increment $speed, 
+        private Increment $farming, 
+        private Increment $steeling, 
+        private Increment $wooding
     )
     {
     }
 
     public static function create( 
         ?NID        $id,
-        Stats       $attack, 
-        Stats       $defense, 
-        Stats       $towerAttack, 
-        Stats       $towerDefense, 
-        Stats       $hp, 
-        Stats       $accuracy, 
-        Stats       $speed, 
-        Stats       $farming, 
-        Stats       $steeling, 
-        Stats       $wooding, 
-        Available   $available,
+        Increment   $attack, 
+        Increment   $defense, 
+        Increment   $towerAttack, 
+        Increment   $towerDefense, 
+        Increment   $hp, 
+        Increment   $accuracy, 
+        Increment   $speed, 
+        Increment   $farming, 
+        Increment   $steeling, 
+        Increment   $wooding
     ): self 
     {
         return new self(
             $id,
-            $idObject,
-            $available
+            $attack, 
+            $defense, 
+            $towerAttack, 
+            $towerDefense, 
+            $hp, 
+            $accuracy, 
+            $speed, 
+            $farming, 
+            $steeling, 
+            $wooding
         );
     }
 
@@ -63,23 +69,21 @@ final class Boost extends AggregateRoot
         int $speed, 
         int $farming, 
         int $steeling, 
-        int $wooding, 
-        int $available,
+        int $wooding
     ): self
     {
-        return new Objeto(
+        return new self(
             isset($id) ? new NID($id):   null,
-            new Stats ($attack), 
-            new Stats ($defense), 
-            new Stats ($towerAttack), 
-            new Stats ($towerDefense), 
-            new Stats ($hp), 
-            new Stats ($accuracy), 
-            new Stats ($speed), 
-            new Stats ($farming), 
-            new Stats ($steeling), 
-            new Stats ($wooding), 
-            new Stats ($available)
+            new Increment ($attack), 
+            new Increment ($defense), 
+            new Increment ($towerAttack), 
+            new Increment ($towerDefense), 
+            new Increment ($hp), 
+            new Increment ($accuracy), 
+            new Increment ($speed), 
+            new Increment ($farming), 
+            new Increment ($steeling), 
+            new Increment ($wooding)
         );
     }
 
@@ -96,13 +100,8 @@ final class Boost extends AggregateRoot
             'speed'                =>          $this->speed->value(),                
             'farming'              =>          $this->farming->value(),                
             'steeling'             =>          $this->steeling->value(),                    
-            'wooding'              =>          $this->wooding->value(),                
-            'available'            =>          $this->available->value()                    
+            'wooding'              =>          $this->wooding->value(),               
         ];
     }
 
-    public function getObjeto(): Objeto
-    {
-        return $this->objetoRepository->findObjetoById($this->idObject);
-    }
 }

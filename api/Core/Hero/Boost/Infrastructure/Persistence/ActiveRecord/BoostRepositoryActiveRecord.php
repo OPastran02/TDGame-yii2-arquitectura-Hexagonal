@@ -18,7 +18,7 @@ class BoostRepositoryActiveRecord implements IBoostRepository
         if (!$model) {
             return null;
         }else{
-            return Rarity::fromPrimitives(...$model["attributes"]);
+            return Boost::fromPrimitives(...$model["attributes"]);
         }
     }
 }
