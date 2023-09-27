@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace api\Core\Hero\Boost\Infrastructure\Ui\Http\Controller;
 
+use api\Core\Hero\Boost\Domain\{
+    Boost,
+    Repository\IBoostRepository
+};
+use api\Core\Hero\Boost\Infrastructure\Persistence\ActiveRecord\BoostRepositoryActiveRecord;
+use api\Core\Hero\Boost\Application\Query\GetBoostByIdHandler;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use api\Core\Hero\Boost\Domain\Boost; 
-use api\Core\Hero\Boost\Domain\Repository\IBoostRepository;
-use api\Core\Hero\Boost\Infrastructure\Persistence\ActiveRecord\BoostRepositoryActiveRecord;
-use api\Core\Hero\Boost\Application\Query\GetBoostByIdHandler;
 use yii\helpers\Json;
 use yii\web\Response;
 use Yii;

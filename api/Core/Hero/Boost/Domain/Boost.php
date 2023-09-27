@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace api\Core\Hero\Boost\Domain;
 
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\Available;
+use api\Shared\Domain\ValueObject\{
+    NID,
+    Available
+};
 use api\Core\Shared\Domain\ValueObject\Increment;
 use api\Core\Hero\Boost\Domain\Repository\IBoostRepository;
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class Boost extends AggregateRoot
+final class Boost
 {
     public function __construct(
         private NID   $id,

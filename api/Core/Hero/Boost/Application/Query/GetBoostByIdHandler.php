@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace api\Core\Hero\Boost\Application\Query;
 
-use api\Core\Hero\Boost\Domain\Boost;
-use api\Core\Hero\Boost\Domain\Repository\IBoostRepository;
+use api\Core\Hero\Boost\Domain\{
+    Boost,
+    Repository\IBoostRepository
+};
 
 class GetBoostByIdHandler
 {
