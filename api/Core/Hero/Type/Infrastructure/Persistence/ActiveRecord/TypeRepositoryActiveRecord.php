@@ -6,7 +6,7 @@ namespace api\Core\Hero\Type\Infrastructure\Persistence\ActiveRecord;
 
 use api\Core\Hero\Type\Domain\{
     Type,
-    ITypeRepository
+    Repository\ITypeRepository
 };
 use api\Core\General\Object\Domain\Objeto; 
 use api\Core\Hero\Boost\Domain\Boost; 

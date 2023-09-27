@@ -6,7 +6,7 @@ namespace api\Core\Hero\Type\Application\Query;
 
 use api\Core\Hero\Type\Domain\{
     Type,
-    ITypeRepository
+    Repository\ITypeRepository
 };
 
 class GetTypeByIdHandler

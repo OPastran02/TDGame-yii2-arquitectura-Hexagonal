@@ -6,7 +6,7 @@ namespace api\Core\Hero\Type\Infrastructure\Ui\Http\Controller;
 
 use api\Core\Hero\Type\Domain\{
     Type,
-    ITypeRepository
+    Repository\ITypeRepository
 };
 use api\Core\Hero\Type\Infrastructure\Persistence\ActiveRecord\TypeRepositoryActiveRecord;
 use api\Core\Hero\Type\Application\Query\GetTypeByIdHandler;
@@ -29,9 +29,6 @@ class GetTypeByIdController
 
     public function __invoke(int $typeId)
     {    
-        $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON;
-    
         try {
             $objeto = ($this->handler)($typeId);
             $status = 'ok';
@@ -46,9 +43,9 @@ class GetTypeByIdController
             'hits' => $hits,
         ];
     
-        $response->data = $data;
-        
-        return $response;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->data = $data;
+        return Yii::$app->response;
     }
 
 }  

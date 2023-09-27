@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace api\Core\Hero\Nature\Application\Query;
 
-use api\Core\Hero\Nature\Domain\Nature;
-use api\Core\Hero\Nature\Domain\Repository\INatureRepository;
+use api\Core\Hero\Nature\Domain\{
+    Nature,
+    Repository\INatureRepository
+};
 
 class GetNatureByIdHandler
 {
@@ -16,9 +18,8 @@ class GetNatureByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Nature
+    public function __invoke(int $natureId): ?Nature
     {
-        $obj = $this->repository->getbyId($id);
-        return $obj;
+        return $this->repository->getbyId($natureId);
     }
 }

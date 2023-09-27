@@ -26,8 +26,7 @@ final class Objeto
         private Image $image,
         private Available $available,
     )
-    {
-    }
+    {}
 
     public static function create( 
         NID $id,

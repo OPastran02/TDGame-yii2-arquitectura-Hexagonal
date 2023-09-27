@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace api\Core\Hero\Nature\Domain;
 
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\Available;
-use api\Shared\Domain\ValueObject\GameText;
+use api\Shared\Domain\ValueObject\{
+    NID,
+    Available,
+    GameText
+};
 use api\Core\General\Object\Domain\Objeto; 
 use api\Core\Hero\Boost\Domain\Boost; 
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class Nature extends AggregateRoot
+final class Nature
 {
     public function __construct(
         private NID $id,

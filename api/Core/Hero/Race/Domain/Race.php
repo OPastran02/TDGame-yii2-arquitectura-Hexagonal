@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace api\Core\Hero\Race\Domain;
 
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\Available;
-use api\Shared\Domain\ValueObject\GameText;
+use api\Shared\Domain\ValueObject\{
+    NID,
+    Available,
+    GameText
+};
 use api\Core\General\Object\Domain\Objeto; 
 use api\Core\Hero\Boost\Domain\Boost; 
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class Race extends AggregateRoot
+final class Race
 {
     public function __construct(
         private NID $id,
@@ -22,8 +22,7 @@ final class Race extends AggregateRoot
         private Objeto $objeto,
         private Boost $boost
     )
-    {
-    }
+    {}
 
     public static function create( 
         NID $id,

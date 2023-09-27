@@ -30,9 +30,6 @@ class GetStatByIdController
 
     public function __invoke(string $statId)
     {    
-        $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON;
-    
         try {
             $object = ($this->handler)($statId);
             $status = 'ok';
@@ -47,9 +44,9 @@ class GetStatByIdController
             'hits' => $hits,
         ];
     
-        $response->data = $data;
-        
-        return $response;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->data = $data;
+        return Yii::$app->response;
     }
 
 }  

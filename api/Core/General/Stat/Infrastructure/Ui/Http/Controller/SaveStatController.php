@@ -25,6 +25,7 @@ use api\Core\General\Stat\Application\Helpers\{
 use api\Core\General\Stat\Application\Command\SaveStatHandler;
 use api\Core\General\Stat\Infrastructure\Persistence\ActiveRecord\StatRepositoryActiveRecord;
 
+
 class SaveStatController
 {
     private SaveStatHandler $handler;

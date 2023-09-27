@@ -4,13 +4,16 @@ declare(strict_types=1);
 
 namespace api\Core\Hero\Race\Infrastructure\Ui\Http\Controller;
 
+
+use api\Core\Hero\Race\Domain\{
+    Race,
+    Repository\IRaceRepository
+};
+use api\Core\Hero\Race\Infrastructure\Persistence\ActiveRecord\RaceRepositoryActiveRecord;
+use api\Core\Hero\Race\Application\Query\GetRaceByIdHandler;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use api\Core\Hero\Race\Domain\Race; 
-use api\Core\Hero\Race\Domain\Repository\IRaceRepository;
-use api\Core\Hero\Race\Infrastructure\Persistence\ActiveRecord\RaceRepositoryActiveRecord;
-use api\Core\Hero\Race\Application\Query\GetRaceByIdHandler;
 use yii\helpers\Json;
 use yii\web\Response;
 use Yii;
@@ -25,15 +28,12 @@ class GetRaceByIdController
         $this->handler = new GetRaceByIdHandler($repository);
     }
 
-    public function __invoke(int $id)
+    public function __invoke(int $raceId)
     {    
-        $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON;
-    
         try {
-            $object = ($this->handler)($id);
+            $objeto = ($this->handler)($raceId);
             $status = 'ok';
-            $hits = ($object !== null) ? [$object->toPrimitives()] : ['no data'];
+            $hits = ($objeto !== null) ? [$objeto->toPrimitives()] : ['no data'];
         } catch (InvalidRequestValueException $e) {
             $status = 'error';
             $hits = ['no data'];
@@ -43,9 +43,10 @@ class GetRaceByIdController
             'status' => $status,
             'hits' => $hits,
         ];
-    
+
+        $response = Yii::$app->response;
+        $response->format = Response::FORMAT_JSON;
         $response->data = $data;
-        
         return $response;
     }
 

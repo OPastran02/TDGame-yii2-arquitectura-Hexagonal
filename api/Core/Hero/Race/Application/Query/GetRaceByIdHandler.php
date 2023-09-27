@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace api\Core\Hero\Race\Application\Query;
 
-use api\Core\Hero\Race\Domain\Race;
-use api\Core\Hero\Race\Domain\Repository\IRaceRepository;
+use api\Core\Hero\Race\Domain\{
+    Race,
+    Repository\IRaceRepository
+};
 
 class GetRaceByIdHandler
 {
@@ -16,9 +18,8 @@ class GetRaceByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Race
+    public function __invoke(int $raceId): ?Race
     {
-        $obj = $this->repository->getbyId($id);
-        return $obj;
+        return $this->repository->getbyId($raceId);
     }
 }

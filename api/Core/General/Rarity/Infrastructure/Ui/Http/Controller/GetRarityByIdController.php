@@ -30,9 +30,6 @@ class GetRarityByIdController
 
     public function __invoke(int $id)
     {    
-        $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON;
-    
         try {
             $obj = ($this->handler)($id);
             $status = 'ok';
@@ -47,9 +44,9 @@ class GetRarityByIdController
             'hits' => $hits,
         ];
     
-        $response->data = $data;
-        
-        return $response;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->data = $data;
+        return Yii::$app->response;
     }
 
 }  
