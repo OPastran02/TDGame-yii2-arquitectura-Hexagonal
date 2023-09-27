@@ -7,5 +7,5 @@ use api\Core\Player\Wallet\Domain\Wallets;
 
 interface IWalletRepository
 {
-    public function getbyId(int $id): ?Wallet;
+    public function getbyId(string $id): ?Wallet;
 }

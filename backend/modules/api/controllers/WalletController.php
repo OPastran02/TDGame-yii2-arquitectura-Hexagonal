@@ -6,7 +6,7 @@ use yii\web\Response;
 use yii\helpers\Json; // Asegúrate de importar el uso de la clase Json
 use Yii;
 
-use api\Core\Player\Waller\Infrastructure\Ui\Http\Controller\GetWalletByIdController;
+use api\Core\Player\Wallet\Infrastructure\Ui\Http\Controller\GetWalletByIdController;
 
 class WalletController extends \yii\web\Controller
 {

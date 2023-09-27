@@ -54,15 +54,12 @@ final class Wallet extends AggregateRoot
         int $available,
     ): self
     {
-        return new Objeto(
+        return new self(
             isset($id) ? new UUID($id):   null,
-            new Honor($honor),
-            new UnixTimestampDate($lastLogin),
-            new BattlePass($battlePass),
-            new UltraPass($ultraPass),
-            new DailyAdsViewed($dailyAdsViewed),
-            new AdsViewed($adsViewed),
-            new Available($active),
+            new Bronze($bronze),
+            new Silver($silver),
+            new Gold($gold),
+            new Crystal($crystal),
             new Available($available),
         );
     }

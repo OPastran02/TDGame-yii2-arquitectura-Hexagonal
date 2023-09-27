@@ -11,7 +11,7 @@ use common\models\Wallet as Model;
 
 class WalletRepositoryActiveRecord implements IWalletRepository
 {
-    public function getbyId(int $id): ?Wallet
+    public function getbyId(string $id): ?Wallet
     {
         $model = Model::findOne($id);
 

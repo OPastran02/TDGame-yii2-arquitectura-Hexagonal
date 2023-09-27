@@ -16,7 +16,7 @@ class GetWalletByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Wallet
+    public function __invoke(string $id): ?Wallet
     {
         $obj = $this->repository->getbyId($id);
         return $obj;
