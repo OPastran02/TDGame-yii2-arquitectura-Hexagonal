@@ -25,7 +25,7 @@ class GetAvatarByIdController
         $this->handler = new GetAvatarByIdHandler($repository);
     }
 
-    public function __invoke(int $id)
+    public function __invoke(string $id)
     {    
         $response = Yii::$app->response;
         $response->format = Response::FORMAT_JSON;

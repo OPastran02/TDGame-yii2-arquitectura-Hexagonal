@@ -16,7 +16,7 @@ class GetAvatarByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Avatar
+    public function __invoke(string $id): ?Avatar
     {
         $obj = $this->repository->getbyId($id);
         return $obj;

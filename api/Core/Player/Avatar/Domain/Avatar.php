@@ -7,6 +7,7 @@ namespace api\Core\Player\Avatar\Domain;
 use api\Shared\Domain\ValueObject\NID;
 use api\Shared\Domain\ValueObject\UUID;
 use api\Shared\Domain\ValueObject\Available;
+use api\Core\General\Object\Domain\Objeto; 
 
 use api\Shared\Domain\Aggregate\AggregateRoot;
 
@@ -16,6 +17,7 @@ final class Avatar extends AggregateRoot
         private UUID $id,
         private NID $idObject, 
         private Available $available,
+        private Objeto $objeto
     )
     {
     }
@@ -24,25 +26,29 @@ final class Avatar extends AggregateRoot
         UUID $id,
         NID $idObject, 
         Available $available,
+        Objeto $objeto,
     ): self 
     {
         return new self(
             $id,
             $idObject, 
             $available,
+            $objeto,
         );
     }
 
     public static function fromPrimitives(
-        ?int $id,
+        ?string $id,
         int $idObject, 
         int $available,
+        Objeto $objeto,
     ): self
     {
-        return new Objeto(
+        return new self(
             isset($id) ? new UUID($id):   null,
             new NID ($idObject), 
             new Available ($available),
+            $objeto,
         );
     }
 
@@ -52,6 +58,7 @@ final class Avatar extends AggregateRoot
             'id'                    =>          isset($this->id) ? $this->id->value() : null,
             'idObject'              =>          $this->idObject->value(),
             'available'             =>          $this->available->value(),
+            'objeto'                =>          $this->objeto->toPrimitives(),
         ];
     }
 }

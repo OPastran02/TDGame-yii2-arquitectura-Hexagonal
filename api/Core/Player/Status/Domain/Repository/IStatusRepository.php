@@ -8,4 +8,6 @@ use api\Core\Player\Status\Domain\Statuses;
 interface IStatusRepository
 {
     public function getbyId(string $id): ?Status;
+
+    public function save($status): Status;
 }

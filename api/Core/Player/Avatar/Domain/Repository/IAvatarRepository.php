@@ -7,5 +7,5 @@ use api\Core\Player\Avatar\Domain\Avatars;
 
 interface IAvatarRepository
 {    
-    public function getbyId(int $id): ?Avatar;
+    public function getbyId(string $id): ?Avatar;
 }

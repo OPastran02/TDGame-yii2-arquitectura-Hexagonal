@@ -50,21 +50,12 @@ class Avatar extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[IdObject0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\ObjectsQuery
-     */
-    public function getIdObject0()
+    public function getObject()
     {
         return $this->hasOne(Objects::class, ['id' => 'idObject']);
     }
 
-    /**
-     * Gets query for [[Players]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\PlayersQuery
-     */
+
     public function getPlayers()
     {
         return $this->hasMany(Players::class, ['idavatar' => 'id']);
