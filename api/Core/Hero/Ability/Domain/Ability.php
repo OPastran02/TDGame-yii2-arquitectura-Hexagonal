@@ -7,7 +7,7 @@ namespace api\Core\Hero\Ability\Domain;
 use api\Shared\Domain\ValueObject\NID;
 use api\Shared\Domain\ValueObject\Available;
 use api\Core\Hero\Ability\Domain\ValueObject\BlockAttack;
-
+use api\Core\General\Object\Domain\Objeto; 
 use api\Shared\Domain\Aggregate\AggregateRoot;
 
 final class Ability extends AggregateRoot
@@ -21,6 +21,7 @@ final class Ability extends AggregateRoot
         private Available $ranged, 
         private Available $stealth, 
         private Available $available,
+        private Objeto $objeto,
     )
     {
     }
@@ -34,6 +35,7 @@ final class Ability extends AggregateRoot
         Available $ranged, 
         Available $stealth, 
         Available $available,
+        Objeto $objeto
     ): self 
     {
         return new self(
@@ -45,6 +47,7 @@ final class Ability extends AggregateRoot
             $ranged, 
             $stealth, 
             $available,
+            $objeto
         );
     }
 
@@ -57,11 +60,11 @@ final class Ability extends AggregateRoot
         int $ranged, 
         int $stealth, 
         int $available,
+        Objeto $objeto,
     ): self
     {
-        return new Objeto(
+        return new self(
             isset($id) ? new NID($id):   null,
-            new NID ($id),
             new NID ($idObject), 
             new BlockAttack ($blockAttack), 
             new Available ($melee), 
@@ -69,6 +72,7 @@ final class Ability extends AggregateRoot
             new Available ($ranged), 
             new Available ($stealth), 
             new Available ($available),
+            $objeto
         );
     }
 
@@ -83,6 +87,7 @@ final class Ability extends AggregateRoot
             'ranged'                =>          $this->ranged->value(),            
             'stealth'               =>          $this->stealth->value(),            
             'available'             =>          $this->available->value(),
+            'objeto'                =>          $this->objeto->toPrimitives()
         ];
     }
 }

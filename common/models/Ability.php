@@ -59,22 +59,12 @@ class Ability extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[Heroes]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\HeroesQuery
-     */
     public function getHeroes()
     {
-        return $this->hasMany(Heroes::class, ['abilities' => 'id']);
+        return $this->hasMany(Heroes::class, ['type' => 'id']);
     }
 
-    /**
-     * Gets query for [[IdObject0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\ObjectsQuery
-     */
-    public function getIdObject0()
+    public function getObject()
     {
         return $this->hasOne(Objects::class, ['id' => 'idObject']);
     }
