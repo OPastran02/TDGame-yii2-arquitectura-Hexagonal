@@ -14,11 +14,7 @@ class ChapterRepositoryActiveRecord implements IChapterRepository
     public function getbyId(int $id): ?Chapter
     {
         $model = Model::findOne($id);
-
-        if (!$model) {
-            return null;
-        }else{
-            return Chapter::fromPrimitives(...$model["attributes"]);
-        }
+        if (!$model) return null;
+        return Chapter::fromPrimitives(...$model["attributes"]);
     }
 }

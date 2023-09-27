@@ -2,8 +2,10 @@
 
 namespace api\Core\General\Stat\Domain\Repository;
 
-use api\Core\General\Stat\Domain\Stat;
-use api\Core\General\Stat\Domain\Stats;
+use api\Core\General\Stat\Domain\{
+    Stat,
+    Stats
+};
 
 interface IStatRepository
 {
@@ -17,6 +19,6 @@ interface IStatRepository
     
     public function save($stat): Stat;
 
-    public function getbyId(string $id): ?Stat;
+    public function getbyId(string $statId): ?Stat;
 
 }

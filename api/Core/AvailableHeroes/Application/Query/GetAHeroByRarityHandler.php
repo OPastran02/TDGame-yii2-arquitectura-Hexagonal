@@ -17,7 +17,7 @@ class GetAHeroByRarityHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $rarity): ?AvailableHeroes
+    public function __invoke(int $id): ?AvailableHeroes
     {
         $heroes = $this->repository->getByrarity($id);
         return $heroes;

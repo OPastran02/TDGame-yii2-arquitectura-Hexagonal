@@ -14,11 +14,7 @@ class BoxRepositoryActiveRecord implements IBoxRepository
     public function getbyId(int $id): ?Box
     {
         $model = Model::findOne($id);
-
-        if (!$model) {
-            return null;
-        }else{
-            return Box::fromPrimitives(...$model["attributes"]);
-        }
+        if (!$model) return null;
+        return Box::fromPrimitives(...$model["attributes"]);
     }
 }

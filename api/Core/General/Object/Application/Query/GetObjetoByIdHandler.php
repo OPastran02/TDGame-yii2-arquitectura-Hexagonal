@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace api\Core\General\Object\Application\Query;
 
-use api\Core\General\Object\Domain\Objeto;
-use api\Core\General\Object\Domain\Repository\IObjetoRepository;
+use api\Core\General\Object\Domain\{
+    Objeto,
+    Repository\IObjetoRepository
+};
 
 class GetObjetoByIdHandler
 {

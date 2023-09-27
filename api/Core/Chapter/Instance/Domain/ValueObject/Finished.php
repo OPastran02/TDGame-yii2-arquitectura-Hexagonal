@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace api\Core\Chapter\Instance\Domain\ValueObject;
 
 use api\Shared\Domain\ValueObject\Primitives\IntValueObject;
+use InvalidArgumentException;
 
 final class Finished extends IntValueObject
 {
@@ -18,7 +19,7 @@ final class Finished extends IntValueObject
         parent::__construct($value);
 
         if ($value !== self::TRUE_VALUE && $value !== self::FALSE_VALUE) {
-            throw new \InvalidArgumentException('Invalid boolean value.');
+            throw new InvalidArgumentException('Invalid boolean value.');
         }
 
         $this->value = $value;

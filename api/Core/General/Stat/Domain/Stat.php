@@ -4,14 +4,17 @@ declare(strict_types=1);
 
 namespace api\Core\General\Stat\Domain;
 
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\Available;
-use api\Core\Shared\Domain\ValueObject\Stats;
-use api\Core\Shared\Domain\ValueObject\Increment;
+use api\Shared\Domain\ValueObject\{
+    UUID,
+    Available
+};
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
+use api\Core\Shared\Domain\ValueObject\{
+    Stats,
+    Increment
+};
 
-final class Stat extends AggregateRoot
+final class Stat
 {
     public function __construct(
         private UUID|null $id,
@@ -57,7 +60,7 @@ final class Stat extends AggregateRoot
         Increment $incDefense,
         Increment $inchp,
         Increment $incTowerAttack,
-        Increment $incTowerDefensese,
+        Increment $incTowerDefense,
         Increment $incAccuracy,
         Increment $incSpeed,
         Increment $incFarming,
@@ -89,12 +92,8 @@ final class Stat extends AggregateRoot
             $incFarming,
             $incSteeling,
             $incWooding,
-            $available,
-            $createdAt,
-            $updatedAt,
-            $createdBy,
             $powerLevel,
-            $updatedBy
+            $available,
         );
     }
 

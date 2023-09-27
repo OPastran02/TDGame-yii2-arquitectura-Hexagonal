@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace api\Core\General\Stat\Application\Command;
 
-use api\Core\General\Stat\Domain\Repository\IStatRepository;
-use api\Core\General\Stat\Domain\Stat;
-use api\Core\General\Stat\Application\Helpers\PowerLevelGenerator;
-use api\Core\General\Stat\Application\Helpers\StatRandomizer;
-use api\Core\General\Stat\Application\Helpers\IncrementRandomizer;
+use api\Core\General\Stat\Domain\{
+    Stat,
+    Repository\IStatRepository
+};
+
+use api\Core\General\Stat\Application\Helpers\{
+    PowerLevelGenerator,
+    StatRandomizer,
+    IncrementRandomizer
+};
 
 use DateTime;
 
@@ -30,9 +35,10 @@ final class SaveStatHandler
 
     }
 
-    public function __invoke($id,$rarity): Stat
+    public function __invoke($statId,$rarity): Stat
     {
-        $arr["id"] = $id;
+        $arr = [];
+        $arr["id"] = $statId;
         $arr["attack"] = $this->statRandomizer->__invoke($rarity);
         $arr["defense"] = $this->statRandomizer->__invoke($rarity);
         $arr["towerAttack"] = $this->statRandomizer->__invoke($rarity);
@@ -56,7 +62,6 @@ final class SaveStatHandler
         $arr["powerLevel"] = (new PowerLevelGenerator())($arr);
         $arr["available"] = 1;
 
-        $id=$this->repository->save($arr);
-        return $id;
+        return $this->repository->save($arr);
     }
 }

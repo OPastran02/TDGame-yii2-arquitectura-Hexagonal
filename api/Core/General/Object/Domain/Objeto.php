@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace api\Core\General\Object\Domain;
 
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\Available;
-use api\Shared\Domain\ValueObject\GameText;
-use api\Core\General\Object\Domain\ValueObject\Color;
-use api\Core\General\Object\Domain\ValueObject\Image;
-use api\Core\General\Object\Domain\ValueObject\Model;
+use api\Shared\Domain\ValueObject\{
+    NID,
+    Available,
+    GameText
+};
+use api\Core\General\Object\Domain\ValueObject\{
+    Color,
+    Image,
+    Model
+};
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class Objeto extends AggregateRoot
+final class Objeto
 {
     public function __construct(
         private NID $id,

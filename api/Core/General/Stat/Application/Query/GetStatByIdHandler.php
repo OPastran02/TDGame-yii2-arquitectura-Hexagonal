@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace api\Core\General\Stat\Application\Query;
 
-use api\Core\General\Stat\Domain\Stat;
-use api\Core\General\Stat\Domain\Repository\IStatRepository;
+use api\Core\General\Stat\Domain\{
+    Stat,
+    Repository\IStatRepository
+};
 
 class GetStatByIdHandler
 {
@@ -16,9 +18,9 @@ class GetStatByIdHandler
         $this->repository = $repository;
     }
 
-    public function __invoke(string $id): ?Stat
+    public function __invoke(string $statId): ?Stat
     {
-        $obj = $this->repository->getbyId($id);
+        $obj = $this->repository->getbyId($statId);
         return $obj;
     }
 }

@@ -12,15 +12,18 @@ use yii\web\NotFoundHttpException;
 use yii\helpers\Json;
 use yii\filters\VerbFilter;
 
-use api\Core\General\Stat\Domain\Stat; 
-use api\Core\General\Stat\Domain\Repository\IStatRepository;
+use api\Core\General\Stat\Domain\{
+    Stat,
+    Repository\IStatRepository
+};
+
+use api\Core\General\Stat\Application\Helpers\{
+    IncrementRandomizer,
+    PowerLevelGenerator,
+    StatRandomizer
+};
 use api\Core\General\Stat\Application\Command\SaveStatHandler;
-use api\Core\General\Stat\Application\Helpers\IncrementRandomizer;
-use api\Core\General\Stat\Application\Helpers\PowerLevelGenerator;
-use api\Core\General\Stat\Application\Helpers\StatRandomizer;
 use api\Core\General\Stat\Infrastructure\Persistence\ActiveRecord\StatRepositoryActiveRecord;
-
-
 
 class SaveStatController
 {
@@ -34,12 +37,12 @@ class SaveStatController
         $this->handler = new SaveStatHandler($repository,$statsRandomizer,$incrementRandomizer);
     }
 
-    public function __invoke($id,$rarity)
+    public function __invoke($statId,$rarity)
     {    
         $response = Yii::$app->response;
         $response->format = Response::FORMAT_JSON;
 
-        $obj = ($this->handler)($id,$rarity);
+        $obj = ($this->handler)($statId,$rarity);
 
         $response->data = $obj->toPrimitives();
         
