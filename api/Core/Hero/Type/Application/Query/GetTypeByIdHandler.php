@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace api\Core\Hero\Type\Application\Query;
 
-use api\Core\Hero\Type\Domain\Type;
-use api\Core\Hero\Type\Domain\Repository\ITypeRepository;
+use api\Core\Hero\Type\Domain\{
+    Type,
+    ITypeRepository
+};
 
 class GetTypeByIdHandler
 {
@@ -16,9 +18,8 @@ class GetTypeByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Type
+    public function __invoke(int $typeId): ?Type
     {
-        $hero = $this->repository->getbyId($id);
-        return $hero;
+        return $this->repository->getbyId($typeId);  
     }
 }
