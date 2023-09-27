@@ -39,7 +39,7 @@ final class Objeto
         Available $available,
     ): self 
     {
-        return $obj = new Objeto(
+        return new self0(
             $id,
             $name,
             $description,

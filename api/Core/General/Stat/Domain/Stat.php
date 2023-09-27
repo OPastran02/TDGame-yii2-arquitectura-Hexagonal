@@ -70,7 +70,7 @@ final class Stat
         Available $available,
     ): self 
     {
-        return $obj = new Objeto(
+        return $obj = new self(
             $id,
             $attack,
             $defense,

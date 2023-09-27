@@ -30,15 +30,12 @@ class GetObjetoByIdController
         $this->handler = new GetObjetoByIdHandler($repository);
     }
 
-    public function __invoke(int $id)
-    {    
-        $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON;
-    
+    public function __invoke(int $objetoId)
+    {        
         try {
-            $object = ($this->handler)($id);
+            $objeto = ($this->handler)($objetoId);
             $status = 'ok';
-            $hits = ($object !== null) ? [$object->toPrimitives()] : ['no data'];
+            $hits = ($objeto !== null) ? [$objeto->toPrimitives()] : ['no data'];
         } catch (InvalidRequestValueException $e) {
             $status = 'error';
             $hits = ['no data'];
@@ -49,9 +46,9 @@ class GetObjetoByIdController
             'hits' => $hits,
         ];
     
-        $response->data = $data;
-        
-        return $response;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->data = $data;
+        return Yii::$app->response;
     }
 
 }

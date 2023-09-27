@@ -14,14 +14,10 @@ use common\models\Objects as Model;
 
 class ObjetoRepositoryActiveRecord implements IObjetoRepository
 {
-    public function getbyId(int $id): ?Objeto
+    public function getbyId(int $objetoId): ?Objeto
     {
-        $model = Model::findOne($id);
-
-        if (!$model) {
-            return null;
-        }else{
-            return Objeto::fromPrimitives(...$model["attributes"]);
-        }
+        $model = Model::findOne($objetoId);
+        if (!$model) return null;
+        return Objeto::fromPrimitives(...$model["attributes"]);
     }
 }
