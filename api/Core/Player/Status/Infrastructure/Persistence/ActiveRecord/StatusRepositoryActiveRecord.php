@@ -11,7 +11,7 @@ use common\models\Status as Model;
 
 class StatusRepositoryActiveRecord implements IStatusRepository
 {
-    public function getbyId(int $id): ?Status
+    public function getbyId(string $id): ?Status
     {
         $model = Model::findOne($id);
 

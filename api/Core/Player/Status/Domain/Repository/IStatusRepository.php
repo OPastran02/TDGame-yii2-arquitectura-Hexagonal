@@ -7,5 +7,5 @@ use api\Core\Player\Status\Domain\Statuses;
 
 interface IStatusRepository
 {
-    public function getbyId(int $id): ?Status;
+    public function getbyId(string $id): ?Status;
 }

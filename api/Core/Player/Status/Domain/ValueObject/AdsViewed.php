@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace api\Player\Status\Domain\ValueObject;
+namespace api\Core\Player\Status\Domain\ValueObject;
 
 use api\Shared\Domain\ValueObject\Primitives\IntValueObject;
 
@@ -12,7 +12,7 @@ final class AdsViewed extends IntValueObject
     protected int $value;
 
     private const MIN_VALUE = 0;
-    private const MAX_VALUE = 4000000;    
+    private const MAX_VALUE = 400000;    
 
     public function __construct( int $value)
     {

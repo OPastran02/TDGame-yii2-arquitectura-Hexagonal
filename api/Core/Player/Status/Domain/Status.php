@@ -68,7 +68,7 @@ final class Status extends AggregateRoot
         int $available,
     ): self
     {
-        return new Objeto(
+        return new self(
             isset($id) ? new UUID($id):   null,
             new Honor($honor),
             new UnixTimestampDate($lastLogin),

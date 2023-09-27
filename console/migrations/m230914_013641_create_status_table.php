@@ -17,7 +17,7 @@ class m230914_013641_create_status_table extends Migration
         $this->createTable('{{%status}}', [
             'id' => $this->string(36)->notNull()->unique(),
             'honor' => $this->integer()->notNull()->defaultValue(0),
-            'lastLogin' => $this->timestamp()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
+            'lastLogin' => $this->integer()->notNull(),
             'battlePass' => $this->integer(1)->notNull()->defaultValue(0),
             'ultraPass' => $this->integer(1)->notNull()->defaultValue(0),
             'dailyAdsViewed' => $this->integer()->notNull()->defaultValue(0),

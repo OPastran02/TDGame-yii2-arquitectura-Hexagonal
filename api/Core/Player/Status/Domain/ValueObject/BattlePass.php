@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace api\Player\Status\Domain\ValueObject;
+namespace api\Core\Player\Status\Domain\ValueObject;
 
 use api\Shared\Domain\ValueObject\Primitives\IntValueObject;
 

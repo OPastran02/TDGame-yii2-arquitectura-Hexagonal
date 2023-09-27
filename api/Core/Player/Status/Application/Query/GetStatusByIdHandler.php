@@ -16,7 +16,7 @@ class GetStatusByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Status
+    public function __invoke(string $id): ?Status
     {
         $obj = $this->repository->getbyId($id);
         return $obj;
