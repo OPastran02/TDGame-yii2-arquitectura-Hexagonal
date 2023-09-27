@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace api\Core\General\Rarity\Application\Query;
 
-use api\Core\General\Rarity\Domain\Rarity;
-use api\Core\General\Rarity\Domain\Repository\IRarityRepository;
+use api\Core\General\Rarity\Domain\{
+    Rarity,
+    Repository\IRarityRepository
+};
 
 class GetRarityByIdHandler
 {

@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace api\Core\General\Rarity\Domain;
 
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\Available;
+use api\Shared\Domain\ValueObject\{
+    NID,
+    Available
+};
 use api\Core\General\Object\Domain\Objeto; 
-
 use api\Shared\Domain\Aggregate\AggregateRoot;
 
 final class Rarity extends AggregateRoot

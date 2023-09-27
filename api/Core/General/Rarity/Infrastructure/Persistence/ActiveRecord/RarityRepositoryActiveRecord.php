@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace api\Core\General\Rarity\Infrastructure\Persistence\ActiveRecord;
 
-use api\Core\General\Rarity\Domain\Rarity;
+use api\Core\General\Rarity\Domain\{
+    Rarity,
+    Repository\IRarityRepository
+};
 use api\Core\General\Object\Domain\Objeto;
-use api\Core\General\Rarity\Domain\Repository\IRarityRepository;
 use common\models\Rarity as Model;
 
 class RarityRepositoryActiveRecord implements IRarityRepository

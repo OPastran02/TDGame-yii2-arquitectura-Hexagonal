@@ -4,13 +4,16 @@ declare(strict_types=1);
 
 namespace api\Core\General\Rarity\Infrastructure\Ui\Http\Controller;
 
+
+use api\Core\General\Rarity\Domain\{
+    Rarity,
+    Repository\IRarityRepository
+};
+use api\Core\General\Rarity\Infrastructure\Persistence\ActiveRecord\RarityRepositoryActiveRecord;
+use api\Core\General\Rarity\Application\Query\GetRarityByIdHandler;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use api\Core\General\Rarity\Domain\Rarity; 
-use api\Core\General\Rarity\Domain\Repository\IRarityRepository;
-use api\Core\General\Rarity\Infrastructure\Persistence\ActiveRecord\RarityRepositoryActiveRecord;
-use api\Core\General\Rarity\Application\Query\GetRarityByIdHandler;
 use yii\helpers\Json;
 use yii\web\Response;
 use Yii;

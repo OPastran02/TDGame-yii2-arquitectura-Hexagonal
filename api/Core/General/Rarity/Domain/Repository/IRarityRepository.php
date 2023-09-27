@@ -1,9 +1,10 @@
 <?php   
 
+declare(strict_types=1);
+
 namespace api\Core\General\Rarity\Domain\Repository;
 
 use api\Core\General\Rarity\Domain\Rarity;
-use api\Core\General\Rarity\Domain\Rarities;
 
 interface IRarityRepository
 {
