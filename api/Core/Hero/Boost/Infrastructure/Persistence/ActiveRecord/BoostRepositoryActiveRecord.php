@@ -21,4 +21,5 @@ class BoostRepositoryActiveRecord implements IBoostRepository
             return Boost::fromPrimitives(...$model["attributes"]);
         }
     }
+    
 }

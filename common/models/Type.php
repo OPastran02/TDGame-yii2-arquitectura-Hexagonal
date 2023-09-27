@@ -14,7 +14,7 @@ use Yii;
  * @property int $available
  *
  * @property Heroes[] $heroes
- * @property Boosts $idBoost0
+ * @property Boost $idBoost0
  * @property Objects $idObject0
  */
 class Type extends \yii\db\ActiveRecord
@@ -36,7 +36,7 @@ class Type extends \yii\db\ActiveRecord
             [['idObject'], 'required'],
             [['idObject', 'idBoost', 'available'], 'integer'],
             [['horoscope'], 'string', 'max' => 20],
-            [['idBoost'], 'exist', 'skipOnError' => true, 'targetClass' => Boosts::class, 'targetAttribute' => ['idBoost' => 'id']],
+            [['idBoost'], 'exist', 'skipOnError' => true, 'targetClass' => Boost::class, 'targetAttribute' => ['idBoost' => 'id']],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],
         ];
     }
@@ -55,32 +55,20 @@ class Type extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[Heroes]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\HeroesQuery
-     */
+
     public function getHeroes()
     {
         return $this->hasMany(Heroes::class, ['type' => 'id']);
     }
 
-    /**
-     * Gets query for [[IdBoost0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\BoostsQuery
-     */
-    public function getIdBoost0()
+
+    public function getBoost()
     {
-        return $this->hasOne(Boosts::class, ['id' => 'idBoost']);
+        return $this->hasOne(Boost::class, ['id' => 'idBoost']);
     }
 
-    /**
-     * Gets query for [[IdObject0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\ObjectsQuery
-     */
-    public function getIdObject0()
+
+    public function getObject()
     {
         return $this->hasOne(Objects::class, ['id' => 'idObject']);
     }

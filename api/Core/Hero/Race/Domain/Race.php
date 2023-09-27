@@ -7,6 +7,8 @@ namespace api\Core\Hero\Race\Domain;
 use api\Shared\Domain\ValueObject\NID;
 use api\Shared\Domain\ValueObject\Available;
 use api\Shared\Domain\ValueObject\GameText;
+use api\Core\General\Object\Domain\Objeto; 
+use api\Core\Hero\Boost\Domain\Boost; 
 
 use api\Shared\Domain\Aggregate\AggregateRoot;
 
@@ -17,6 +19,8 @@ final class Race extends AggregateRoot
         private NID $idObject, 
         private NID $idBoost, 
         private Available $available,
+        private Objeto $objeto,
+        private Boost $boost
     )
     {
     }
@@ -26,6 +30,8 @@ final class Race extends AggregateRoot
         NID $idObject, 
         NID $idBoost, 
         Available $available,
+        Objeto $objeto,
+        Boost $boost
     ): self 
     {
         return new self(
@@ -33,6 +39,8 @@ final class Race extends AggregateRoot
             $idObject, 
             $idBoost, 
             $available,
+            $objeto,
+            $boost
         );
     }
 
@@ -41,13 +49,17 @@ final class Race extends AggregateRoot
         int $idObject, 
         int $idBoost, 
         int $available,
+        Objeto $objeto,
+        Boost $boost
     ): self
     {
-        return new Objeto(
+        return new self(
             isset($id) ? new NID($id):   null,
             new NID ($idObject), 
             new NID ($idBoost), 
             new Available ($available),
+            $objeto,
+            $boost
         );
     }
 
@@ -58,6 +70,8 @@ final class Race extends AggregateRoot
             'idObject'              =>          $this->idObject->value(),
             'idBoost'               =>          $this->idBoost->value(), 
             'available'             =>          $this->available->value(),
+            'objeto'                =>          $this->objeto->toPrimitives(),
+            'boost'                 =>          $this->boost->toPrimitives(),
         ];
     }
 }
