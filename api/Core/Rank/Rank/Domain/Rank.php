@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace api\Core\Rank\Rank\Domain;
 
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\Available;
+use api\Shared\Domain\ValueObject\{
+    NID,
+    UUID,
+    Available
+};
 use api\Core\General\Object\Domain\Objeto; 
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class Rank extends AggregateRoot
+final class Rank
 {
     public function __construct(
         private NID $id,

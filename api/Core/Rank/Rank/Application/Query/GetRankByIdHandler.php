@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace api\Core\Rank\Rank\Application\Query;
 
-use api\Core\Rank\Rank\Domain\Rank;
-use api\Core\Rank\Rank\Domain\Repository\IRankRepository;
+use api\Core\Rank\Rank\Domain\{
+    Rank,
+    Repository\IRankRepository
+};
 
 class GetRankByIdHandler
 {
@@ -16,9 +18,8 @@ class GetRankByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Rank
+    public function __invoke(int $rankId): ?Rank
     {
-        $obj = $this->repository->getbyId($id);
-        return $obj;
+        return $this->repository->getbyId($rankId);
     }
 }
