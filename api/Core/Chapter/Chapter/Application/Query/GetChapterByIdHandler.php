@@ -15,7 +15,7 @@ class GetChapterByIdHandler
     {
         $this->repository = $repository;
     }
- 
+    
     public function __invoke(int $id): ?Chapter
     {
         $hero = $this->repository->getbyId($id);

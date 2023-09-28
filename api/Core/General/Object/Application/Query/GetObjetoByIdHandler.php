@@ -20,7 +20,6 @@ class GetObjetoByIdHandler
  
     public function __invoke(int $id): ?Objeto
     {
-        $hero = $this->repository->getbyId($id);
-        return $hero;
+        return $this->repository->getbyId($id);
     }
 }

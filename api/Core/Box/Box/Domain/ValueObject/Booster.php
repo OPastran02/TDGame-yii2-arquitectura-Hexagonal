@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace api\Core\Box\Box\Domain\ValueObject;
 
 use api\Shared\Domain\ValueObject\Primitives\StringValueObject;
-use Error;
 
 final class Booster extends StringValueObject
 {

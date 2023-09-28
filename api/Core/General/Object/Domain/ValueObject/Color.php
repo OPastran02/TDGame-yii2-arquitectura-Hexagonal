@@ -9,8 +9,6 @@ use InvalidArgumentException;
 
 final class Color extends StringValueObject
 {
-    protected string $value;
-
     public function __construct(string $value)
     {
         parent::__construct($value);

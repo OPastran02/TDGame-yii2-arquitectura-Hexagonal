@@ -3,13 +3,13 @@
 declare(strict_types=1);
 
 namespace api\Shared\Domain\ValueObject\Primitives;
+use JsonSerializable;
 
-//clase abstracta que toma un string y lo convierte en un valor 
-abstract class StringValueObject
+
+abstract class StringValueObject implements JsonSerializable
 {
     public function __construct(protected string $value)
-    {
-    }
+    {}
 
     public function value(): string
     {
@@ -19,6 +19,11 @@ abstract class StringValueObject
     public function equals(self $other): bool
     {
         return $this->value() === $other->value();
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return $this->value();
     }
 
 }
