@@ -4,25 +4,24 @@ declare(strict_types=1);
 
 namespace api\Core\Hero\Ability\Infrastructure\Persistence\ActiveRecord;
 
-use api\Core\Hero\Ability\Domain\Ability;
-use api\Core\Hero\Ability\Domain\Abilities;
-use api\Core\Hero\Ability\Domain\Repository\IAbilityRepository;
+use api\Core\Hero\Ability\Domain\{
+    Ability,
+    Repository\IAbilityRepository
+};
 use api\Core\General\Object\Domain\Objeto; 
 use common\models\Ability as Model;
 
 class AbilityRepositoryActiveRecord implements IAbilityRepository
 {
-    public function getbyId(int $id): ?Ability
+    public function getbyId(int $abilityId): ?Ability
     {
 
         $model = Model::find()
             ->with('object')
-            ->where(['id' => $id])
+            ->where(['id' => $abilityId])
             ->one();
 
-        if (!$model) {
-            return null;
-        }
+        if (!$model) return null;
 
         $objeto = Objeto::fromPrimitives(...$model["object"]["attributes"]);
 
