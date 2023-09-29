@@ -9,7 +9,7 @@ use api\Core\Hero\Type\Domain\{
     Repository\ITypeRepository
 };
 
-class GetTypeByIdHandler
+class GetType
 {
     private ITypeRepository $repository;
 

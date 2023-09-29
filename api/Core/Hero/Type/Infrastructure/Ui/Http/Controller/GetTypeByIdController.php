@@ -9,7 +9,7 @@ use api\Core\Hero\Type\Domain\{
     Repository\ITypeRepository
 };
 use api\Core\Hero\Type\Infrastructure\Persistence\ActiveRecord\TypeRepositoryActiveRecord;
-use api\Core\Hero\Type\Application\Query\GetTypeByIdHandler;
+use api\Core\Hero\Type\Application\Query\GetType;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -19,12 +19,12 @@ use Yii;
 
 class GetTypeByIdController
 {
-    private GetTypeByIdHandler $handler;
+    private GetType $handler;
 
     public function __construct()
     { 
         $repository = new TypeRepositoryActiveRecord();
-        $this->handler = new GetTypeByIdHandler($repository);
+        $this->handler = new GetType($repository);
     }
 
     public function __invoke(int $typeId)
