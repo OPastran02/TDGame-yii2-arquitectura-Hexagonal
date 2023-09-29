@@ -9,7 +9,7 @@ use api\Core\General\Object\Domain\{
     Repository\IObjetoRepository
 };
 
-class GetObjetoByIdHandler
+class GetObjeto 
 {
     private IObjetoRepository $repository;
 
@@ -18,8 +18,8 @@ class GetObjetoByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Objeto
+    public function __invoke(int $objetoId): ?Objeto
     {
-        return $this->repository->getbyId($id);
+        return $this->repository->get($objetoId);
     }
 }

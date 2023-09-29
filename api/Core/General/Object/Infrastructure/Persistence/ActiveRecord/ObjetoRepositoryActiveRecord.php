@@ -14,7 +14,7 @@ use common\models\Objects as Model;
 
 class ObjetoRepositoryActiveRecord implements IObjetoRepository
 {
-    public function getbyId(int $objetoId): ?Objeto
+    public function get(int $objetoId): ?Objeto
     {
         $model = Model::findOne($objetoId);
         if (!$model) return null;

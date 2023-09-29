@@ -9,5 +9,5 @@ use api\Core\General\Object\Domain\{
 
 interface IObjetoRepository
 {   
-    public function getbyId(int $id): ?Objeto;
+    public function get(int $objetoId): ?Objeto;
 }

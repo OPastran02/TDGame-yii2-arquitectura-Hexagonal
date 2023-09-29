@@ -11,7 +11,7 @@ use api\Core\General\Object\Domain\{
 };
 
 use api\Core\General\Object\Infrastructure\Persistence\ActiveRecord\ObjetoRepositoryActiveRecord;
-use api\Core\General\Object\Application\Query\GetObjetoByIdHandler;
+use api\Core\General\Object\Application\Query\GetObjeto;
 
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -22,12 +22,12 @@ use Yii;
 
 class GetObjetoByIdController
 {
-    private GetObjetoByIdHandler $handler;
+    private GetObjeto $handler;
 
     public function __construct()
     { 
         $repository = new ObjetoRepositoryActiveRecord();
-        $this->handler = new GetObjetoByIdHandler($repository);
+        $this->handler = new GetObjeto($repository);
     }
 
     public function __invoke(int $objetoId)
