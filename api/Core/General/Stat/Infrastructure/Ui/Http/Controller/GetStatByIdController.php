@@ -9,7 +9,7 @@ use api\Core\General\Stat\Domain\{
     Repository\IStatRepository
 };
 use api\Core\General\Stat\Infrastructure\Persistence\ActiveRecord\StatRepositoryActiveRecord;
-use api\Core\General\Stat\Application\Query\GetStatByIdHandler;
+use api\Core\General\Stat\Application\Query\GetStat;
 
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -20,12 +20,12 @@ use Yii;
 
 class GetStatByIdController
 {
-    private GetStatByIdHandler $handler;
+    private GetStat $handler;
 
     public function __construct()
     { 
         $repository = new StatRepositoryActiveRecord();
-        $this->handler = new GetStatByIdHandler($repository);
+        $this->handler = new GetStat($repository);
     }
 
     public function __invoke(string $statId)

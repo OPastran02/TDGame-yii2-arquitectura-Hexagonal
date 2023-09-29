@@ -22,20 +22,20 @@ use api\Core\General\Stat\Application\Helpers\{
     PowerLevelGenerator,
     StatRandomizer
 };
-use api\Core\General\Stat\Application\Command\SaveStatHandler;
+use api\Core\General\Stat\Application\Command\SaveStat;
 use api\Core\General\Stat\Infrastructure\Persistence\ActiveRecord\StatRepositoryActiveRecord;
 
 
 class SaveStatController
 {
-    private SaveStatHandler $handler;
+    private SaveStat $handler;
 
     public function __construct()
     { 
         $repository = new StatRepositoryActiveRecord();
         $incrementRandomizer = new IncrementRandomizer();
         $statsRandomizer = new StatRandomizer();
-        $this->handler = new SaveStatHandler($repository,$statsRandomizer,$incrementRandomizer);
+        $this->handler = new SaveStat($repository,$statsRandomizer,$incrementRandomizer);
     }
 
     public function __invoke($statId,$rarity)

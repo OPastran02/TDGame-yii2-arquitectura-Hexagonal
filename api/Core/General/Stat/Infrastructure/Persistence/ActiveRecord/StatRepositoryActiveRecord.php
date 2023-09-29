@@ -13,7 +13,7 @@ use common\models\Stat as Model;
 
 class StatRepositoryActiveRecord implements IStatRepository
 {
-    public function getbyId(string $statId): ?Stat
+    public function get(string $statId): ?Stat
     {
         $model = Model::findOne($statId);
         if (!$model) return null;
