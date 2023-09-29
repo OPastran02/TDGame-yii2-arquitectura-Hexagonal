@@ -9,7 +9,7 @@ use api\Core\Hero\Race\Domain\{
     Repository\IRaceRepository
 };
 
-class GetRaceByIdHandler
+class GetRace
 {
     private IRaceRepository $repository;
 
@@ -20,6 +20,6 @@ class GetRaceByIdHandler
  
     public function __invoke(int $raceId): ?Race
     {
-        return $this->repository->getbyId($raceId);
+        return $this->repository->get($raceId);
     }
 }

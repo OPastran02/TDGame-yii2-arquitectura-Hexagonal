@@ -6,5 +6,5 @@ use api\Core\Hero\Race\Domain\Race;
 
 interface IRaceRepository
 {
-    public function getbyId(int $raceId): ?Race;
+    public function get(int $raceId): ?Race;
 }

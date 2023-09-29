@@ -10,7 +10,6 @@ use api\Core\General\Stat\Domain\{
 };
 use api\Core\General\Stat\Infrastructure\Persistence\ActiveRecord\StatRepositoryActiveRecord;
 use api\Core\General\Stat\Application\Query\GetStat;
-
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

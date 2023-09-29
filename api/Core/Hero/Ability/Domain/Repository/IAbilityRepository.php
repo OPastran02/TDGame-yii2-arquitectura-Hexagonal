@@ -6,5 +6,5 @@ use api\Core\Hero\Ability\Domain\Ability;
 
 interface IAbilityRepository
 {
-    public function getbyId(int $abilityId): ?Ability;
+    public function get(int $abilityId): ?Ability;
 }

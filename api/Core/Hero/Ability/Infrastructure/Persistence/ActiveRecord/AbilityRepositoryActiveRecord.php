@@ -13,7 +13,7 @@ use common\models\Ability as Model;
 
 class AbilityRepositoryActiveRecord implements IAbilityRepository
 {
-    public function getbyId(int $abilityId): ?Ability
+    public function get(int $abilityId): ?Ability
     {
 
         $model = Model::find()

@@ -24,9 +24,6 @@ class StatRepositoryActiveRecord implements IStatRepository
     {
         $model = new Model();
         $model->attributes = $arr;
-        if ($model->save()) {
-            $obj= Stat::fromPrimitives(...$model->attributes);
-            return $obj;
-        }
+        if ($model->save()) return Stat::fromPrimitives(...$model->attributes);
     }
 }

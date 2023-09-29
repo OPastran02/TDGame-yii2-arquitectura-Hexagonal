@@ -4,19 +4,21 @@ declare(strict_types=1);
 
 namespace api\Core\Player\Status\Domain;
 
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\Available;
-use api\Shared\Domain\ValueObject\UnixTimestampDate;
-use api\Core\Player\Status\Domain\ValueObject\AdsViewed;
-use api\Core\Player\Status\Domain\ValueObject\BattlePass;
-use api\Core\Player\Status\Domain\ValueObject\DailyAdsViewed;
-use api\Core\Player\Status\Domain\ValueObject\Honor;
-use api\Core\Player\Status\Domain\ValueObject\UltraPass;
+use api\Shared\Domain\ValueObject\{
+    NID,
+    UUID,
+    Available,
+    UnixTimestampDate
+};
+use api\Core\Player\Status\Domain\ValueObject\{
+    AdsViewed,
+    BattlePass,
+    DailyAdsViewed,
+    Honor,
+    UltraPass
+};
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class Status extends AggregateRoot
+final class Status
 {
     public function __construct(
         private UUID $id,

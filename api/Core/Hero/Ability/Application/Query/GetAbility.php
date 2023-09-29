@@ -9,7 +9,7 @@ use api\Core\Hero\Ability\Domain\{
     Repository\IAbilityRepository
 };
 
-class GetAbilityByIdHandler
+class GetAbility
 {
     private IAbilityRepository $repository;
 

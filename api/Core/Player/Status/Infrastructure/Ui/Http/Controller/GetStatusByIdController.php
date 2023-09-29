@@ -4,34 +4,33 @@ declare(strict_types=1);
 
 namespace api\Core\Player\Status\Infrastructure\Ui\Http\Controller;
 
+use api\Core\Player\Status\Domain\{
+    Status,
+    Repository\IStatusRepository
+};
+use api\Core\Player\Status\Infrastructure\Persistence\ActiveRecord\StatusRepositoryActiveRecord;
+use api\Core\Player\Status\Application\Query\GetStatus;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use api\Core\Player\Status\Domain\Status; 
-use api\Core\Player\Status\Domain\Repository\IStatusRepository;
-use api\Core\Player\Status\Infrastructure\Persistence\ActiveRecord\StatusRepositoryActiveRecord;
-use api\Core\Player\Status\Application\Query\GetStatusByIdHandler;
 use yii\helpers\Json;
 use yii\web\Response;
 use Yii;
 
 class GetStatusByIdController
 {
-    private GetStatusByIdHandler $handler;
+    private GetStatus $handler;
 
     public function __construct()
     { 
         $repository = new StatusRepositoryActiveRecord();
-        $this->handler = new GetStatusByIdHandler($repository);
+        $this->handler = new GetStatus($repository);
     }
 
-    public function __invoke(string $id)
+    public function __invoke(string $statusId)
     {    
-        $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON;
-    
         try {
-            $object = ($this->handler)($id);
+            $object = ($this->handler)($statusId);
             $status = 'ok';
             $hits = ($object !== null) ? [$object->toPrimitives()] : ['no data'];
         } catch (InvalidRequestValueException $e) {
@@ -44,9 +43,9 @@ class GetStatusByIdController
             'hits' => $hits,
         ];
     
-        $response->data = $data;
-        
-        return $response;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->data = $data;
+        return Yii::$app->response;
     }
 
 }  

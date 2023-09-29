@@ -10,7 +10,7 @@ use api\Core\Hero\Race\Domain\{
     Repository\IRaceRepository
 };
 use api\Core\Hero\Race\Infrastructure\Persistence\ActiveRecord\RaceRepositoryActiveRecord;
-use api\Core\Hero\Race\Application\Query\GetRaceByIdHandler;
+use api\Core\Hero\Race\Application\Query\GetRace;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,12 +20,12 @@ use Yii;
 
 class GetRaceByIdController
 {
-    private GetRaceByIdHandler $handler;
+    private GetRace $handler;
 
     public function __construct()
     { 
         $repository = new RaceRepositoryActiveRecord();
-        $this->handler = new GetRaceByIdHandler($repository);
+        $this->handler = new GetRace($repository);
     }
 
     public function __invoke(int $raceId)

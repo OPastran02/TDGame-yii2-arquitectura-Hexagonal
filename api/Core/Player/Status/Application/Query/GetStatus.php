@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace api\Core\Player\Status\Application\Query;
 
-use api\Core\Player\Status\Domain\Status;
-use api\Core\Player\Status\Domain\Repository\IStatusRepository;
+use api\Core\Player\Status\Domain\{
+    Status,
+    Repository\IStatusRepository
+};
 
-class GetStatusByIdHandler
+class GetStatus
 {
     private IStatusRepository $repository;
 
@@ -16,9 +18,8 @@ class GetStatusByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(string $id): ?Status
+    public function __invoke(string $statusId): ?Status
     {
-        $obj = $this->repository->getbyId($id);
-        return $obj;
+        return $this->repository->get($statusId);
     }
 }

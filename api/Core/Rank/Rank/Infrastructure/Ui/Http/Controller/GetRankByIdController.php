@@ -9,7 +9,7 @@ use api\Core\Rank\Rank\Domain\{
     Repository\IRankRepository
 };
 use api\Core\Rank\Rank\Infrastructure\Persistence\ActiveRecord\RankRepositoryActiveRecord;
-use api\Core\Rank\Rank\Application\Query\GetRankByIdHandler;
+use api\Core\Rank\Rank\Application\Query\GetRank;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -19,12 +19,12 @@ use Yii;
 
 class GetRankByIdController
 {
-    private GetRankByIdHandler $handler;
+    private GetRank $handler;
 
     public function __construct()
     { 
         $repository = new RankRepositoryActiveRecord();
-        $this->handler = new GetRankByIdHandler($repository);
+        $this->handler = new GetRank($repository);
     }
 
     public function __invoke(int $rankId)

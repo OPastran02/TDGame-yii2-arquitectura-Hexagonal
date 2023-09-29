@@ -9,7 +9,7 @@ use api\Core\Hero\Ability\Domain\{
     IAbilityRepository
 };
 use api\Core\Hero\Ability\Infrastructure\Persistence\ActiveRecord\AbilityRepositoryActiveRecord;
-use api\Core\Hero\Ability\Application\Query\GetAbilityByIdHandler;
+use api\Core\Hero\Ability\Application\Query\GetAbility;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -19,12 +19,12 @@ use Yii;
 
 class GetAbilityByIdController
 {
-    private GetAbilityByIdHandler $handler;
+    private GetAbility $handler;
 
     public function __construct()
     { 
         $repository = new AbilityRepositoryActiveRecord();
-        $this->handler = new GetAbilityByIdHandler($repository);
+        $this->handler = new GetAbility($repository);
     }
 
     public function __invoke(int $abilityId)

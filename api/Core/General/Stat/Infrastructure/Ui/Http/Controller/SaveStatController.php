@@ -16,7 +16,6 @@ use api\Core\General\Stat\Domain\{
     Stat,
     Repository\IStatRepository
 };
-
 use api\Core\General\Stat\Application\Helpers\{
     IncrementRandomizer,
     PowerLevelGenerator,

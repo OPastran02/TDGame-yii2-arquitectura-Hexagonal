@@ -9,7 +9,7 @@ use api\Core\Rank\Rank\Domain\{
     Repository\IRankRepository
 };
 
-class GetRankByIdHandler
+class GetRank
 {
     private IRankRepository $repository;
 

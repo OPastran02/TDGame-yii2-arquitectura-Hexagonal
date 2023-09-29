@@ -14,7 +14,7 @@ use common\models\Race as Model;
 
 class RaceRepositoryActiveRecord implements IRaceRepository
 {
-    public function getbyId(int $raceId): ?Race
+    public function get(int $raceId): ?Race
     {
 
         $model = Model::find()

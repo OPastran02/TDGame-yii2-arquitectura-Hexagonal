@@ -8,7 +8,6 @@ use api\Core\General\Stat\Domain\{
     Stat,
     Repository\IStatRepository
 };
-
 use api\Core\General\Stat\Application\Helpers\{
     PowerLevelGenerator,
     StatRandomizer,
@@ -17,7 +16,7 @@ use api\Core\General\Stat\Application\Helpers\{
 
 use DateTime;
 
-final class SaveStatHandler
+final class SaveStat
 {
     private IStatRepository $repository;
     private StatRandomizer $statRandomizer;
