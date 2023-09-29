@@ -9,7 +9,7 @@ use api\Core\Hero\Nature\Domain\{
     Repository\INatureRepository
 };
 use api\Core\Hero\Nature\Infrastructure\Persistence\ActiveRecord\NatureRepositoryActiveRecord;
-use api\Core\Hero\Nature\Application\Query\GetNatureByIdHandler;
+use api\Core\Hero\Nature\Application\Query\GetNature;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -19,12 +19,12 @@ use Yii;
 
 class GetNatureByIdController
 {
-    private GetNatureByIdHandler $handler;
+    private GetNature $handler;
 
     public function __construct()
     { 
         $repository = new NatureRepositoryActiveRecord();
-        $this->handler = new GetNatureByIdHandler($repository);
+        $this->handler = new GetNature($repository);
     }
 
     public function __invoke(int $natureId)

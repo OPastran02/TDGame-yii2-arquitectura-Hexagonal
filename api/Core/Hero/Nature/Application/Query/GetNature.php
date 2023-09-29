@@ -9,7 +9,7 @@ use api\Core\Hero\Nature\Domain\{
     Repository\INatureRepository
 };
 
-class GetNatureByIdHandler
+class GetNature
 {
     private INatureRepository $repository;
 
@@ -20,6 +20,6 @@ class GetNatureByIdHandler
  
     public function __invoke(int $natureId): ?Nature
     {
-        return $this->repository->getbyId($natureId);
+        return $this->repository->get($natureId);
     }
 }

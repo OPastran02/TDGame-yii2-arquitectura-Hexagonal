@@ -6,5 +6,5 @@ use api\Core\Hero\Nature\Domain\Nature;
 
 interface INatureRepository
 {
-    public function getbyId(int $natureId): ?Nature;
+    public function get(int $natureId): ?Nature;
 }

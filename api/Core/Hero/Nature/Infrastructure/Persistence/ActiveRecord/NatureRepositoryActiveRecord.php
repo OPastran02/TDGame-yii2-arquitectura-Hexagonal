@@ -14,7 +14,7 @@ use common\models\Nature as Model;
 
 class NatureRepositoryActiveRecord implements INatureRepository
 {
-    public function getbyId(int $natureId): ?Nature
+    public function get(int $natureId): ?Nature
     {
 
         $model = Model::find()
