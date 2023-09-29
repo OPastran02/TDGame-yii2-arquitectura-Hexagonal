@@ -13,11 +13,11 @@ use common\models\Rarity as Model;
 
 class RarityRepositoryActiveRecord implements IRarityRepository
 {
-    public function getbyId(int $id): ?Rarity
+    public function get(int $rarityId): ?Rarity
     {
         $model = Model::find()
             ->with('object') 
-            ->where(['id' => $id])
+            ->where(['id' => $rarityId])
             ->one();
 
         if (!$model) {

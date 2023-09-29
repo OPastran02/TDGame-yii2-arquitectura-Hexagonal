@@ -12,9 +12,9 @@ use common\models\Boost as Model;
 
 class BoostRepositoryActiveRecord implements IBoostRepository
 {
-    public function getbyId(int $id): ?Boost
+    public function get(int $boostId): ?Boost
     {
-        $model = Model::findOne($id);
+        $model = Model::findOne($boostId);
         if (!$model) return null;
         return Boost::fromPrimitives(...$model["attributes"]);
     }

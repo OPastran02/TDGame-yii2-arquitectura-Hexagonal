@@ -22,7 +22,6 @@ class StatRepositoryActiveRecord implements IStatRepository
 
     public function save($arr): Stat
     {
-
         $model = new Model();
         $model->attributes = $arr;
         if ($model->save()) {

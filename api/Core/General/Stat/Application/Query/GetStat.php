@@ -9,7 +9,7 @@ use api\Core\General\Stat\Domain\{
     Repository\IStatRepository
 };
 
-class GetStatByIdHandler
+class GetStat
 {
     private IStatRepository $repository;
 
@@ -20,7 +20,7 @@ class GetStatByIdHandler
 
     public function __invoke(string $statId): ?Stat
     {
-        $obj = $this->repository->getbyId($statId);
+        $obj = $this->repository->get($statId);
         return $obj;
     }
 }

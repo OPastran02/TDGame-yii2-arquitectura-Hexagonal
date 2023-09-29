@@ -9,7 +9,7 @@ use api\Core\General\Rarity\Domain\{
     Repository\IRarityRepository
 };
 
-class GetRarityByIdHandler
+class GetRarity
 {
     private IRarityRepository $repository;
 
@@ -18,9 +18,9 @@ class GetRarityByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Rarity
+    public function __invoke(int $rarityId): ?Rarity
     {
-        $hero = $this->repository->getbyId($id);
+        $hero = $this->repository->get($rarityId);
         return $hero;
     }
 }

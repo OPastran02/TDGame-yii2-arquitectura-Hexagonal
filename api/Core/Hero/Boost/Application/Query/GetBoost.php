@@ -9,7 +9,7 @@ use api\Core\Hero\Boost\Domain\{
     Repository\IBoostRepository
 };
 
-class GetBoostByIdHandler
+class GetBoost
 {
     private IBoostRepository $repository;
 
@@ -18,9 +18,9 @@ class GetBoostByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Boost
+    public function __invoke(int $boostId): ?Boost
     {
-        $boost = $this->repository->getbyId($id);
+        $boost = $this->repository->get($boostId);
         return $boost;
     }
 }

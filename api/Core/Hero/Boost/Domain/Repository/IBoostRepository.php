@@ -6,5 +6,5 @@ use api\Core\Hero\Boost\Domain\Boost;
 
 interface IBoostRepository
 {
-    public function getbyId(int $boostId): ?Boost;
+    public function get(int $boostId): ?Boost;
 }

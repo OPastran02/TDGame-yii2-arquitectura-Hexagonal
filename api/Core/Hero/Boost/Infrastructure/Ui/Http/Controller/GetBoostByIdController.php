@@ -9,7 +9,7 @@ use api\Core\Hero\Boost\Domain\{
     Repository\IBoostRepository
 };
 use api\Core\Hero\Boost\Infrastructure\Persistence\ActiveRecord\BoostRepositoryActiveRecord;
-use api\Core\Hero\Boost\Application\Query\GetBoostByIdHandler;
+use api\Core\Hero\Boost\Application\Query\GetBoost;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -19,18 +19,18 @@ use Yii;
 
 class GetBoostByIdController
 {
-    private GetBoostByIdHandler $handler;
+    private GetBoost $handler;
 
     public function __construct()
     { 
         $repository = new BoostRepositoryActiveRecord();
-        $this->handler = new GetBoostByIdHandler($repository);
+        $this->handler = new GetBoost($repository);
     }
 
-    public function __invoke(int $id)
+    public function __invoke(int $boostId)
     {    
         try {
-            $object = ($this->handler)($id);
+            $object = ($this->handler)($boostId);
             $status = 'ok';
             $hits = ($object !== null) ? [$object->toPrimitives()] : ['no data'];
         } catch (InvalidRequestValueException $e) {

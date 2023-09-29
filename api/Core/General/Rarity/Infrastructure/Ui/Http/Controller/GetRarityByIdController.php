@@ -10,7 +10,7 @@ use api\Core\General\Rarity\Domain\{
     Repository\IRarityRepository
 };
 use api\Core\General\Rarity\Infrastructure\Persistence\ActiveRecord\RarityRepositoryActiveRecord;
-use api\Core\General\Rarity\Application\Query\GetRarityByIdHandler;
+use api\Core\General\Rarity\Application\Query\GetRarity;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,18 +20,18 @@ use Yii;
 
 class GetRarityByIdController
 {
-    private GetRarityByIdHandler $handler;
+    private GetRarity $handler;
 
     public function __construct()
     { 
         $repository = new RarityRepositoryActiveRecord();
-        $this->handler = new GetRarityByIdHandler($repository);
+        $this->handler = new GetRarity($repository);
     }
 
-    public function __invoke(int $id)
+    public function __invoke(int $rarityId)
     {    
         try {
-            $obj = ($this->handler)($id);
+            $obj = ($this->handler)($rarityId);
             $status = 'ok';
             $hits = ($obj !== null) ? [$obj->toPrimitives()] : ['no data'];
         } catch (InvalidRequestValueException $e) {
