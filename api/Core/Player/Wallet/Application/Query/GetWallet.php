@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace api\Core\Player\Wallet\Application\Query;
 
-use api\Core\Player\Wallet\Domain\Wallet;
-use api\Core\Player\Wallet\Domain\Repository\IWalletRepository;
+use api\Core\Player\Wallet\Domain\{
+    Wallet,
+    Repository\IWalletRepository
+};
 
-class GetWalletByIdHandler
+class GetWallet
 {
     private IWalletRepository $repository;
 
@@ -18,7 +20,6 @@ class GetWalletByIdHandler
  
     public function __invoke(string $id): ?Wallet
     {
-        $obj = $this->repository->getbyId($id);
-        return $obj;
+        return $this->repository->get($id);
     }
 }

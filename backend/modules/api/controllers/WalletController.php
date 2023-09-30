@@ -2,14 +2,17 @@
 
 namespace backend\modules\api\controllers;
 
-use yii\web\Response;
-use yii\helpers\Json; // Asegúrate de importar el uso de la clase Json
+use api\Core\Player\Wallet\Infrastructure\Ui\Http\Controller\{
+    AddMoneyController,
+    CreateWalletController,
+    GetWalletController
+};
 use Yii;
-
-use api\Core\Player\Wallet\Infrastructure\Ui\Http\Controller\GetWalletByIdController;
 
 class WalletController extends \yii\web\Controller
 {
+    public $enableCsrfValidation = false;
+
     public function actionIndex()
     {
         return $this->render('index');
@@ -17,6 +20,17 @@ class WalletController extends \yii\web\Controller
 
     public function actionGet($id)
     {
-        return (new GetWalletByIdController())($id);
+        return (new GetWalletController)($id);
+    }
+
+    public function actionCreate($id)
+    {
+        return (new CreateWalletController())($id);
+    }
+
+    public function actionAddMoney()
+    {
+        $data = Yii::$app->request->getBodyParams();
+        return (new AddMoneyController())($data['id'],$data['type'],$data['value']);
     }
 }

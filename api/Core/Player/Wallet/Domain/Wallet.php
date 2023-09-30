@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace api\Core\Player\Wallet\Domain;
 
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\Available;
-use api\Core\Shared\Domain\ValueObject\Bronze;
-use api\Core\Shared\Domain\ValueObject\Silver;
-use api\Core\Shared\Domain\ValueObject\Gold;
-use api\Core\Shared\Domain\ValueObject\Crystal;
+use api\Shared\Domain\ValueObject\{
+    UUID,
+    Available
+};
+use api\Core\Shared\Domain\ValueObject\{
+    Bronze,
+    Silver,
+    Gold,
+    Crystal
+};
 
-
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class Wallet extends AggregateRoot
+final class Wallet
 {
     public function __construct(
         private UUID $id,

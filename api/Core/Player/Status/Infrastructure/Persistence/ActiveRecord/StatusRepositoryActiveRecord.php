@@ -15,9 +15,8 @@ class StatusRepositoryActiveRecord implements IStatusRepository
 {
     public function get(string $statusId): ?Status
     {
-        $model = Model::findOne($statusId);
-        if (!$model) return null;
-        return Status::fromPrimitives(...$model["attributes"]);
+        $model = Model::findOne($id);
+        if ($model) return Status::fromPrimitives(...$model["attributes"]);
     }
 
     public function create($arr): Status
