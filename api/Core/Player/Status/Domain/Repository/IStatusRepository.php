@@ -9,4 +9,5 @@ interface IStatusRepository
     public function get(string $statusId): ?Status;
     public function create($status): Status;
     public function updateBattlePass($status): ?Status;
+    public function updateUltraPass($status): ?Status;
 }

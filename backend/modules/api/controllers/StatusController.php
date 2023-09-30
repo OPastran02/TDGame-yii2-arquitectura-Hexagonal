@@ -9,7 +9,8 @@ use Yii;
 use api\Core\Player\Status\Infrastructure\Ui\Http\Controller\{
     GetStatusController,
     CreateStatusController,
-    UpdateBattlePassController
+    UpdateBattlePassController,
+    UpdateUltraPassController
 };
 
 class StatusController extends \yii\web\Controller
@@ -32,5 +33,10 @@ class StatusController extends \yii\web\Controller
     public function actionUpdateBattlePass($id)
     {
         return (new UpdateBattlePassController())($id);
+    }
+
+    public function actionUpdateUltraPass($id)
+    {
+        return (new UpdateUltraPassController())($id);
     }
 }

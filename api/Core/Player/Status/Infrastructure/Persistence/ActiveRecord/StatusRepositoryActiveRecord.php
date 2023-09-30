@@ -33,4 +33,11 @@ class StatusRepositoryActiveRecord implements IStatusRepository
         $model->attributes = $arr;
         if($model->save()) return Status::fromPrimitives(...$model->attributes);
     }
+
+    public function UpdateUltraPass($arr): Status
+    {
+        $model = Model::findOne($arr['id']);
+        $model->attributes = $arr;
+        if($model->save()) return Status::fromPrimitives(...$model->attributes);
+    }
 }
