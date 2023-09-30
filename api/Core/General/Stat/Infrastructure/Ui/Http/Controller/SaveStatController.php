@@ -38,15 +38,12 @@ class SaveStatController
     }
 
     public function __invoke($statId,$rarity)
-    {    
-        $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON;
-
+    {      
         $obj = ($this->handler)($statId,$rarity);
 
-        $response->data = $obj->toPrimitives();
-        
-        return $response;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->data = $obj->toPrimitives();
+        return Yii::$app->response;
     }
 
 }  

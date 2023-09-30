@@ -9,44 +9,31 @@ use api\Core\Player\Status\Domain\{
     Repository\IStatusRepository
 };
 use api\Core\Player\Status\Infrastructure\Persistence\ActiveRecord\StatusRepositoryActiveRecord;
-use api\Core\Player\Status\Application\Query\GetStatus;
+use api\Core\Player\Status\Application\Command\UpdateBattlePass;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use Ramsey\Uuid\Uuid;
 use yii\helpers\Json;
 use yii\web\Response;
 use Yii;
 
-class GetStatusByIdController
+class UpdateBattlePassController
 {
-    private GetStatus $handler;
+    private UpdateBattlePass $handler;
 
     public function __construct()
     { 
         $repository = new StatusRepositoryActiveRecord();
-        $this->handler = new GetStatus($repository);
+        $this->handler = new UpdateBattlePass($repository);
     }
 
     public function __invoke(string $statusId)
     {    
-        try {
-            $object = ($this->handler)($statusId);
-            $status = 'ok';
-            $hits = ($object !== null) ? [$object->toPrimitives()] : ['no data'];
-        } catch (InvalidRequestValueException $e) {
-            $status = 'error';
-            $hits = ['no data'];
-        }
-    
-        $data = [
-            'status' => $status,
-            'hits' => $hits,
-        ];
-    
+        $obj = ($this->handler)($statusId);
+
         Yii::$app->response->format = Response::FORMAT_JSON;
-        Yii::$app->response->data = $data;
+        Yii::$app->response->data = $obj->toPrimitives();
         return Yii::$app->response;
     }
-
 }  
-

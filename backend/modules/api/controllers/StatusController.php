@@ -6,8 +6,11 @@ use yii\web\Response;
 use yii\helpers\Json; // Asegúrate de importar el uso de la clase Json
 use Yii;
 
-use api\Core\Player\Status\Infrastructure\Ui\Http\Controller\GetStatusByIdController;
-use api\Core\Player\Status\Infrastructure\Ui\Http\Controller\CreateStatusController;
+use api\Core\Player\Status\Infrastructure\Ui\Http\Controller\{
+    GetStatusController,
+    CreateStatusController,
+    UpdateBattlePassController
+};
 
 class StatusController extends \yii\web\Controller
 {
@@ -18,11 +21,16 @@ class StatusController extends \yii\web\Controller
 
     public function actionGet($id)
     {
-        return (new GetStatusByIdController())($id);
+        return (new GetStatusController())($id);
     }
 
     public function actionCreate($id)
     {
         return (new CreateStatusController())($id);
+    }
+
+    public function actionUpdateBattlePass($id)
+    {
+        return (new UpdateBattlePassController())($id);
     }
 }

@@ -22,7 +22,7 @@ final class CreateStatus
         $arr=[];
         $arr['id']                = $statusId;
         $arr['honor']             = 0;
-        $arr['lastLogin']         = 0;
+        $arr['lastLogin']         = time();
         $arr['battlePass']        = 0;
         $arr['ultraPass']         = 0;
         $arr['dailyAdsViewed']    = 0;
