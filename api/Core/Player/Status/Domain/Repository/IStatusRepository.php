@@ -10,4 +10,6 @@ interface IStatusRepository
     public function create($status): Status;
     public function updateBattlePass($status): ?Status;
     public function updateUltraPass($status): ?Status;
+    public function addAds($status): ?Status;
+    public function updateDate($status): ?Status;
 }

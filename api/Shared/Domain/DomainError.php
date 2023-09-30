@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Shared\Domain;
+namespace api\Shared\Domain;
 
 use DomainException;
 

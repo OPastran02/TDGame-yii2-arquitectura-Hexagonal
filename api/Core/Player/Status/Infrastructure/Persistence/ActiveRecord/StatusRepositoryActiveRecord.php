@@ -40,4 +40,18 @@ class StatusRepositoryActiveRecord implements IStatusRepository
         $model->attributes = $arr;
         if($model->save()) return Status::fromPrimitives(...$model->attributes);
     }
+
+    public function addAds($arr): Status
+    {
+        $model = Model::findOne($arr['id']);
+        $model->attributes = $arr;
+        if($model->save()) return Status::fromPrimitives(...$model->attributes);
+    }
+
+    public function updateDate($arr): Status
+    {
+        $model = Model::findOne($arr['id']);
+        $model->attributes = $arr;
+        if($model->save()) return Status::fromPrimitives(...$model->attributes);
+    }
 }
