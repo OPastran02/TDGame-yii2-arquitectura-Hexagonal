@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace api\Core\Player\Metric\Application\Query;
 
-use api\Core\Player\Metric\Domain\Metric;
-use api\Core\Player\Metric\Domain\Repository\IMetricRepository;
+use api\Core\Player\Metric\Domain\{
+    Metric,
+    Repository\IMetricRepository
+};
 
-class GetMetricByIdHandler
+class GetMetric
 {
     private IMetricRepository $repository;
 
@@ -16,9 +18,8 @@ class GetMetricByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Metric
+    public function __invoke(string $id): ?Metric
     {
-        $obj = $this->repository->getbyId($id);
-        return $obj;
+        return $this->repository->get($id);
     }
 }

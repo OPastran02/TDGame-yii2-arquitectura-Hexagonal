@@ -17,7 +17,7 @@ final class CreateWallet
         $this->repository = $repository;
     }
 
-    public function __invoke($walletId): Wallet
+    public function __invoke(string $walletId): Wallet
     {
         $arr = [];
         $arr['id']                = $walletId;  

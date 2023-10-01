@@ -2,11 +2,10 @@
 
 namespace backend\modules\api\controllers;
 
-use yii\web\Response;
-use yii\helpers\Json; // Asegúrate de importar el uso de la clase Json
-use Yii;
-
-use api\Core\Player\Metric\Infrastructure\Ui\Http\Controller\GetMetricByIdController;
+use api\Core\Player\Metric\Infrastructure\Ui\Http\Controller\{
+    GetMetricController,
+    CreateMetricController
+};
 
 class MetricController extends \yii\web\Controller
 {
@@ -17,6 +16,11 @@ class MetricController extends \yii\web\Controller
 
     public function actionGet($id)
     {
-        return (new GetMetricByIdController())($id);
+        return (new GetMetricController())($id);
+    }
+
+    public function actionCreate($id)
+    {
+        return (new CreateMetricController())($id);
     }
 }
