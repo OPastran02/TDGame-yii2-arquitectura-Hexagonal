@@ -23,7 +23,7 @@ class UpdateMetric
  
     public function __invoke(
         string $walletId,
-        bool $win,
+        int $win,
         int $timePlayed,
         int $maxPoint,
         int $damageDealt,
@@ -33,8 +33,8 @@ class UpdateMetric
     {
         $arr = ($this->getMetric)($walletId)->toPrimitives();
 
-        if($win) $arr['win'] + 1;
-        if(!$win) $arr['loss'] + 1;
+        if($win == 1) $arr['win'] += 1;
+        if($win == 0) $arr['loss'] += 1;
 
         $arr['handicap']=$arr['win'] - $arr['loss'];     
         $arr['timePlayed'] += $timePlayed;       

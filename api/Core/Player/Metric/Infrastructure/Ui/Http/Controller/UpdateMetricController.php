@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace api\Core\Player\Metric\Infrastructure\Ui\Http\Controller;
 
-use api\Core\Player\Status\Domain\{
+use api\Core\Player\Metric\Domain\{
     Metric,
     Repository\IMetricRepository
 };
-use api\Core\Player\Wallet\Infrastructure\Persistence\ActiveRecord\MetricRepositoryActiveRecord;
-use api\Core\Player\Wallet\Application\Command\UpdateMetric;
+use api\Core\Player\Metric\Infrastructure\Persistence\ActiveRecord\MetricRepositoryActiveRecord;
+use api\Core\Player\Metric\Application\Command\UpdateMetric;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Ramsey\Uuid\Uuid;
@@ -29,7 +29,7 @@ class UpdateMetricController
 
     public function __invoke(        
         string $walletId,
-        bool $win,
+        int $win,
         int $timePlayed,
         int $maxPoint,
         int $damageDealt,

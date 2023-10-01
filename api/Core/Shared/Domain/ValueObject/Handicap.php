@@ -11,7 +11,7 @@ final class Handicap extends IntValueObject
 
     protected int $value;
 
-    private const MIN_VALUE = 0;
+    private const MIN_VALUE = -4000000;
     private const MAX_VALUE = 4000000;    
 
     public function __construct( int $value)
