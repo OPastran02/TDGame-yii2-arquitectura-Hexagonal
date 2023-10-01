@@ -8,4 +8,5 @@ interface IMetricRepository
 {
     public function get(string $id): ?Metric;
     public function create($metric): ?Metric;
+    public function update($metric): ?Metric;
 }

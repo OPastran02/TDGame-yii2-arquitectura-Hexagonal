@@ -24,4 +24,11 @@ class MetricRepositoryActiveRecord implements IMetricRepository
         $model->attributes = $arr;
         if ($model->save()) return Metric::fromPrimitives(...$model->attributes);
     }
+
+    public function update($arr): Metric
+    {
+        $model = Model::findOne($arr['id']);
+        $model->attributes = $arr;
+        if($model->save()) return Metric::fromPrimitives(...$model->attributes);
+    }
 }

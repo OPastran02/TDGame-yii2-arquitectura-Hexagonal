@@ -82,14 +82,14 @@ final class Metric
     {
         return new self(
             new UUID($id),
-            new Win ($win),
-            new Loss ($loss),
-            new Handicap ($handicap),
-            new TimePlayed ($timePlayed),
-            new MaxPoints ($maxPoints),
-            new DamageDealt ($damageDealt),
-            new LandsDestroyed ($landsDestroyed),
-            new MobsKilled ($mobskilled),
+            new Win($win),
+            new Loss($loss),
+            new Handicap($handicap),
+            new TimePlayed($timePlayed),
+            new MaxPoints($maxPoints),
+            new DamageDealt($damageDealt),
+            new LandsDestroyed($landsDestroyed),
+            new MobsKilled($mobskilled),
             new Available($available),
         );
     }
