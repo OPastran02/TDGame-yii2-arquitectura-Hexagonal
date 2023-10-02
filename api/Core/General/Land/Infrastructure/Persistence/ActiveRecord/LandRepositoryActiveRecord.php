@@ -10,7 +10,7 @@ use common\models\Land as Model;
 
 class LandRepositoryActiveRecord implements ILandRepository
 {
-    public function getbyId(string $id): ?Land
+    public function get(string $id): ?Land
     {
         $model = Model::findOne($id);
 
@@ -21,7 +21,7 @@ class LandRepositoryActiveRecord implements ILandRepository
         }
     }
 
-    public function save($arr): Land
+    public function create($arr): Land
     {
 
         $model = new Model();

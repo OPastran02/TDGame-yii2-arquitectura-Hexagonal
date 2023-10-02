@@ -19,7 +19,7 @@ final class GameText extends StringValueObject
     private function ensureIsValidJSON(string $value): void
     {
         $decoded = json_decode($value);
-        if ($decoded === null || !is_array($decoded)) {
+        if ($decoded === null && json_last_error() !== JSON_ERROR_NONE) {
             throw new \InvalidArgumentException("'$value' no es un JSON válido.");
         }
         foreach ($decoded as $item) {
@@ -33,5 +33,4 @@ final class GameText extends StringValueObject
     {
         return $this->value;
     }
-
 }

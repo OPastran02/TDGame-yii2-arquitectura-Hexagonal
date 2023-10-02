@@ -53,9 +53,9 @@ class Objects extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['model', 'image'], 'required'],
-            [['available'], 'integer'],
-            [['name', 'description'], 'string', 'max' => 14],
+            [['model', 'image','id'], 'required'],
+            [['available','id'], 'integer'],
+            [['name', 'description'], 'string'],
             [['color'], 'string', 'max' => 6],
             [['model', 'image'], 'string', 'max' => 18],
         ];

@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace api\Core\General\Land\Application\Query;
 
-use api\Core\General\Land\Domain\Land;
-use api\Core\General\Land\Domain\Repository\ILandRepository;
+use api\Core\General\Land\Domain\{
+    Land,
+    Repository\ILandRepository
+};
 
 class GetLandByIdHandler
 {
@@ -18,7 +20,6 @@ class GetLandByIdHandler
 
     public function __invoke(string $id): ?Land
     {
-        $obj = $this->repository->getbyId($id);
-        return $obj;
+        return $this->repository->get($id);
     }
 }

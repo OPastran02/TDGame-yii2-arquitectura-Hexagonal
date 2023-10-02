@@ -1,0 +1,39 @@
+<?php   
+
+declare(strict_types=1);
+
+namespace api\Core\General\Object\Application\Command;
+
+use api\Core\General\Object\Domain\{
+    Objeto,
+    Repository\IObjetoRepository
+};
+
+final class CreateObjeto
+{
+    private IObjetoRepository $repository;
+
+    public function __construct(IObjetoRepository $repository){
+        $this->repository = $repository;
+    }
+
+    public function __invoke(
+        int $objetoId,
+        string $name,
+        string $description,
+        string $color
+    ): Objeto
+    {
+        $arr=[];
+        $arr['id'] = $objetoId;
+        $arr['name'] = $name;
+        $arr['description'] = $description;
+        $arr['color'] = $color;
+        $arr['model'] = "MOD-LAND-0000-0000";
+        $arr['image'] = "IMG-LAND-0000-0000";
+        $arr['available'] = 1;
+
+
+        return $this->repository->create($arr);
+    }
+}

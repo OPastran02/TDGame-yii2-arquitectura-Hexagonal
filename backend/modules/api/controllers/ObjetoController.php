@@ -5,7 +5,10 @@ use yii\web\Response;
 use yii\helpers\Json; // Asegúrate de importar el uso de la clase Json
 use Yii;
 
-use api\Core\General\Object\Infrastructure\Ui\Http\Controller\GetObjetoByIdController;
+use api\Core\General\Object\Infrastructure\Ui\Http\Controller\{
+    GetObjetoByIdController,
+    CreateObjetoController
+};
 
 class ObjetoController extends \yii\web\Controller
 {
@@ -19,5 +22,10 @@ class ObjetoController extends \yii\web\Controller
         return (new GetObjetoByIdController())($id);
     }
 
+    public function actionCreate()
+    {
+        $data = Yii::$app->request->getBodyParams();
+        return (new CreateObjetoController())($data['id'],$data['name'],$data['description'],$data['color']);
+    }
 
 }

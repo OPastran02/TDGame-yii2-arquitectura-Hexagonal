@@ -4,38 +4,39 @@ declare(strict_types=1);
 
 namespace api\Core\General\Land\Domain;
 
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\Available;
+use api\Shared\Domain\ValueObject\{
+    UUID,
+    NID,
+    Available
+};
 
-use api\Core\General\Land\Domain\ValueObject\Code;
-use api\Core\General\Land\Domain\ValueObject\Height;
-use api\Core\General\Land\Domain\ValueObject\Weight;
-use api\Core\General\Land\Domain\ValueObject\Order;
-use api\Core\General\Land\Domain\ValueObject\Chat;
+use api\Core\General\Land\Domain\ValueObject\{
+    GridMap,
+    Height,
+    Weight,
+    Order,
+    Chat
+};
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class Land extends AggregateRoot
+final class Land
 {
     public function __construct(
-        private UUID|null $id,
+        private UUID $id,
         private Height $height,
         private Weight $weight,
-        private Code $code,
+        private GridMap $gridMap,
         private Order $order,
         private NID $idObject,
         private Chat $chat,
         private Available $available,
     )
-    {
-    }
+    {}
 
     public static function create( 
-        ?UUID $id,
+        UUID $id,
         Height $height,
         Weight $weight,
-        Code $code,
+        GridMap $gridMap,
         Order $order,
         NID $idObject,
         Chat $chat,
@@ -46,7 +47,7 @@ final class Land extends AggregateRoot
             $id,
             $height,
             $weight,
-            $code,
+            $gridMap,
             $order,
             $idObject,
             $chat,
@@ -55,10 +56,10 @@ final class Land extends AggregateRoot
     }
 
     public static function fromPrimitives(
-        ?string $id,
+        string $id,
         int $height,
         int $weight,
-        int $code,
+        int $gridMap,
         int $order,
         int $idObject,
         string $chat,
@@ -66,10 +67,10 @@ final class Land extends AggregateRoot
     ): self
     {
         return new Stat(
-            isset($id) ? new UUID($id):   null,
+            new UUID($id),
             new Height ($height),
             new Weight ($weight),
-            new Code ($code),
+            new GridMap ($gridMap),
             new Order ($order),
             new NID ($idObject),
             new Chat ($chat),
@@ -80,10 +81,10 @@ final class Land extends AggregateRoot
     public function toPrimitives(): array
     {
         return [
-            'id'                    =>          isset($this->id) ? $this->id->value() : null,
+            'id'                    =>          $this->id->value(),
             'height'                =>          $this->height->value(), 
             'weight'                =>          $this->weight->value(), 
-            'code'                  =>          $this->code->value(), 
+            'gridMap'               =>          $this->gridMap->value(), 
             'order'                 =>          $this->order->value(), 
             'idObject'              =>          $this->idObject->value(), 
             'chat'                  =>          $this->chat->value(), 
