@@ -20,7 +20,7 @@ class m230914_012920_create_races_table extends Migration
 
         $this->createTable('{{%races}}', [
             'id' => $this->primaryKey()->notNull()->unique(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'idBoost' => $this->integer(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
         ],$table);

@@ -18,7 +18,7 @@ class m230914_220455_create_parcelRarities_table extends Migration
         $this->createTable('parcelRarities', [
             'id' => $this->primaryKey(),
             'name' => $this->string(14)->notNull()->defaultValue('no name'),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'available' => $this->tinyInteger(1)->notNull()->defaultValue(1),
         ],$table);
 

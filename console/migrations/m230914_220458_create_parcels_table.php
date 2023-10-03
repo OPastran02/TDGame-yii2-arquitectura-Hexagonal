@@ -16,7 +16,7 @@ class m230914_220458_create_parcels_table extends Migration
 
         $this->createTable('parcels', [
             'id' => $this->primaryKey(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'generation' => $this->smallInteger(2)->notNull()->defaultValue(1),
             'type' => $this->integer()->notNull(),
             'rarity' => $this->integer()->notNull(),

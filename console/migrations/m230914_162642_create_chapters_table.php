@@ -16,7 +16,7 @@ class m230914_162642_create_chapters_table extends Migration
 
         $this->createTable('{{%chapters}}', [
             'id' => $this->primaryKey()->notNull()->unique(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'idReward' => $this->integer(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
         ],$table);

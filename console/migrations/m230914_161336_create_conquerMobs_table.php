@@ -18,7 +18,7 @@ class m230914_161336_create_conquerMobs_table extends Migration
             'id' => $this->primaryKey(),
             'stats' => $this->string(36)->unique()->notNull(),
             'idConquerLand' => $this->integer(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
         ],$table);
 

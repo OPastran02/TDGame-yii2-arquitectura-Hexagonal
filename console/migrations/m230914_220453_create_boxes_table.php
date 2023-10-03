@@ -21,7 +21,7 @@ class m230914_220453_create_boxes_table extends Migration
 
         $this->createTable('{{%boxes}}', [
             'id' => $this->primaryKey(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'booster' => $this->text(),
             'bronze' => $this->integer()->notNull()->defaultValue(0),
             'silver' => $this->integer()->notNull()->defaultValue(0),

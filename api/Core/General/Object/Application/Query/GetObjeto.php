@@ -18,7 +18,7 @@ class GetObjeto
         $this->repository = $repository;
     }
  
-    public function __invoke(int $objetoId): ?Objeto
+    public function __invoke(string $objetoId): ?Objeto
     {
         return $this->repository->get($objetoId);
     }

@@ -15,7 +15,7 @@ class m230914_010311_create_objects_table extends Migration
         $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
 
         $this->createTable('{{%objects}}', [
-            'id' => $this->primaryKey(),
+            'id' => $this->string(36)->notNull()->unique(),
             'name' => $this->string()->notNull()->defaultValue('no name'),
             'description' => $this->string()->notNull()->defaultValue('no description'),
             'color' => $this->string(6)->notNull()->defaultValue('FFFFFF'),

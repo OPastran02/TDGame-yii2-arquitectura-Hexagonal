@@ -8,6 +8,7 @@ use api\Core\General\Object\Domain\{
     Objeto,
     Repository\IObjetoRepository
 };
+use Ramsey\Uuid\Uuid;
 
 final class CreateObjeto
 {
@@ -18,14 +19,13 @@ final class CreateObjeto
     }
 
     public function __invoke(
-        int $objetoId,
         string $name,
         string $description,
         string $color
     ): Objeto
     {
         $arr=[];
-        $arr['id'] = $objetoId;
+        $arr['id'] = Uuid::uuid4()->toString();
         $arr['name'] = $name;
         $arr['description'] = $description;
         $arr['color'] = $color;

@@ -16,7 +16,7 @@ class m230914_220457_create_shops_table extends Migration
 
         $this->createTable('shops', [
             'id' => $this->primaryKey(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'available' => $this->tinyInteger(1)->notNull()->defaultValue(1),
         ],$table);
 

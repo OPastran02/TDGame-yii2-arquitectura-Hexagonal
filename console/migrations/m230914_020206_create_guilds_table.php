@@ -22,7 +22,7 @@ class m230914_020206_create_guilds_table extends Migration
 
         $this->createTable('{{%guilds}}', [
             'id' => $this->string(36)->notNull()->unique(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'stash' => $this->string(36)->unique()->notNull(),
             'metrics' => $this->string(36)->unique()->notNull(),
             'maxMembers' => $this->integer()->notNull()->defaultValue(20),

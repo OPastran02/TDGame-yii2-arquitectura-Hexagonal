@@ -10,6 +10,8 @@ use api\Core\General\Land\Domain\{
     Repository\ILandRepository
 };
 use api\Core\General\Land\Infrastructure\Persistence\ActiveRecord\LandRepositoryActiveRecord;
+use api\Core\General\Object\Infrastructure\Persistence\ActiveRecord\ObjetoRepositoryActiveRecord;
+
 use api\Core\General\Land\Application\Command\CreateLand;
 
 use yii\web\Controller;
@@ -26,7 +28,8 @@ class CreateLandController
     public function __construct()
     { 
         $repository = new LandRepositoryActiveRecord();
-        $this->handler = new CreateLand($repository);
+        $ObjetoRepository = new ObjetoRepositoryActiveRecord();
+        $this->handler = new CreateLand($repository, $ObjetoRepository);
     }
 
     public function __invoke(string $landId)

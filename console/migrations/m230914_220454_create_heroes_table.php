@@ -17,7 +17,7 @@ class m230914_220454_create_heroes_table extends Migration
         $this->createTable('Heroes', [
             'id' => $this->string(36)->notNull()->unique(),
             'idPlayer' => $this->string(36)->notNull(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'rarity' => $this->integer()->notNull(),
             'nature' => $this->integer()->notNull(),
             'type' => $this->integer()->notNull(),

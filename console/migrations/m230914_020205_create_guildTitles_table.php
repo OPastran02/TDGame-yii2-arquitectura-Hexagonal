@@ -19,7 +19,7 @@ class m230914_020205_create_guildTitles_table extends Migration
 
         $this->createTable('{{%guildTitles}}', [
             'id' => $this->primaryKey(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
         ],$table);
 

@@ -19,7 +19,7 @@ class m230914_011302_create_rarities_table extends Migration
 
         $this->createTable('{{%rarities}}', [
             'id' => $this->integer()->notNull()->unique(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
         ],$table);
 

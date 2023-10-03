@@ -19,7 +19,7 @@ class m230914_013555_create_ranks_table extends Migration
 
         $this->createTable('{{%ranks}}', [
             'id' => $this->primaryKey()->notNull()->unique(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
         ],$table);
 

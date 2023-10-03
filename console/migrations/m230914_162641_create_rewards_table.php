@@ -16,7 +16,7 @@ class m230914_162641_create_rewards_table extends Migration
 
         $this->createTable('{{%rewards}}', [
             'id' => $this->primaryKey()->notNull()->unique(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'bronze' => $this->integer()->notNull()->defaultValue(0),
             'silver' => $this->integer()->notNull()->defaultValue(0),
             'gold' => $this->integer()->notNull()->defaultValue(0),

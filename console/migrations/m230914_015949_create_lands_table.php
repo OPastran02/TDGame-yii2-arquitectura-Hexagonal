@@ -23,7 +23,7 @@ class m230914_015949_create_lands_table extends Migration
             'weight' => $this->integer()->notNull()->defaultValue(50),
             'gridMap' => $this->text(),
             'order' => $this->text(),
-            'idObject' => $this->integer()->notNull()->comment('Relación con objects'),
+            'idObject' => $this->string(36)->notNull(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
         ],$table);
 

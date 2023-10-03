@@ -30,7 +30,7 @@ class GetObjetoByIdController
         $this->handler = new GetObjeto($repository);
     }
 
-    public function __invoke(int $objetoId)
+    public function __invoke(string $objetoId)
     {        
         try {
             $objeto = ($this->handler)($objetoId);

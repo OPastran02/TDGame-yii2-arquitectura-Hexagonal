@@ -20,7 +20,7 @@ class m230914_012617_create_types_table extends Migration
 
         $this->createTable('{{%types}}', [
             'id' => $this->primaryKey()->notNull()->unique(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'horoscope' => $this->string(20),
             'idBoost' => $this->integer(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),

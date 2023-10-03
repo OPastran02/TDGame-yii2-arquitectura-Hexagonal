@@ -19,7 +19,7 @@ class m230914_013020_create_abilities_table extends Migration
 
         $this->createTable('{{%abilities}}', [
             'id' => $this->primaryKey()->notNull()->unique(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'blockAttack' => $this->string(),
             'melee' => $this->integer(1),
             'fly' => $this->integer(1),

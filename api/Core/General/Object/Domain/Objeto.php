@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace api\Core\General\Object\Domain;
 
 use api\Shared\Domain\ValueObject\{
-    NID,
+    UUID,
     Available,
     GameText
 };
@@ -18,7 +18,7 @@ use api\Core\General\Object\Domain\ValueObject\{
 final class Objeto
 {
     public function __construct(
-        private NID $id,
+        private UUID $id,
         private GameText $name,
         private GameText $description,
         private Color $color,
@@ -29,7 +29,7 @@ final class Objeto
     {}
 
     public static function create( 
-        NID $id,
+        UUID $id,
         GameText $name,
         GameText $description,
         Color $color,
@@ -38,7 +38,7 @@ final class Objeto
         Available $available,
     ): self 
     {
-        return new self0(
+        return new self(
             $id,
             $name,
             $description,
@@ -60,7 +60,7 @@ final class Objeto
     ): self
     {
         return new Objeto(
-            isset($id) ? new NID($id):   null,
+            new UUID($id),
             new GameText($name),
             new GameText($description),
             new Color($color),
@@ -73,7 +73,7 @@ final class Objeto
     public function toPrimitives(): array
     {
         return [
-            'id'                    =>          isset($this->id) ? $this->id->value() : null,
+            'id'                    =>          $this->id->value(),
             'name'                  =>          $this->name->value(),
             'description'           =>          $this->description->value(),
             'color'                 =>          $this->color->value(),
@@ -83,7 +83,7 @@ final class Objeto
         ];
     }
 
-    public function getId(): NID
+    public function getId(): UUID
     {
         return $this->id;
     }

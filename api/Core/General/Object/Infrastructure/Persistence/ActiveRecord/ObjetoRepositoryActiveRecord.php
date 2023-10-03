@@ -13,7 +13,7 @@ use common\models\Objects as Model;
 
 class ObjetoRepositoryActiveRecord implements IObjetoRepository
 {
-    public function get(int $objetoId): ?Objeto
+    public function get(string $objetoId): ?Objeto
     {
         $model = Model::findOne($objetoId);
         if (!$model) return null;

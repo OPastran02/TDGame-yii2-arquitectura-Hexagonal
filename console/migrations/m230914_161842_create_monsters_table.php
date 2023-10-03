@@ -16,7 +16,7 @@ class m230914_161842_create_monsters_table extends Migration
 
         $this->createTable('{{%monsters}}', [
             'id' => $this->primaryKey()->unique()->notNull(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'stats' => $this->string(36)->unique()->notNull(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
         ],$table);

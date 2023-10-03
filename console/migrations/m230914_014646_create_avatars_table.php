@@ -19,7 +19,7 @@ class m230914_014646_create_avatars_table extends Migration
 
         $this->createTable('{{%avatars}}', [
             'id' => $this->string(36)->notNull()->unique(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),
         ],$table);
 

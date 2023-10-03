@@ -16,7 +16,7 @@ class m230914_220452_create_chapterMobs_table extends Migration
 
         $this->createTable('{{%chapterMobs}}', [
             'id' => $this->primaryKey()->notNull()->unique(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'idChapterLand' => $this->integer(),
             'stats' => $this->string(36)->notNull(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),

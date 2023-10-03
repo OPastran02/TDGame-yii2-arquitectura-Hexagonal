@@ -16,7 +16,7 @@ class m230914_022532_create_worlds_table extends Migration
 
         $this->createTable('{{%worlds}}', [
             'id' => $this->primaryKey(),
-            'idObject' => $this->integer()->notNull(),
+            'idObject' => $this->string(36)->notNull(),
             'idGuild' => $this->string(36)->notNull()->unique(),
             'order' => $this->integer(),
             'active' => $this->integer(1)->notNull()->defaultValue(1),
