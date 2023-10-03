@@ -34,7 +34,8 @@ class ChapterMob extends \yii\db\ActiveRecord
     {
         return [
             [['idObject', 'stats'], 'required'],
-            [['idObject', 'idChapterLand', 'available'], 'integer'],
+            [['idChapterLand', 'available'], 'integer'],
+            [['idObject'], 'string', 'max' => 36],
             [['stats'], 'string', 'max' => 36],
             [['idChapterLand'], 'exist', 'skipOnError' => true, 'targetClass' => Chapterlands::class, 'targetAttribute' => ['idChapterLand' => 'id']],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],

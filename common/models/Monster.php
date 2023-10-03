@@ -33,7 +33,8 @@ class Monster extends \yii\db\ActiveRecord
     {
         return [
             [['idObject', 'stats'], 'required'],
-            [['idObject', 'available'], 'integer'],
+            [['available'], 'integer'],
+            [['idObject'], 'string', 'max' => 36],
             [['stats'], 'string', 'max' => 36],
             [['stats'], 'unique'],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],

@@ -35,7 +35,8 @@ class World extends \yii\db\ActiveRecord
     {
         return [
             [['idObject', 'idGuild'], 'required'],
-            [['idObject', 'order', 'active', 'available'], 'integer'],
+            [['order', 'active', 'available'], 'integer'],
+            [['idObject'], 'string', 'max' => 36],
             [['idGuild'], 'string', 'max' => 36],
             [['idGuild'], 'unique'],
             [['idGuild'], 'exist', 'skipOnError' => true, 'targetClass' => Guilds::class, 'targetAttribute' => ['idGuild' => 'id']],

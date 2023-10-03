@@ -36,7 +36,8 @@ class Ability extends \yii\db\ActiveRecord
     {
         return [
             [['idObject'], 'required'],
-            [['idObject', 'melee', 'fly', 'ranged', 'stealth', 'available'], 'integer'],
+            [['melee', 'fly', 'ranged', 'stealth', 'available'], 'integer'],
+            [['idObject'], 'string', 'max' => 36],
             [['blockAttack'], 'string', 'max' => 255],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],
         ];

@@ -33,7 +33,8 @@ class Nature extends \yii\db\ActiveRecord
     {
         return [
             [['idObject'], 'required'],
-            [['idObject', 'idBoost', 'available'], 'integer'],
+            [['idBoost', 'available'], 'integer'],
+            [['idObject'], 'string', 'max' => 36],
             [['idBoost'], 'exist', 'skipOnError' => true, 'targetClass' => Boost::class, 'targetAttribute' => ['idBoost' => 'id']],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],
         ];

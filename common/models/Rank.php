@@ -31,7 +31,8 @@ class Rank extends \yii\db\ActiveRecord
     {
         return [
             [['idObject'], 'required'],
-            [['idObject', 'available'], 'integer'],
+            [['available'], 'integer'],
+            [['idObject'], 'string', 'max' => 36],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],
         ];
     }

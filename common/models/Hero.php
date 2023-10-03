@@ -48,10 +48,11 @@ class Hero extends \yii\db\ActiveRecord
     {
         return [
             [['id', 'idPlayer', 'idObject', 'rarity', 'nature', 'type', 'race', 'abilities', 'stats'], 'required'],
-            [['idObject', 'rarity', 'nature', 'type', 'race', 'abilities', 'experience', 'level', 'isLanded', 'available'], 'integer'],
+            [['rarity', 'nature', 'type', 'race', 'abilities', 'experience', 'level', 'isLanded', 'available'], 'integer'],
             [['id', 'idPlayer', 'stats', 'land'], 'string', 'max' => 36],
             [['id'], 'unique'],
             [['stats'], 'unique'],
+            [['idObject'], 'string', 'max' => 36],
             [['abilities'], 'exist', 'skipOnError' => true, 'targetClass' => Abilities::class, 'targetAttribute' => ['abilities' => 'id']],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],
             [['idPlayer'], 'exist', 'skipOnError' => true, 'targetClass' => Players::class, 'targetAttribute' => ['idPlayer' => 'id']],

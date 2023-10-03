@@ -54,7 +54,8 @@ class Objects extends \yii\db\ActiveRecord
     {
         return [
             [['model', 'image','id'], 'required'],
-            [['available','id'], 'integer'],
+            [['available'], 'integer'],
+            [['id'], 'string', 'max' => 36],
             [['name', 'description'], 'string'],
             [['color'], 'string', 'max' => 6],
             [['model', 'image'], 'string', 'max' => 18],

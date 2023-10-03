@@ -38,7 +38,8 @@ class Land extends \yii\db\ActiveRecord
     {
         return [
             [['id', 'idObject'], 'required'],
-            [['height', 'weight', 'code', 'idObject', 'available'], 'integer'],
+            [['height', 'weight', 'code','available'], 'integer'],
+            [['idObject'], 'string', 'max' => 36],
             [['order'], 'string'],
             [['id'], 'string', 'max' => 36],
             [['id'], 'unique'],

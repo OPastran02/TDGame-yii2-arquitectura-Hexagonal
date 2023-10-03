@@ -34,7 +34,8 @@ class Chapter extends \yii\db\ActiveRecord
     {
         return [
             [['idObject'], 'required'],
-            [['idObject', 'idReward', 'available'], 'integer'],
+            [['idReward', 'available'], 'integer'],
+            [['idObject'], 'string', 'max' => 36],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],
             [['idReward'], 'exist', 'skipOnError' => true, 'targetClass' => Rewards::class, 'targetAttribute' => ['idReward' => 'id']],
         ];

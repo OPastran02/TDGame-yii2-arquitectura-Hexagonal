@@ -34,7 +34,8 @@ class Type extends \yii\db\ActiveRecord
     {
         return [
             [['idObject'], 'required'],
-            [['idObject', 'idBoost', 'available'], 'integer'],
+            [['idBoost', 'available'], 'integer'],
+            [['idObject'], 'string', 'max' => 36],
             [['horoscope'], 'string', 'max' => 20],
             [['idBoost'], 'exist', 'skipOnError' => true, 'targetClass' => Boost::class, 'targetAttribute' => ['idBoost' => 'id']],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],

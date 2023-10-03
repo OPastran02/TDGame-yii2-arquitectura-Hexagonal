@@ -36,7 +36,8 @@ class Reward extends \yii\db\ActiveRecord
     {
         return [
             [['idObject'], 'required'],
-            [['idObject', 'bronze', 'silver', 'gold', 'crystal', 'quantity', 'available'], 'integer'],
+            [['bronze', 'silver', 'gold', 'crystal', 'quantity', 'available'], 'integer'],
+            [['idObject'], 'string', 'max' => 36],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],
         ];
     }

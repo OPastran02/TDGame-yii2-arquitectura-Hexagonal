@@ -44,7 +44,8 @@ class Parcel extends \yii\db\ActiveRecord
     {
         return [
             [['idObject', 'type', 'rarity', 'shop', 'requirements'], 'required'],
-            [['idObject', 'generation', 'type', 'rarity', 'bronze', 'silver', 'gold', 'crystal', 'maxQuantity', 'shop', 'requirements', 'available'], 'integer'],
+            [['generation', 'type', 'rarity', 'bronze', 'silver', 'gold', 'crystal', 'maxQuantity', 'shop', 'requirements', 'available'], 'integer'],
+            [['idObject'], 'string', 'max' => 36],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],
             [['rarity'], 'exist', 'skipOnError' => true, 'targetClass' => Rarities::class, 'targetAttribute' => ['rarity' => 'id']],
             [['requirements'], 'exist', 'skipOnError' => true, 'targetClass' => Requirements::class, 'targetAttribute' => ['requirements' => 'id']],

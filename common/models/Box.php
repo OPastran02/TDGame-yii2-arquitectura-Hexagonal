@@ -39,7 +39,8 @@ class Box extends \yii\db\ActiveRecord
     {
         return [
             [['idObject', 'idRace'], 'required'],
-            [['idObject', 'bronze', 'silver', 'gold', 'crystal', 'idRequirements', 'idRace', 'available'], 'integer'],
+            [['bronze', 'silver', 'gold', 'crystal', 'idRequirements', 'idRace', 'available'], 'integer'],
+            [['idObject'], 'string', 'max' => 36],
             [['booster'], 'string'],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],
             [['idRace'], 'exist', 'skipOnError' => true, 'targetClass' => Races::class, 'targetAttribute' => ['idRace' => 'id']],

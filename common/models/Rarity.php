@@ -31,7 +31,8 @@ class Rarity extends \yii\db\ActiveRecord
     {
         return [
             [['id', 'idObject'], 'required'],
-            [['id', 'idObject', 'available'], 'integer'],
+            [['id','available'], 'integer'],
+            [['idObject'], 'string', 'max' => 36],
             [['id'], 'unique'],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],
         ];
