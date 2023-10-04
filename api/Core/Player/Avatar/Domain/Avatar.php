@@ -4,18 +4,25 @@ declare(strict_types=1);
 
 namespace api\Core\Player\Avatar\Domain;
 
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\Available;
+use api\Shared\Domain\ValueObject\{
+    NID,
+    UUID,
+    Available,
+};
+use api\Core\Player\Avatar\Domain\ValueObject\{
+    Nickname,
+    Message
+};
+
 use api\Core\General\Object\Domain\Objeto; 
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class Avatar extends AggregateRoot
+final class Avatar
 {
     public function __construct(
         private UUID $id,
-        private NID $idObject, 
+        private Nickname $nickname,
+        private Message $message,
+        private UUID $idObject, 
         private Available $available,
         private Objeto $objeto
     )
@@ -24,13 +31,17 @@ final class Avatar extends AggregateRoot
 
     public static function create( 
         UUID $id,
-        NID $idObject, 
+        Nickname $nickname,
+        Message $message,
+        UUID $idObject, 
         Available $available,
         Objeto $objeto,
     ): self 
     {
         return new self(
             $id,
+            $nickname,
+            $message,
             $idObject, 
             $available,
             $objeto,
@@ -38,15 +49,19 @@ final class Avatar extends AggregateRoot
     }
 
     public static function fromPrimitives(
-        ?string $id,
-        int $idObject, 
+        string $id,
+        string $nickname,
+        string $message,
+        string $idObject, 
         int $available,
         Objeto $objeto,
     ): self
     {
         return new self(
-            isset($id) ? new UUID($id):   null,
-            new NID ($idObject), 
+            new UUID($id),
+            new Nickname($nickname),
+            new Message($message),
+            new UUID ($idObject), 
             new Available ($available),
             $objeto,
         );
@@ -55,7 +70,9 @@ final class Avatar extends AggregateRoot
     public function toPrimitives(): array
     {
         return [
-            'id'                    =>          isset($this->id) ? $this->id->value() : null,
+            'id'                    =>          $this->id->value(),
+            'nickname'              =>          $this->nickname->value(),
+            'message'               =>          $this->message->value(),
             'idObject'              =>          $this->idObject->value(),
             'available'             =>          $this->available->value(),
             'objeto'                =>          $this->objeto->toPrimitives(),

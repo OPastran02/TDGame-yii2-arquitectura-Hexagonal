@@ -33,6 +33,7 @@ class Avatar extends \yii\db\ActiveRecord
             [['id', 'idObject'], 'required'],
             [['available'], 'integer'],
             [['idObject'], 'string', 'max' => 36],
+            [['nickname','message'], 'string'],
             [['id'], 'string', 'max' => 36],
             [['id'], 'unique'],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],

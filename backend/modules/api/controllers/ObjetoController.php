@@ -22,9 +22,9 @@ class ObjetoController extends \yii\web\Controller
         return (new GetObjetoByIdController())($id);
     }
 
-    public function actionCreate()
+    public function actionCreate($type)
     {
-        return (new CreateObjetoController())();
+        return (new CreateObjetoController())($type);
     }
 
 }

@@ -30,7 +30,7 @@ final class CreateLand
         $height=2;
         $weight=2;
 
-        $objeto = (new CreateObjeto($this->objRepository))();
+        $objeto = (new CreateObjeto($this->objRepository))("LAND");
         $grid = (new EmptyGridCreator($height,$weight))();
         
         $arr=[];

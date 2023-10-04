@@ -35,19 +35,12 @@ class LandRepositoryActiveRecord implements ILandRepository
             $model['available'],
             $objeto,
         );
-
     }
 
     public function create($arr): Land
     {
-
         $model = new Model();
         $model->attributes = $arr;
-        if ($model->save()) {
-            return $this->get($model["attributes"]["id"]);
-        }else{
-            var_dump($model->getErrors());
-            exit();
-        }
+        if ($model->save()) return $this->get($model["attributes"]["id"]);
     }
 }

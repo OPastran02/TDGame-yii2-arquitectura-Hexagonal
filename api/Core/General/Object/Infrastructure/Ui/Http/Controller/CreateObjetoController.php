@@ -28,9 +28,9 @@ class CreateObjetoController
         $this->handler = new CreateObjeto($repository);
     }
 
-    public function __invoke()
+    public function __invoke(string $type)
     {    
-        $obj = ($this->handler)();
+        $obj = ($this->handler)($type);
 
         Yii::$app->response->format = Response::FORMAT_JSON;
         Yii::$app->response->data = $obj->toPrimitives();

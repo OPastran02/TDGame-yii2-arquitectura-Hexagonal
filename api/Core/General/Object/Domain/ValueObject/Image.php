@@ -11,7 +11,7 @@ final class Image extends StringValueObject
 {
     protected string $value;
 
-    private const VALID_OPTIONS = ['LAND', 'HERO', 'BOXX', 'RAID', 'BADG', 'COIN', 'GUIL'];
+    private const VALID_OPTIONS = ['LAND', 'HERO', 'BOXX', 'RAID', 'BADG', 'COIN', 'GUIL','PLAY'];
 
     public function __construct(string $value)
     {

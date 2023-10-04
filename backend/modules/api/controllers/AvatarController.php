@@ -6,7 +6,10 @@ use yii\web\Response;
 use yii\helpers\Json; // Asegúrate de importar el uso de la clase Json
 use Yii;
 
-use api\Core\Player\Avatar\Infrastructure\Ui\Http\Controller\GetAvatarByIdController;
+use api\Core\Player\Avatar\Infrastructure\Ui\Http\Controller\{
+    CreateAvatarController,
+    GetAvatarController
+};
 
 class AvatarController extends \yii\web\Controller
 {
@@ -17,6 +20,12 @@ class AvatarController extends \yii\web\Controller
 
     public function actionGet($id)
     {
-        return (new GetAvatarByIdController())($id);
+        return (new GetAvatarController())($id);
+    }
+
+    public function actionCreate()
+    {
+        $data = Yii::$app->request->getBodyParams();
+        return (new CreateAvatarController())($data["nickname"],$data["message"]);
     }
 }

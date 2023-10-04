@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace api\Core\Player\Avatar\Application\Query;
 
-use api\Core\Player\Avatar\Domain\Avatar;
-use api\Core\Player\Avatar\Domain\Repository\IAvatarRepository;
+use api\Core\Player\Avatar\Domain\{
+    Avatar,
+    Repository\IAvatarRepository
+};
 
-class GetAvatarByIdHandler
+class GetAvatar
 {
     private IAvatarRepository $repository;
 
@@ -16,9 +18,8 @@ class GetAvatarByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(string $id): ?Avatar
+    public function __invoke(string $avatarId): ?Avatar
     {
-        $obj = $this->repository->getbyId($id);
-        return $obj;
+        return $this->repository->get($avatarId);
     }
 }
