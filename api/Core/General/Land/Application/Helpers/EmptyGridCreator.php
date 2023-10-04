@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace api\Core\Player\Status\Application\Helpers;
+namespace api\Core\General\Land\Application\Helpers;
 
 class EmptyGridCreator
 {
-
     private int $width;
     private int $height;
 
@@ -20,8 +19,8 @@ class EmptyGridCreator
     {
         $emptyGrid = ["grid" => []];
 
-        for ($i = 0; $i < $height; $i++) {
-            $row = array_fill(0, $width, 0);
+        for ($i = 0; $i < $this->height; $i++) {
+            $row = array_fill(0, $this->width, 0);
             $emptyGrid["grid"][] = $row;
         }
 

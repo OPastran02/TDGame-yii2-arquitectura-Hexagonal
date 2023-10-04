@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 namespace api\Core\General\Land\Infrastructure\Ui\Http\Controller;
 
+use api\Core\General\Land\Domain\{
+    Land,
+    Repository\ILandRepository
+};
+use api\Core\General\Land\Infrastructure\Persistence\ActiveRecord\LandRepositoryActiveRecord;
+use api\Core\General\Land\Application\Query\GetLandByIdHandler;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use api\Core\General\Land\Domain\Land; 
-use api\Core\General\Land\Domain\Repository\ILandRepository;
-use api\Core\General\Land\Infrastructure\Persistence\ActiveRecord\LandRepositoryActiveRecord;
-use api\Core\General\Land\Application\Query\GetLandByIdHandler;
 use yii\helpers\Json;
 use yii\web\Response;
 use Yii;
@@ -27,9 +29,6 @@ class GetLandByIdController
 
     public function __invoke(string $id)
     {    
-        $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON;
-    
         try {
             $object = ($this->handler)($id);
             $status = 'ok';
@@ -44,9 +43,9 @@ class GetLandByIdController
             'hits' => $hits,
         ];
     
-        $response->data = $data;
-        
-        return $response;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->data = $data;
+        return Yii::$app->response;
     }
 
 }  

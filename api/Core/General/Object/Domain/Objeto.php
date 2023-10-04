@@ -50,7 +50,7 @@ final class Objeto
     }
 
     public static function fromPrimitives(
-        ?int $id,
+        string $id,
         string $name,
         string $description,
         string $color,
@@ -78,43 +78,14 @@ final class Objeto
             'description'           =>          $this->description->value(),
             'color'                 =>          $this->color->value(),
             'model'                 =>          $this->model->value(),
-            'image      '           =>          $this->image->value(),
+            'image'                 =>          $this->image->value(),
             'available'             =>          $this->available->value(),
         ];
     }
 
-    public function getId(): UUID
+    public function id(): UUID
     {
         return $this->id;
     }
 
-    public function getName(): GameText
-    {
-        return $this->name;
-    }
-
-    public function getDescription(): GameText
-    {
-        return $this->description;
-    }
-
-    public function getColor(): Color
-    {
-        return $this->color;
-    }
-
-    public function getModel(): Model
-    {
-        return $this->model;
-    }
-
-    public function getImage(): Image
-    {
-        return $this->image;
-    }
-
-    public function getAvailable(): Available
-    {
-        return $this->available;
-    }
 }

@@ -11,9 +11,9 @@ class LandController extends \yii\web\Controller
         return $this->render('index');
     }
 
-    public function actionCreate($id)
+    public function actionCreate()
     {
-        return (new CreateLandController())($id);
+        return (new CreateLandController())();
     }
 
 }

@@ -11,7 +11,8 @@ use api\Core\General\Land\Domain\{
 use api\Core\General\Object\Domain\{
     Repository\IObjetoRepository
 };
-use api\Core\General\Land\Application\Helper\EmptyGridCreator;
+use api\Core\General\Land\Application\Helpers\EmptyGridCreator;
+use api\Core\General\Object\Application\Command\CreateObjeto;
 use Ramsey\Uuid\Uuid;
 
 final class CreateLand
@@ -24,25 +25,23 @@ final class CreateLand
         $this->objRepository = $objRepository;
     }
 
-    public function __invoke(string $landId): Land
-    {
-        $name = '[{"id": 1, "text": "nombre"}]';
-        $description = '[{"id": 1, "text": "descripcion"}]';
-        $color = "FFFFFF";
+    public function __invoke(): Land
+    { 
+        $height=2;
+        $weight=2;
 
-        $obj = (new CreateObjeto($this->objRepository))($objetoId,$name,$description,$color);
-        var_dump($obj);
-        exit();
-
+        $objeto = (new CreateObjeto($this->objRepository))();
+        $grid = (new EmptyGridCreator($height,$weight))();
+        
         $arr=[];
-        $arr['id'] = $landId;
-        $arr['height']=40;
-        $arr['weight']=40;
-        $arr['code']= (new EmptyGridCreator($arr['height'],$arr['weight']))();
+        $arr['id'] = Uuid::uuid4()->toString();
+        $arr['height']=$height;
+        $arr['weight']=$weight;
+        $arr['gridMap']=$grid;
         $arr['order']=0;
-        $arr['idObject']=0;
+        $arr['idObject']=$objeto->id()->value();
+        $arr['chat']="moriras";
         $arr['available']=1;
-
 
         return $this->repository->create($arr);
     }

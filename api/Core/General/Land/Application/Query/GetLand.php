@@ -18,8 +18,8 @@ class GetLandByIdHandler
         $this->repository = $repository;
     }
 
-    public function __invoke(string $id): ?Land
+    public function __invoke(string $landId): ?Land
     {
-        return $this->repository->get($id);
+        return $this->repository->get($landId);
     }
 }

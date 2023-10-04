@@ -26,9 +26,10 @@ final class Land
         private Weight $weight,
         private GridMap $gridMap,
         private Order $order,
-        private NID $idObject,
+        private UUID $idObject,
         private Chat $chat,
         private Available $available,
+        private Objeto $objeto,
     )
     {}
 
@@ -38,12 +39,13 @@ final class Land
         Weight $weight,
         GridMap $gridMap,
         Order $order,
-        NID $idObject,
+        UUID $idObject,
         Chat $chat,
         Available $available,
+        Objeto $objeto,
     ): self 
     {
-        return $obj = new Objeto(
+        return new self(
             $id,
             $height,
             $weight,
@@ -52,6 +54,7 @@ final class Land
             $idObject,
             $chat,
             $available,
+            $objeto
         );
     }
 
@@ -61,20 +64,22 @@ final class Land
         int $weight,
         int $gridMap,
         int $order,
-        int $idObject,
+        string $idObject,
         string $chat,
         int $available,
+        Objeto $objeto,
     ): self
     {
-        return new Stat(
+        return new self(
             new UUID($id),
             new Height ($height),
             new Weight ($weight),
             new GridMap ($gridMap),
             new Order ($order),
-            new NID ($idObject),
+            new UUID ($idObject),
             new Chat ($chat),
             new Available ($available),
+            $objeto,
         );
     }
 
@@ -89,6 +94,7 @@ final class Land
             'idObject'              =>          $this->idObject->value(), 
             'chat'                  =>          $this->chat->value(), 
             'available'             =>          $this->available->value(),
+            'objeto'                =>          $this->objeto->toPrimitives(),
         ];
     }
 }

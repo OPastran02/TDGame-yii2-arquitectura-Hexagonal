@@ -32,9 +32,9 @@ class CreateLandController
         $this->handler = new CreateLand($repository, $ObjetoRepository);
     }
 
-    public function __invoke(string $landId)
+    public function __invoke()
     {    
-        $obj = ($this->handler)($landId);
+        $obj = ($this->handler)();
 
         Yii::$app->response->format = Response::FORMAT_JSON;
         Yii::$app->response->data = $obj->toPrimitives();

@@ -18,21 +18,16 @@ final class CreateObjeto
         $this->repository = $repository;
     }
 
-    public function __invoke(
-        string $name,
-        string $description,
-        string $color
-    ): Objeto
+    public function __invoke(): Objeto
     {
         $arr=[];
         $arr['id'] = Uuid::uuid4()->toString();
-        $arr['name'] = $name;
-        $arr['description'] = $description;
-        $arr['color'] = $color;
+        $arr['name'] = '[{"id": 1, "text": "nombre"}]';
+        $arr['description'] = '[{"id": 1, "text": "descripcion"}]';
+        $arr['color'] = "FFFFFF";
         $arr['model'] = "MOD-LAND-0000-0000";
         $arr['image'] = "IMG-LAND-0000-0000";
         $arr['available'] = 1;
-
 
         return $this->repository->create($arr);
     }

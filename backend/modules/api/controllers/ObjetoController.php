@@ -24,8 +24,7 @@ class ObjetoController extends \yii\web\Controller
 
     public function actionCreate()
     {
-        $data = Yii::$app->request->getBodyParams();
-        return (new CreateObjetoController())($data['id'],$data['name'],$data['description'],$data['color']);
+        return (new CreateObjetoController())();
     }
 
 }

@@ -45,7 +45,7 @@ final class Nature
     }
 
     public static function fromPrimitives(
-        ?int $id,
+        int $id,
         int $idObject, 
         int $idBoost, 
         int $available,
@@ -54,7 +54,7 @@ final class Nature
     ): self
     {
         return new self(
-            isset($id) ? new NID($id):   null,
+            new NID($id),
             new NID ($idObject), 
             new NID ($idBoost), 
             new Available ($available),
