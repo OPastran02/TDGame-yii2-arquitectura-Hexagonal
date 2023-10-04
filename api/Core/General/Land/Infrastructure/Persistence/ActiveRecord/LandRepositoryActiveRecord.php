@@ -24,10 +24,14 @@ class LandRepositoryActiveRecord implements ILandRepository
 
         $objeto = Objeto::fromPrimitives(...$model["object"]["attributes"]);
 
-        return Nature::fromPrimitives(
+        return Land::fromPrimitives(
             $model['id'],
+            $model['height'],
+            $model['weight'],
+            $model['gridMap'],
+            $model['order'],
             $model['idObject'],
-            $model['idBoost'],
+            $model['chat'],
             $model['available'],
             $objeto,
         );
@@ -39,11 +43,8 @@ class LandRepositoryActiveRecord implements ILandRepository
 
         $model = new Model();
         $model->attributes = $arr;
-        var_dump($model);
-        exit();
         if ($model->save()) {
-            $obj= Land::fromPrimitives(...$model->attributes);
-            return $obj;
+            return $this->get($model["attributes"]["id"]);
         }else{
             var_dump($model->getErrors());
             exit();

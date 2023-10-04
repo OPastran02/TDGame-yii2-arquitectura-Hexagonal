@@ -17,6 +17,7 @@ use api\Core\General\Land\Domain\ValueObject\{
     Order,
     Chat
 };
+use api\Core\General\Object\Domain\Objeto; 
 
 final class Land
 {
@@ -62,7 +63,7 @@ final class Land
         string $id,
         int $height,
         int $weight,
-        int $gridMap,
+        string $gridMap,
         int $order,
         string $idObject,
         string $chat,

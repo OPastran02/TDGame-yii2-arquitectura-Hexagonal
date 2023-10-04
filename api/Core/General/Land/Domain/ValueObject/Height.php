@@ -9,9 +9,9 @@ use Error;
 
 final class Height extends intValueObject
 {
-    protected string $value;
+    protected int $value;
 
-    public function __construct(string $value)
+    public function __construct(int $value)
     {
         parent::__construct($value);
         $this->value = $value;

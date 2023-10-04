@@ -17,7 +17,7 @@ final class Chat extends StringValueObject
         $this->value = $value;
     }
 
-    public function value(): int
+    public function value(): string
     {
         return $this->value;
     }

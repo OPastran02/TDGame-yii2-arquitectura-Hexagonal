@@ -9,7 +9,7 @@ use api\Shared\Domain\ValueObject\Primitives\StringValueObject;
 final class GridMap extends StringValueObject
 {
     protected string $value;
-    protected int $gridSize=40;
+    protected int $gridSize=2;
 
     public function __construct(string $value)
     {
