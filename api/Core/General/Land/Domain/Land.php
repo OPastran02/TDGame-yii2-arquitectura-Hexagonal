@@ -98,4 +98,9 @@ final class Land
             'objeto'                =>          $this->objeto->toPrimitives(),
         ];
     }
+
+    public function id(): UUID
+    {
+        return $this->id;
+    }
 }

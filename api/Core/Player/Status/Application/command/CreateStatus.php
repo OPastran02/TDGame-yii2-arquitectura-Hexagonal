@@ -8,6 +8,7 @@ use api\Core\Player\Status\Domain\{
     Repository\IStatusRepository,
     Status
 };
+use Ramsey\Uuid\Uuid;
 
 final class CreateStatus
 {
@@ -17,10 +18,10 @@ final class CreateStatus
         $this->repository = $repository;
     }
 
-    public function __invoke($statusId): Status
+    public function __invoke(): Status
     {
         $arr=[];
-        $arr['id']                = $statusId;
+        $arr['id']                = Uuid::uuid4()->toString();
         $arr['honor']             = 0;
         $arr['lastLogin']         = time();
         $arr['battlePass']        = 0;

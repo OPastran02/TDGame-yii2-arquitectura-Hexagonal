@@ -20,7 +20,7 @@ final class CreateLand
     private ILandRepository $repository;
     private IObjetoRepository $objRepository;
 
-    public function __construct(ILandRepository $repository,IObjetoRepository $objRepository){
+    public function __construct(ILandRepository $repository, IObjetoRepository $objRepository){
         $this->repository = $repository;
         $this->objRepository = $objRepository;
     }

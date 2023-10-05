@@ -27,7 +27,6 @@ class m230914_015950_create_players_table extends Migration
             'idwallet'          => $this->string(36)->notNull(),
             'idavatar'          => $this->string(36)->notNull(),
             'idmetrics'         => $this->string(36)->notNull(),
-            'idrankedMetrics'   => $this->string(36)->notNull(),
             'idstatus'          => $this->string(36)->notNull(),
             'idland'            => $this->string(36)->notNull(),
             'experience'        => $this->integer()->notNull()->defaultValue(0),
@@ -88,22 +87,6 @@ class m230914_015950_create_players_table extends Migration
             'CASCADE'
         );
 
-        // creates index for column `idrankedMetrics`
-        $this->createIndex(
-            '{{%idx-players-idrankedMetrics}}',
-            '{{%players}}',
-            'idrankedMetrics'
-        );
-
-        // add foreign key for table `{{%idrankedMetrics}}`
-        $this->addForeignKey(
-            '{{%fk-players-idrankedMetrics}}',
-            '{{%players}}',
-            'idrankedMetrics',
-            '{{%ranked_metrics}}',
-            'id',
-            'CASCADE'
-        );
 
         // creates index for column `idstatus`
         $this->createIndex(
@@ -181,17 +164,6 @@ class m230914_015950_create_players_table extends Migration
             '{{%players}}'
         );
 
-        // drops foreign key for table `{{%idrankedMetrics}}`
-        $this->dropForeignKey(
-            '{{%fk-players-idrankedMetrics}}',
-            '{{%players}}'
-        );
-
-        // drops index for column `idrankedMetrics`
-        $this->dropIndex(
-            '{{%idx-players-idrankedMetrics}}',
-            '{{%players}}'
-        );
 
         // drops foreign key for table `{{%idstatus}}`
         $this->dropForeignKey(

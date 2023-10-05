@@ -26,9 +26,9 @@ class CreateMetricController
         $this->handler = new CreateMetric($repository);
     }
 
-    public function __invoke(string $metricId)
+    public function __invoke()
     {    
-        $obj = ($this->handler)($metricId);
+        $obj = ($this->handler)();
 
         Yii::$app->response->format = Response::FORMAT_JSON;
         Yii::$app->response->data = $obj->toPrimitives();

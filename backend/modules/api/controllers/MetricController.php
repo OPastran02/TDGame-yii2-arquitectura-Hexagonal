@@ -21,9 +21,9 @@ class MetricController extends \yii\web\Controller
         return (new GetMetricController())($id);
     }
 
-    public function actionCreate($id)
+    public function actionCreate()
     {
-        return (new CreateMetricController())($id);
+        return (new CreateMetricController())();
     }
 
     public function actionUpdate()

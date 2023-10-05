@@ -13,7 +13,6 @@ use api\Core\Player\Status\Application\Command\CreateStatus;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use Ramsey\Uuid\Uuid;
 use yii\helpers\Json;
 use yii\web\Response;
 use Yii;
@@ -28,9 +27,9 @@ class CreateStatusController
         $this->handler = new CreateStatus($repository);
     }
 
-    public function __invoke(string $statusId)
+    public function __invoke()
     {    
-        $obj = ($this->handler)($statusId);
+        $obj = ($this->handler)();
 
         Yii::$app->response->format = Response::FORMAT_JSON;
         Yii::$app->response->data = $obj->toPrimitives();

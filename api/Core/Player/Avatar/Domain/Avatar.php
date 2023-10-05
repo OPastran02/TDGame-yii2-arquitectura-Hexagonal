@@ -78,4 +78,9 @@ final class Avatar
             'objeto'                =>          $this->objeto->toPrimitives(),
         ];
     }
+
+    public function id(): UUID
+    {
+        return $this->id;
+    }
 }

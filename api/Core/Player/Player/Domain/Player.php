@@ -4,27 +4,38 @@ declare(strict_types=1);
 
 namespace api\Core\Player\Player\Domain;
 
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\Available;
-use api\Core\Shared\Domain\ValueObject\Experience;
-use api\Core\Shared\Domain\ValueObject\Level;
+use api\Shared\Domain\ValueObject\{
+    NID,
+    UUID,
+    Available
+};
+use api\Core\Shared\Domain\ValueObject\{
+    Experience,
+    Level
+};
+use api\Core\Player\Wallet\Domain\Wallet;
+use api\Core\Player\Avatar\Domain\Avatar;
+use api\Core\Player\Metric\Domain\Metric;
+use api\Core\Player\Status\Domain\Status;
+use api\Core\Player\Land\Domain\Land;
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class Player extends AggregateRoot
+final class Player
 {
     public function __construct(
         private UUID $id,            
         private UUID $idwallet,         
         private UUID $idavatar,         
         private UUID $idmetrics,        
-        private UUID $idrankedMetrics,  
         private UUID $idstatus,         
         private UUID $idland,           
         private Experience $experience,       
         private Level $level,            
         private Available $available,
+        private Wallet $wallet,
+        private Avatar $avatar,
+        private Metric $metric,
+        private Status $status,
+        private Land $land
     )
     {}
 
@@ -33,12 +44,16 @@ final class Player extends AggregateRoot
         UUID $idwallet,         
         UUID $idavatar,         
         UUID $idmetrics,        
-        UUID $idrankedMetrics,  
         UUID $idstatus,         
         UUID $idland,           
         Experience $experience,       
         Level $level,        
         Available $available,
+        Wallet $wallet,
+        Avatar $avatar,
+        Metric $metric,
+        Status $status,
+        Land $land
     ): self 
     {
         return new self(
@@ -46,55 +61,71 @@ final class Player extends AggregateRoot
             $idwallet,         
             $idavatar,         
             $idmetrics,        
-            $idrankedMetrics,  
             $idstatus,         
             $idland,           
             $experience,       
             $level,        
             $available,
+            $wallet,
+            $avatar,
+            $metric,
+            $status,
+            $land
         );
     }
 
     public static function fromPrimitives(
-        ?string $id,
+        string $id,
         string $idwallet,         
         string $idavatar,         
-        string $idmetrics,        
-        string $idrankedMetrics,  
+        string $idmetrics,         
         string $idstatus,         
         string $idland,           
         int $experience,       
         int $level,   
         int $available,
+        Wallet $wallet,
+        Avatar $avatar,
+        Metric $metric,
+        Status $status,
+        Land   $land
     ): self
     {
         return new Objeto(
-            isset($id) ? new UUID($id):   null,
+            new UUID($id),
             new UUID($idwallet),         
             new UUID($idavatar),         
             new UUID($idmetrics),        
-            new UUID($idrankedMetrics),  
             new UUID($idstatus),         
             new UUID($idland),           
             new Experience($experience),       
             new Level($level),        
             new Available($available),
+            $wallet,
+            $avatar,
+            $metric,
+            $status,
+            $land
         );
     }
 
     public function toPrimitives(): array
     {
         return [
-            'id'                    =>          isset($this->id) ? $this->id->value() : null,
-            'idwallet'              =>          $this->available->value(),         
-            'idavatar'              =>          $this->available->value(),         
-            'idmetrics'             =>          $this->available->value(),        
-            'idrankedMetrics'       =>          $this->available->value(),  
-            'idstatus'              =>          $this->available->value(),         
-            'idland'                =>          $this->available->value(),           
-            'experience'            =>          $this->available->value(),       
-            'level'                 =>          $this->available->value(),   
+            'id'                    =>          $this->id->value(),
+            'idwallet'              =>          $this->idwallet->value(),         
+            'idavatar'              =>          $this->idavatar->value(),         
+            'idmetrics'             =>          $this->idmetrics->value(), 
+            'idstatus'              =>          $this->idstatus->value(),         
+            'idland'                =>          $this->idland->value(),           
+            'experience'            =>          $this->experience->value(),       
+            'level'                 =>          $this->Level->value(),   
             'available'             =>          $this->available->value(),
+            'wallet'                =>          $this->wallet->toPrimitives(),
+            'avatar'                =>          $this->avatar->toPrimitives(),
+            'metric'                =>          $this->metric->toPrimitives(),
+            'status'                =>          $this->status->toPrimitives(),
+            'land'                  =>          $this->land->toPrimitives(),
         ];
     }
 }

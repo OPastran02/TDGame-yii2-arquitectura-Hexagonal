@@ -8,6 +8,7 @@ use api\Core\Player\Metric\Domain\{
     Metric,
     Repository\IMetricRepository
 };
+use Ramsey\Uuid\Uuid;
 
 class CreateMetric
 {
@@ -18,10 +19,10 @@ class CreateMetric
         $this->repository = $repository;
     }
  
-    public function __invoke(string $metricId): ?Metric
+    public function __invoke(): ?Metric
     {
         $arr = [];
-        $arr['id']              =$metricId;
+        $arr['id']              =Uuid::uuid4()->toString();
         $arr['win']             =0;
         $arr['loss']            =0; 
         $arr['handicap']        =0;     

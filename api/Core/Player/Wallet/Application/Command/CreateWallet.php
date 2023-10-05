@@ -8,6 +8,7 @@ use api\Core\Player\Wallet\Domain\{
     Repository\IWalletRepository,
     Wallet
 };
+use Ramsey\Uuid\Uuid;
 
 final class CreateWallet
 {
@@ -17,10 +18,10 @@ final class CreateWallet
         $this->repository = $repository;
     }
 
-    public function __invoke(string $walletId): Wallet
+    public function __invoke(): Wallet
     {
         $arr = [];
-        $arr['id']                = $walletId;  
+        $arr['id']                = Uuid::uuid4()->toString();  
         $arr['bronze']            = 0; 
         $arr['silver']            = 0;
         $arr['gold']              = 0; 

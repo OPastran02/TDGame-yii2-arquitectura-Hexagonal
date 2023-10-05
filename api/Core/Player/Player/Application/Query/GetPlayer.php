@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace api\Core\Player\Player\Application\Query;
 
-use api\Core\Player\Player\Domain\Player;
-use api\Core\Player\Player\Domain\Repository\IPlayerRepository;
+use api\Core\Player\Player\Domain\{
+    Player,
+    Repository\IPlayerRepository
+};
 
-class GetPlayerByIdHandler
+class GetPlayer
 {
     private IPlayerRepository $repository;
 
@@ -16,9 +18,8 @@ class GetPlayerByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Player
+    public function __invoke(int $playerId): ?Player
     {
-        $obj = $this->repository->getbyId($id);
-        return $obj;
+        return $this->repository->get($playerId);
     }
 }

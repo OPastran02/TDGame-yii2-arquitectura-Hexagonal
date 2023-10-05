@@ -59,7 +59,7 @@ final class Status
     }
 
     public static function fromPrimitives(
-        ?string $id,
+        string $id,
         int $honor,
         int $lastLogin,
         int $battlePass,
@@ -71,7 +71,7 @@ final class Status
     ): self
     {
         return new self(
-            isset($id) ? new UUID($id):   null,
+            new UUID($id),
             new Honor($honor),
             new UnixTimestampDate($lastLogin),
             new BattlePass($battlePass),
@@ -86,7 +86,7 @@ final class Status
     public function toPrimitives(): array
     {
         return [
-            'id'                    =>          isset($this->id) ? $this->id->value() : null,
+            'id'                    =>          $this->id->value(),
             'honor'                 =>          $this->honor->value(),
             'lastLogin'             =>          $this->lastLogin->value(),
             'battlePass'            =>          $this->battlePass->value(),
@@ -96,5 +96,10 @@ final class Status
             'active'                =>          $this->active->value(),
             'available'             =>          $this->available->value(),
         ];
+    }
+
+    public function id(): UUID
+    {
+        return $this->id;
     }
 }

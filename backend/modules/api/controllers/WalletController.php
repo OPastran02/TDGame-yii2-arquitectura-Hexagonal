@@ -23,9 +23,9 @@ class WalletController extends \yii\web\Controller
         return (new GetWalletController)($id);
     }
 
-    public function actionCreate($id)
+    public function actionCreate()
     {
-        return (new CreateWalletController())($id);
+        return (new CreateWalletController())();
     }
 
     public function actionAddMoney()

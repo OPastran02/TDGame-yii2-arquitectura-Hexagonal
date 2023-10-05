@@ -28,9 +28,9 @@ class CreateWalletController
         $this->handler = new CreateWallet($repository);
     }
 
-    public function __invoke(string $statusId)
+    public function __invoke()
     {    
-        $obj = ($this->handler)($statusId);
+        $obj = ($this->handler)();
 
         Yii::$app->response->format = Response::FORMAT_JSON;
         Yii::$app->response->data = $obj->toPrimitives();

@@ -4,18 +4,21 @@ declare(strict_types=1);
 
 namespace api\Core\Player\Player\Infrastructure\Ui\Http\Controller;
 
+
+use api\Core\Player\Player\Domain\{
+    Player,
+    Repository\IPlayerRepository
+}; 
+use api\Core\Player\Player\Infrastructure\Persistence\ActiveRecord\PlayerRepositoryActiveRecord;
+use api\Core\Player\Player\Application\Query\GetPlayerByIdHandler;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use api\Core\Player\Player\Domain\Player; 
-use api\Core\Player\Player\Domain\Repository\IPlayerRepository;
-use api\Core\Player\Player\Infrastructure\Persistence\ActiveRecord\PlayerRepositoryActiveRecord;
-use api\Core\Player\Player\Application\Query\GetPlayerByIdHandler;
 use yii\helpers\Json;
 use yii\web\Response;
 use Yii;
 
-class GetPlayerByIdController
+class GetPlayerController
 {
     private GetPlayerByIdHandler $handler;
 
@@ -25,13 +28,10 @@ class GetPlayerByIdController
         $this->handler = new GetPlayerByIdHandler($repository);
     }
 
-    public function __invoke(int $id)
+    public function __invoke(int $playerId)
     {    
-        $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON;
-    
         try {
-            $object = ($this->handler)($id);
+            $object = ($this->handler)($playerId);
             $status = 'ok';
             $hits = ($object !== null) ? [$object->toPrimitives()] : ['no data'];
         } catch (InvalidRequestValueException $e) {
@@ -44,9 +44,9 @@ class GetPlayerByIdController
             'hits' => $hits,
         ];
     
-        $response->data = $data;
-        
-        return $response;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->data = $data;
+        return Yii::$app->response;
     }
 
 }  

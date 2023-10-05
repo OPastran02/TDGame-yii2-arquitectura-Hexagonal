@@ -27,9 +27,9 @@ class StatusController extends \yii\web\Controller
         return (new GetStatusController())($id);
     }
 
-    public function actionCreate($id)
+    public function actionCreate()
     {
-        return (new CreateStatusController())($id);
+        return (new CreateStatusController())();
     }
 
     public function actionUpdateBattlePass($id)

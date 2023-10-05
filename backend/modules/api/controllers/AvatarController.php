@@ -13,6 +13,8 @@ use api\Core\Player\Avatar\Infrastructure\Ui\Http\Controller\{
 
 class AvatarController extends \yii\web\Controller
 {
+    public $enableCsrfValidation = false;
+    
     public function actionIndex()
     {
         return $this->render('index');

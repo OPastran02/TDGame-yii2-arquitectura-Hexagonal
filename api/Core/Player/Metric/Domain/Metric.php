@@ -109,4 +109,9 @@ final class Metric
             'available'             =>          $this->available->value(),
         ];
     }
+
+    public function id(): UUID
+    {
+        return $this->id;
+    }
 }

@@ -47,7 +47,7 @@ final class Wallet
     }
 
     public static function fromPrimitives(
-        ?string $id,
+        string $id,
         int $bronze,
         int $silver,
         int $gold,
@@ -56,7 +56,7 @@ final class Wallet
     ): self
     {
         return new self(
-            isset($id) ? new UUID($id):   null,
+            new UUID($id),
             new Bronze($bronze),
             new Silver($silver),
             new Gold($gold),
@@ -68,7 +68,7 @@ final class Wallet
     public function toPrimitives(): array
     {
         return [
-            'id'                    =>          isset($this->id) ? $this->id->value() : null,
+            'id'                    =>          $this->id->value(),
             'bronze'                =>          $this->bronze->value(),
             'silver'                =>          $this->silver->value(),
             'gold'                  =>          $this->gold->value(),
@@ -76,5 +76,10 @@ final class Wallet
             'available'             =>          $this->available->value(),
             'available'             =>          $this->available->value(),
         ];
+    }
+
+    public function id(): UUID
+    {
+        return $this->id;
     }
 }
