@@ -36,7 +36,6 @@ class PlayerRepositoryActiveRecord implements IPlayerRepository
         if (!$model) return null;
         $objAvatar = Objeto::fromPrimitives(...$model["avatar"]["object"]);
         $objLand = Objeto::fromPrimitives(...$model["land"]["object"]);
-        
         $wallet = Wallet::fromPrimitives(...$model->wallet->getAttributes());
         $avatar = Avatar::fromPrimitives(           
             $model->avatar->getAttributes()["id"],
@@ -48,7 +47,6 @@ class PlayerRepositoryActiveRecord implements IPlayerRepository
         );  
         $metric = Metric::fromPrimitives(...$model["metric"]["attributes"]);
         $status = Status::fromPrimitives(...$model["status"]["attributes"]);
-
         $land = Land::fromPrimitives(
             $model->land->getAttributes()["id"],
             $model->land->getAttributes()["height"],
@@ -61,7 +59,7 @@ class PlayerRepositoryActiveRecord implements IPlayerRepository
             $objLand
         );
 
-        return Player::fromPrimitives(
+        $player= Player::fromPrimitives(
             $model['id'],              
             $model['idwallet'],        
             $model['idavatar'],        
@@ -77,17 +75,14 @@ class PlayerRepositoryActiveRecord implements IPlayerRepository
             $status,   
             $land
         );
+
+        return $player;
     }
 
     public function create($arr): Player
     {
         $model = new Model();
         $model->attributes = $arr;
-        if ($model->save()){
-            return $this->get($model["attributes"]["id"]);
-        }else{
-            var_dump($model->getErrors());
-            exit();
-        } 
+        if ($model->save()) return $this->get($model["attributes"]["id"]);
     }
 }

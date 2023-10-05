@@ -10,7 +10,7 @@ use api\Core\Player\Player\Domain\{
     Repository\IPlayerRepository
 }; 
 use api\Core\Player\Player\Infrastructure\Persistence\ActiveRecord\PlayerRepositoryActiveRecord;
-use api\Core\Player\Player\Application\Query\GetPlayerByIdHandler;
+use api\Core\Player\Player\Application\Query\GetPlayer;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,15 +20,15 @@ use Yii;
 
 class GetPlayerController
 {
-    private GetPlayerByIdHandler $handler;
+    private GetPlayer $handler;
 
     public function __construct()
     { 
         $repository = new PlayerRepositoryActiveRecord();
-        $this->handler = new GetPlayerByIdHandler($repository);
+        $this->handler = new GetPlayer($repository);
     }
 
-    public function __invoke(int $playerId)
+    public function __invoke(string $playerId)
     {    
         try {
             $object = ($this->handler)($playerId);

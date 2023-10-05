@@ -119,7 +119,7 @@ final class Player
             'idstatus'              =>          $this->idstatus->value(),         
             'idland'                =>          $this->idland->value(),           
             'experience'            =>          $this->experience->value(),       
-            'level'                 =>          $this->Level->value(),   
+            'level'                 =>          $this->level->value(),   
             'available'             =>          $this->available->value(),
             'wallet'                =>          $this->wallet->toPrimitives(),
             'avatar'                =>          $this->avatar->toPrimitives(),

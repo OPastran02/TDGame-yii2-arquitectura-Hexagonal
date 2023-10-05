@@ -18,7 +18,7 @@ class GetPlayer
         $this->repository = $repository;
     }
  
-    public function __invoke(int $playerId): ?Player
+    public function __invoke(string $playerId): ?Player
     {
         return $this->repository->get($playerId);
     }

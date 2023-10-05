@@ -52,10 +52,10 @@ class CreatePlayerController
 
     public function __invoke($nickname,$message)
     {    
-        $obj = ($this->handler)($nickname,$message);
+        $player = ($this->handler)($nickname,$message);
 
         Yii::$app->response->format = Response::FORMAT_JSON;
-        Yii::$app->response->data = $obj->toPrimitives();
+        Yii::$app->response->data = $player->toPrimitives();
         return Yii::$app->response;
     }
 
