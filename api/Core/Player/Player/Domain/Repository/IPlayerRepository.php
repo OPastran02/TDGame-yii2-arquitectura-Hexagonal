@@ -8,4 +8,5 @@ interface IPlayerRepository
 {
     public function get(string $playerId): ?Player;
     public function create($player): ?Player;
+    public function addExperience($player): ?Player;
 }

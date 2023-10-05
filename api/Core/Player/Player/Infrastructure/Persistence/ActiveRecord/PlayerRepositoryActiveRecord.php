@@ -85,4 +85,11 @@ class PlayerRepositoryActiveRecord implements IPlayerRepository
         $model->attributes = $arr;
         if ($model->save()) return $this->get($model["attributes"]["id"]);
     }
+
+    public function addExperience($arr): Player
+    {
+        $model = Model::findOne($arr['id']);
+        $model->attributes = $arr;
+        if ($model->save()) return $this->get($model["attributes"]["id"]);
+    }
 }
