@@ -4,49 +4,37 @@ declare(strict_types=1);
 
 namespace api\Core\Shared\Domain\ValueObject;
 
-use api\Shared\Domain\ValueObject\Primitives\StringValueObject;
+use api\Shared\Domain\ValueObject\Primitives\IntValueObject;
 
-final class Farm extends StringValueObject
+final class Farm extends IntValueObject
 {
+    protected int $value;
 
-    protected string $value;
+    private const MIN_VALUE = 0;
+    private const MAX_VALUE = 100000000;
 
-    private const MIN_LENGTH = 1;
-    private const MAX_LENGTH = 50;
-
-    public function __construct(string $value)
+    public function __construct(int $value)
     {
         parent::__construct($value);
-        $this->ensureIsValidName($value);
-        $this->ensureIsLengthBetween($value);
+        $this->ensureIsBetweenAcceptedValues($value);
         $this->value = $value;
     }
 
-    private function ensureIsValidName(string $value): void
+    public function ensureIsBetweenAcceptedValues(int $value): void
     {
-        if (empty($value)) {
-            throw new \InvalidArgumentException(
-                sprintf('<%s> does not allow the value <%s>.', static::class, $value)
-            );
-        }
-    }
-
-    private function ensureIsLengthBetween(string $value): void
-    {
-        if (strlen($value) < self::MIN_LENGTH || strlen($value) > self::MAX_LENGTH) {
+        if ($value < self::MIN_VALUE || $value > self::MAX_VALUE) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    '<%s> does not allow the value <%s>. It must be between <%s> and <%s> characters long.',
-                    static::class,
+                    'The value (%s) must be between %s and %s',
                     $value,
-                    self::MIN_LENGTH,
-                    self::MAX_LENGTH
+                    self::MIN_VALUE,
+                    self::MAX_VALUE
                 )
             );
         }
     }
 
-    public function value(): string
+    public function value(): int
     {
         return $this->value;
     }

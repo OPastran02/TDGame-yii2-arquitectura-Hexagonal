@@ -18,8 +18,8 @@ class GetWallet
         $this->repository = $repository;
     }
  
-    public function __invoke(string $id): ?Wallet
+    public function __invoke(string $walletId): ?Wallet
     {
-        return $this->repository->get($id);
+        return $this->repository->get($walletId);
     }
 }

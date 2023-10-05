@@ -1,18 +1,12 @@
 <?php   
 
-namespace api\Core\General\Stash\Domain\Repository;
+namespace api\Core\Guild\Stash\Domain\Repository;
 
-use api\Core\General\Stash\Domain\Stash;
-use api\Core\General\Stash\Domain\Stashes;
+use api\Core\Guild\Stash\Domain\Stash;
 
 interface IStashRepository
 {
-    /*
-    *what can i do with a Stash?
-    *just get, mandatory
-    */
-    
-    public function getbyId(int $id): ?Stash;
-
-
+    public function get(string $stashId): ?Stash;
+    public function create($stash): ?Stash;
+    public function addResources($stash): ?Stash;
 }

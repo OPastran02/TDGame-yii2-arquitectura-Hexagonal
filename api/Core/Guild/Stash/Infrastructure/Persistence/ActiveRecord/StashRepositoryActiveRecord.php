@@ -2,23 +2,33 @@
 
 declare(strict_types=1);
 
-namespace api\Core\General\Stash\Infrastructure\Persistence\ActiveRecord;
+namespace api\Core\Guild\Stash\Infrastructure\Persistence\ActiveRecord;
 
-use api\Core\General\Stash\Domain\Stash;
-use api\Core\General\Stash\Domain\Stashes;
-use api\Core\General\Stash\Domain\Repository\IStashRepository;
+use api\Core\Guild\Stash\Domain\{
+    Stash,
+    Repository\IStashRepository
+};
 use common\models\Stash as Model;
 
 class StashRepositoryActiveRecord implements IStashRepository
 {
-    public function getbyId(int $id): ?Stash
+    public function get(string $stashId): ?Stash
     {
-        $model = Model::findOne($id);
+        $model = Model::findOne($stashId);
+        if ($model) return Stash::fromPrimitives(...$model["attributes"]);  
+    }
 
-        if (!$model) {
-            return null;
-        }else{
-            return Stash::fromPrimitives(...$model["attributes"]);
-        }
+    public function create($arr): Stash
+    {
+        $model = new Model();
+        $model->attributes = $arr;
+        if ($model->save()) return Stash::fromPrimitives(...$model->attributes);
+    }
+
+    public function addResources($arr): Stash
+    {
+        $model = Model::findOne($arr['id']);
+        $model->attributes = $arr;
+        if($model->save()) return Stash::fromPrimitives(...$model->attributes);
     }
 }

@@ -21,9 +21,9 @@ final class AddMoney
         $this->getWallet = new GetWallet($repository);
     }
 
-    public function __invoke($statusId,$type,$value): Wallet
+    public function __invoke($walletId,$type,$value): Wallet
     {
-        $arr = ($this->getWallet)($statusId)->toPrimitives();
+        $arr = ($this->getWallet)($walletId)->toPrimitives();
         $arr[$type] += $value;
         return $this->repository->addMoney($arr);
     }

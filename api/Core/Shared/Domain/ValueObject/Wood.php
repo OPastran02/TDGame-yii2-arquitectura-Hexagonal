@@ -12,7 +12,7 @@ final class Wood extends IntValueObject
     protected int $value;
 
     private const MIN_VALUE = 0;
-    private const MAX_VALUE = 4000000;    
+    private const MAX_VALUE = 100000000;
 
     public function __construct( int $value)
     {
@@ -24,7 +24,7 @@ final class Wood extends IntValueObject
     public function ensureIsBetweenAcceptedValues(int $value): void
     {
         if ($value < self::MIN_VALUE || $value > self::MAX_VALUE) {
-            throw new DomainException(
+            throw new \InvalidArgumentException(
                 sprintf(
                     'The value (%s) must be between %s and %s',
                     $value,

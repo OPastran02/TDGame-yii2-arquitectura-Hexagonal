@@ -31,6 +31,6 @@ class WalletController extends \yii\web\Controller
     public function actionAddMoney()
     {
         $data = Yii::$app->request->getBodyParams();
-        return (new AddMoneyController())($data['id'],$data['name'],$data['description'],$data['color']);
+        return (new AddMoneyController())($data['id'],$data['type'],$data['value']);
     }
 }

@@ -12,9 +12,9 @@ use common\models\Wallet as Model;
 
 class WalletRepositoryActiveRecord implements IWalletRepository
 {
-    public function get(string $id): ?Wallet
+    public function get(string $walletId): ?Wallet
     {
-        $model = Model::findOne($id);
+        $model = Model::findOne($walletId);
         if ($model) return Wallet::fromPrimitives(...$model["attributes"]);
     }
 

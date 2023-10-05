@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace api\Guild\GuildMetric\Domain\ValueObject;
+namespace api\Core\Guild\Metric\Domain\ValueObject;
 
 use api\Shared\Domain\ValueObject\Primitives\IntValueObject;
 

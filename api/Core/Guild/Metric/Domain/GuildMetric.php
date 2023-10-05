@@ -2,35 +2,41 @@
 
 declare(strict_types=1);
 
-namespace api\Core\Guild\GuildMetric\Domain;
+namespace api\Core\Guild\Metric\Domain;
 
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\Available;
-use api\Shared\Domain\ValueObject\UnixTimestampDate;
-use api\Core\Guild\GuildMetric\Domain\ValueObject\DamageDealt;
-use api\Core\Guild\GuildMetric\Domain\ValueObject\Honor;
-use api\Core\Guild\GuildMetric\Domain\ValueObject\LandsDestroyed;
-use api\Core\Guild\GuildMetric\Domain\ValueObject\MaxPoints;
-use api\Core\Guild\GuildMetric\Domain\ValueObject\MobsKilled;
-use api\Core\Shared\Domain\ValueObject\Win;
-use api\Core\Shared\Domain\ValueObject\Handicap;
-use api\Core\Shared\Domain\ValueObject\Loss;
-use api\Core\Shared\Domain\ValueObject\timePlayed;
-use api\Shared\Domain\Aggregate\AggregateRoot;
+use api\Shared\Domain\ValueObject\{
+    NID,
+    UUID,
+    Available,
+    UnixTimestampDate
+};
+use api\Core\Guild\Metric\Domain\ValueObject\{
+    DamageDealt,
+    Honor,
+    LandsDestroyed,
+    MaxPoints,
+    MobsKilled
+};
+use api\Core\Shared\Domain\ValueObject\{
+    Win,
+    Handicap,
+    Loss,
 
-final class GuildMetric extends AggregateRoot
+};
+use api\Shared\Domain\ValueObject\TimePlayed;
+
+final class GuildMetric
 {
     public function __construct(
         private UUID $id,
         private Win $win,
         private Loss $loss,
         private Handicap $handicap,
-        private timePlayed $timePlayed,
+        private TimePlayed $timePlayed,
         private MaxPoints $maxPoints,
         private DamageDealt $damageDealt,
         private LandsDestroyed $landsDestroyed,
-        private MobsKilled $mobsKilled,
+        private MobsKilled $mobskilled,
         private Available $available,
     )
     {}
@@ -44,7 +50,7 @@ final class GuildMetric extends AggregateRoot
         MaxPoints $maxPoints,
         DamageDealt $damageDealt,
         LandsDestroyed $landsDestroyed,
-        MobsKilled $mobsKilled,
+        MobsKilled $mobskilled,
         Available $available,
     ): self 
     {
@@ -57,13 +63,13 @@ final class GuildMetric extends AggregateRoot
             $maxPoints,
             $damageDealt,
             $landsDestroyed,
-            $mobsKilled,
+            $mobskilled,
             $available,
         );
     }
 
     public static function fromPrimitives(
-        ?string $id,
+        string $id,
         int $win,
         int $loss,
         int $handicap,
@@ -71,12 +77,12 @@ final class GuildMetric extends AggregateRoot
         int $maxPoints,
         int $damageDealt,
         int $landsDestroyed,
-        int $mobsKilled,
+        int $mobskilled,
         int $available,
     ): self
     {
-        return new Objeto(
-            isset($id) ? new UUID($id):   null,
+        return new self(
+            new UUID($id),
             new Win ($win),
             new Loss ($loss),
             new Handicap ($handicap),
@@ -84,7 +90,7 @@ final class GuildMetric extends AggregateRoot
             new MaxPoints ($maxPoints),
             new DamageDealt ($damageDealt),
             new LandsDestroyed ($landsDestroyed),
-            new MobsKilled ($mobsKilled),
+            new MobsKilled ($mobskilled),
             new Available($available),
         );
     }
@@ -92,7 +98,7 @@ final class GuildMetric extends AggregateRoot
     public function toPrimitives(): array
     {
         return [
-            'id'                    =>          isset($this->id) ? $this->id->value() : null,
+            'id'                    =>          $this->id->value(),
             'win'                   =>          $this->win->value(),
             'loss'                  =>          $this->loss->value(),
             'handicap'              =>          $this->handicap->value(),
@@ -100,7 +106,7 @@ final class GuildMetric extends AggregateRoot
             'maxPoints'             =>          $this->maxPoints->value(),
             'damageDealt'           =>          $this->damageDealt->value(),
             'landsDestroyed'        =>          $this->landsDestroyed->value(),
-            'mobsKilled'            =>          $this->mobsKilled->value(),
+            'mobsKilled'            =>          $this->mobskilled->value(),
             'available'             =>          $this->available->value(),
         ];
     }
