@@ -47,11 +47,11 @@ class Player extends \yii\db\ActiveRecord
             [['experience', 'level', 'available'], 'integer'],
             [['id', 'idwallet', 'idavatar', 'idmetrics', 'idstatus', 'idland'], 'string', 'max' => 36],
             [['id'], 'unique'],
-            [['idavatar'], 'exist', 'skipOnError' => true, 'targetClass' => Avatars::class, 'targetAttribute' => ['idavatar' => 'id']],
-            [['idland'], 'exist', 'skipOnError' => true, 'targetClass' => Lands::class, 'targetAttribute' => ['idland' => 'id']],
-            [['idmetrics'], 'exist', 'skipOnError' => true, 'targetClass' => Metrics::class, 'targetAttribute' => ['idmetrics' => 'id']],
+            [['idavatar'], 'exist', 'skipOnError' => true, 'targetClass' => Avatar::class, 'targetAttribute' => ['idavatar' => 'id']],
+            [['idland'], 'exist', 'skipOnError' => true, 'targetClass' => Land::class, 'targetAttribute' => ['idland' => 'id']],
+            [['idmetrics'], 'exist', 'skipOnError' => true, 'targetClass' => Metric::class, 'targetAttribute' => ['idmetrics' => 'id']],
             [['idstatus'], 'exist', 'skipOnError' => true, 'targetClass' => Status::class, 'targetAttribute' => ['idstatus' => 'id']],
-            [['idwallet'], 'exist', 'skipOnError' => true, 'targetClass' => Wallets::class, 'targetAttribute' => ['idwallet' => 'id']],
+            [['idwallet'], 'exist', 'skipOnError' => true, 'targetClass' => Wallet::class, 'targetAttribute' => ['idwallet' => 'id']],
         ];
     }
 
@@ -81,32 +81,27 @@ class Player extends \yii\db\ActiveRecord
 
     public function getAvatar()
     {
-        return $this->hasOne(Avatars::class, ['id' => 'idavatar']);
+        return $this->hasOne(Avatar::class, ['id' => 'idavatar']);
     }
 
-    public function getIdland0()
+    public function getLand()
     {
-        return $this->hasOne(Lands::class, ['id' => 'idland']);
+        return $this->hasOne(Land::class, ['id' => 'idland']);
     }
 
-    public function getIdmetrics0()
+    public function getMetric()
     {
-        return $this->hasOne(Metrics::class, ['id' => 'idmetrics']);
+        return $this->hasOne(Metric::class, ['id' => 'idmetrics']);
     }
 
-    public function getIdrankedMetrics0()
-    {
-        return $this->hasOne(RankedMetrics::class, ['id' => 'idrankedMetrics']);
-    }
-
-    public function getIdstatus0()
+    public function getStatus()
     {
         return $this->hasOne(Status::class, ['id' => 'idstatus']);
     }
 
     public function getWallet()
     {
-        return $this->hasOne(Wallets::class, ['id' => 'idwallet']);
+        return $this->hasOne(Wallet::class, ['id' => 'idwallet']);
     }
 
     public function getInstancechapters()

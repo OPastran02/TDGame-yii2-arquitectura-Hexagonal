@@ -17,7 +17,7 @@ use api\Core\Player\Wallet\Domain\Wallet;
 use api\Core\Player\Avatar\Domain\Avatar;
 use api\Core\Player\Metric\Domain\Metric;
 use api\Core\Player\Status\Domain\Status;
-use api\Core\Player\Land\Domain\Land;
+use api\Core\General\Land\Domain\Land;
 
 final class Player
 {
@@ -91,7 +91,7 @@ final class Player
         Land   $land
     ): self
     {
-        return new Objeto(
+        return new self(
             new UUID($id),
             new UUID($idwallet),         
             new UUID($idavatar),         

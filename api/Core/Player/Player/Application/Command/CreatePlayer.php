@@ -52,7 +52,7 @@ final class CreatePlayer
         $this->objetoRepository = $objetoRepository;
     }
 
-    public function __invoke($nickname,$message): Land
+    public function __invoke($nickname,$message): Player
     { 
         $wallet = (new CreateWallet($this->walletRepository))();
         $avatar = (new CreateAvatar($this->avatarRepository,$this->objetoRepository))($nickname,$message);
