@@ -2,23 +2,33 @@
 
 declare(strict_types=1);
 
-namespace api\Core\General\GuildTitle\Infrastructure\Persistence\ActiveRecord;
+namespace api\Core\Guild\Title\Infrastructure\Persistence\ActiveRecord;
 
-use api\Core\General\GuildTitle\Domain\GuildTitle;
-use api\Core\General\GuildTitle\Domain\GuildTitles;
-use api\Core\General\GuildTitle\Domain\Repository\IGuildTitleRepository;
+use api\Core\Guild\title\Domain\{
+    GuildTitle,
+    Repository\IGuildTitleRepository
+};
+use api\Core\General\Object\Domain\Objeto;
 use common\models\GuildTitle as Model;
 
 class GuildTitleRepositoryActiveRecord implements IGuildTitleRepository
 {
-    public function getbyId(int $id): ?GuildTitle
+    public function get(int $guildTitleId): ?GuildTitle
     {
-        $model = Model::findOne($id);
+        $model = Model::find()
+            ->with('object') 
+            ->where(['id' => $guildTitleId])
+            ->one();
 
-        if (!$model) {
-            return null;
-        }else{
-            return GuildTitle::fromPrimitives(...$model["attributes"]);
-        }
+        if (!$model) return null;
+   
+        $objeto = Objeto::fromPrimitives(...$model["object"]["attributes"]);
+
+        return GuildTitle::fromPrimitives(
+            $model['id'],
+            $model['idObject'],
+            $model['available'],
+            $objeto
+        );
     }
 }

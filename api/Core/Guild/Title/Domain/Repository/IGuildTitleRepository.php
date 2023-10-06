@@ -1,18 +1,10 @@
 <?php   
 
-namespace api\Core\General\GuildTitle\Domain\Repository;
+namespace api\Core\Guild\title\Domain\Repository;
 
-use api\Core\General\GuildTitle\Domain\GuildTitle;
-use api\Core\General\GuildTitle\Domain\GuildTitles;
+use api\Core\Guild\title\Domain\GuildTitle;
 
 interface IGuildTitleRepository
 {
-    /*
-    *what can i do with a GuildTitle?
-    *just get, mandatory
-    */
-    
-    public function getbyId(int $id): ?GuildTitle;
-
-
+    public function get(int $titleId): ?GuildTitle;
 }

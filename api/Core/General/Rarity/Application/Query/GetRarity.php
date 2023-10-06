@@ -20,7 +20,6 @@ class GetRarity
  
     public function __invoke(int $rarityId): ?Rarity
     {
-        $hero = $this->repository->get($rarityId);
-        return $hero;
+        return $this->repository->get($rarityId);
     }
 }

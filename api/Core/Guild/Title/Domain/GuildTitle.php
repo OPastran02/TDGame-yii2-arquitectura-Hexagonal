@@ -2,57 +2,63 @@
 
 declare(strict_types=1);
 
-namespace api\Core\Guild\GuildTitle\Domain;
+namespace api\Core\Guild\Title\Domain;
 
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\Available;
-use api\Core\Guild\GuildTitle\Domain\Repository\IGuildTitleRepository;
+use api\Shared\Domain\ValueObject\{
+    UUID,
+    NID,
+    Available
+};
+use api\Core\General\Object\Domain\Objeto; 
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class GuildTitle extends AggregateRoot
+final class GuildTitle
 {
     public function __construct(
-        private ?UUID $id,
-        private NID $idObject, 
+        private NID $id,
+        private UUID $idObject, 
         private Available $available,
+        private Objeto $objeto
     )
     {
     }
 
     public static function create( 
-        ?UUID $id,
-        NID $idObject, 
-        Available $available
+        NID $id,
+        UUID $idObject, 
+        Available $available,
+        Objeto $objeto
     ): self 
     {
         return new self(
             $id,
             $idObject, 
-            $available
+            $available,
+            $objeto
         );
     }
 
     public static function fromPrimitives(
-        ?int $id,
-        int $idObject,
-        int $available
+        int $id,
+        string $idObject,
+        int $available,
+        Objeto $objeto
     ): self
     {
-        return new Objeto(
-            isset($id) ? new UUID($id):   null,
-            new NID($idObject), 
+        return new self(
+            new NID($id),
+            new UUID($idObject), 
             new Available($available),
+            $objeto
         );
     }
 
     public function toPrimitives(): array
     {
         return [
-            'id'                    =>          isset($this->id) ? $this->id->value() : null,
+            'id'                    =>          $this->id->value(),
             'idObject'              =>          $this->idObject->value(), 
             'available'             =>          $this->available->value(),
+            'objeto'                =>          $this->objeto->toPrimitives()
         ];
     }
 

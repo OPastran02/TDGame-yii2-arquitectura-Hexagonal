@@ -2,34 +2,34 @@
 
 declare(strict_types=1);
 
-namespace api\Core\General\GuildTitle\Infrastructure\Ui\Http\Controller;
+namespace api\Core\Guild\Title\Infrastructure\Ui\Http\Controller;
+
+use api\Core\Guild\title\Domain\{
+    GuildTitle,
+    Repository\IGuildTitleRepository
+};
+use api\Core\Guild\Title\Infrastructure\Persistence\ActiveRecord\GuildTitleRepositoryActiveRecord;
+use api\Core\Guild\Title\Application\Query\GetGuildTitle;
 
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use api\Core\General\GuildTitle\Domain\GuildTitle; 
-use api\Core\General\GuildTitle\Domain\Repository\IGuildTitleRepository;
-use api\Core\General\GuildTitle\Infrastructure\Persistence\ActiveRecord\GuildTitleRepositoryActiveRecord;
-use api\Core\General\GuildTitle\Application\Query\GetGuildTitleByIdHandler;
 use yii\helpers\Json;
 use yii\web\Response;
 use Yii;
 
-class GetGuildTitleByIdController
+class GetGuildTitleController
 {
-    private GetGuildTitleByIdHandler $handler;
+    private GetGuildTitle $handler;
 
     public function __construct()
     { 
         $repository = new GuildTitleRepositoryActiveRecord();
-        $this->handler = new GetGuildTitleByIdHandler($repository);
+        $this->handler = new GetGuildTitle($repository);
     }
 
     public function __invoke(int $id)
     {    
-        $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON;
-    
         try {
             $object = ($this->handler)($id);
             $status = 'ok';
@@ -44,9 +44,9 @@ class GetGuildTitleByIdController
             'hits' => $hits,
         ];
     
-        $response->data = $data;
-        
-        return $response;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->data = $data;
+        return Yii::$app->response;
     }
 
 }  

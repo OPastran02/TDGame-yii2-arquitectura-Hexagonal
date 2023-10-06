@@ -2,6 +2,8 @@
 
 namespace backend\modules\api\controllers;
 
+use api\Core\Guild\Title\Infrastructure\Ui\Http\Controller\GetGuildTitleController;
+
 class GuildTitleController extends \yii\web\Controller
 {
     public function actionIndex()
@@ -9,4 +11,8 @@ class GuildTitleController extends \yii\web\Controller
         return $this->render('index');
     }
 
+    public function actionGet($id)
+    {
+        return (new GetGuildTitleController())($id);
+    }
 }

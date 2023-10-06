@@ -8,10 +8,10 @@ use api\Shared\Domain\ValueObject\{
     NID,
     Available
 };
-use api\Core\General\Object\Domain\Objeto; 
-use api\Shared\Domain\Aggregate\AggregateRoot;
 
-final class Rarity extends AggregateRoot
+
+
+final class Rarity
 {
 
     public function __construct(
@@ -39,14 +39,14 @@ final class Rarity extends AggregateRoot
     }
 
     public static function fromPrimitives(
-        ?int $id,
+        int $id,
         int $idObject,
         int $available,
         Objeto $objeto
     ): self
     {
         return new self(
-            isset($id) ? new NID($id) : null,
+            new NID($id),
             new NID($idObject),
             new Available($available),
             $objeto
@@ -56,10 +56,10 @@ final class Rarity extends AggregateRoot
     public function toPrimitives(): array
     {
         return [
-            'id'                    =>          isset($this->id) ? $this->id->value() : null,
+            'id'                    =>          $this->id->value(),
             'idObject'              =>          $this->idObject->value(), 
             'available'             =>          $this->available->value(),
-            'objeto'                =>          $this->objeto->toPrimitives(), // Agregar los primitivos del objeto aquí
+            'objeto'                =>          $this->objeto->toPrimitives()
         ];
     }
 }

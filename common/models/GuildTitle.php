@@ -49,12 +49,8 @@ class GuildTitle extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[IdObject0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\ObjectsQuery
-     */
-    public function getIdObject0()
+
+    public function getObject()
     {
         return $this->hasOne(Objects::class, ['id' => 'idObject']);
     }
