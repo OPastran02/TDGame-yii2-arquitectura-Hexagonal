@@ -4,79 +4,99 @@ declare(strict_types=1);
 
 namespace api\Core\Guild\GuildMetric\Domain;
 
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\Available;
-use api\Core\Guild\GuildMetric\Domain\ValueObject\MaxMember;
-use api\Core\Shared\Domain\ValueObject\Experience;
-use api\Core\Shared\Domain\ValueObject\Level;
-use api\Shared\Domain\Aggregate\AggregateRoot;
+use api\Shared\Domain\ValueObject\{
+    NID,
+    UUID,
+    Available
+};
+use api\Core\Guild\Guild\Domain\ValueObject\MaxMember;
+use api\Core\Shared\Domain\ValueObject\{
+    Experience,
+    Level
+};
+use api\Core\General\Object\Domain\Objeto;
+use api\Core\Guild\Stash\Domain\Stash;
+use api\Core\Guild\Metric\Domain\GuildMetric;
 
-final class Guild extends AggregateRoot
+final class Guild
 {
     public function __construct(
         private UUID $id,
-        private NID $idObject,
-        private UUID $stash,
-        private UUID $metrics,
+        private UUID $idObject,
+        private UUID $idstash,
+        private UUID $idmetrics,
         private MaxMember $maxMembers,
         private Experience $experience,
         private Level $level,
         private Available $available,
+        private Objeto $objeto,
+        private Stash $stash,
+        private GuildMetric $metric
     )
     {}
 
     public static function create( 
         UUID $id,
-        NID $idObject,
-        UUID $stash,
-        UUID $metrics,
+        UUID $idObject,
+        UUID $idstash,
+        UUID $idmetrics,
         MaxMember $maxMembers,
         Experience $experience,
         Level $level,
         Available $available,
+        Objeto $objeto,
+        Stash $stash,
+        GuildMetric $metric
     ): self 
     {
         return new self(
             $id,
             $idObject,
-            $stash,
-            $metrics,
+            $idstash,
+            $idmetrics,
             $maxMembers,
             $experience,
             $level,
             $available,
+            $objeto,
+            $stash,
+            $metric
         );
     }
 
     public static function fromPrimitives(
-        ?string $id,
-        int $idObject,
-        string $stash,
-        string $metrics,
+        string $id,
+        string $idObject,
+        string $idstash,
+        string $idmetrics,
         int $maxMembers,
         int $experience,
         int $level,
         int $available,
+        Objeto $objeto,
+        Stash $stash,
+        GuildMetric $metric
     ): self
     {
-        return new Objeto(
-            isset($id) ? new UUID($id):   null,
-            new Win ($win),
-            new NID($idObject),
-            new UUID($stash),
-            new UUID($metrics),
+        return new self(
+            new UUID($id),
+            new UUID($idObject),
+            new UUID($idstash),
+            new UUID($idmetrics),
             new MaxMember($maxMembers),
             new Experience($experience),
             new Level($level),
             new Available($available),
+            $objeto,
+            $stash,
+            $metric
         );
     }
 
     public function toPrimitives(): array
     {
         return [
-            'id'                    =>          isset($this->id) ? $this->id->value() : null,
+            'id'                    =>          $this->id->value(),
             'idObject'              =>          $this->idObject->value(),
             'stash'                 =>          $this->stash->value(),
             'metrics'               =>          $this->metrics->value(),
@@ -84,6 +104,9 @@ final class Guild extends AggregateRoot
             'experience'            =>          $this->experience->value(),
             'level'                 =>          $this->level->value(),
             'available'             =>          $this->available->value(),
+            'objeto'                =>          $this->objeto->toPrimitives(),
+            'stash'                 =>          $this->stash->toPrimitives(),
+            'metric'                =>          $this->metric->toPrimitives()
         ];
     }
 }

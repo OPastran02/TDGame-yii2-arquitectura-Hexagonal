@@ -3,9 +3,10 @@
 namespace api\Core\Guild\Guild\Domain\Repository;
 
 use api\Core\Guild\Guild\Domain\Guild;
-use api\Core\Guild\Guild\Domain\Guilds;
 
 interface IGuildRepository
 {
-    public function getbyId(int $id): ?Guild;
+    public function get(string $playerId): ?Guild;
+    public function create($player): ?Guild;
+    public function addExperience($player): ?Guild;
 }

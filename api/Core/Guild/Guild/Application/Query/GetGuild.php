@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace api\Core\Guild\Guild\Application\Query;
 
-use api\Core\Guild\Guild\Domain\Guild;
-use api\Core\Guild\Guild\Domain\Repository\IGuildRepository;
+use api\Core\Guild\Guild\Domain\{
+    Guild,
+    Repository\IGuildRepository
+};
 
-class GetGuildByIdHandler
+class GetGuild
 {
     private IGuildRepository $repository;
 
@@ -16,9 +18,8 @@ class GetGuildByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Guild
+    public function __invoke(int $guildId): ?Guild
     {
-        $obj = $this->repository->getbyId($id);
-        return $obj;
+        return $this->repository->get($guildId);
     }
 }

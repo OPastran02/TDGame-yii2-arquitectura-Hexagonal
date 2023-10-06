@@ -8,7 +8,6 @@ use api\Shared\Domain\ValueObject\Primitives\IntValueObject;
 
 final class MaxMember extends IntValueObject
 {
-
     protected int $value;
 
     private const MIN_VALUE = 0;
