@@ -8,8 +8,7 @@ use api\Shared\Domain\ValueObject\{
     NID,
     Available
 };
-
-
+use api\Core\General\Object\Domain\Objeto; 
 
 final class Rarity
 {

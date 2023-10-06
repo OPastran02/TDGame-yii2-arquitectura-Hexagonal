@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace api\Core\General\Reward\Application\Query;
 
-use api\Core\General\Reward\Domain\Reward;
-use api\Core\General\Reward\Domain\Repository\IRewardRepository;
+use api\Core\General\Reward\Domain\{
+    Reward,
+    Repository\IRewardRepository
+};
 
-class GetRewardByIdHandler
+class GetReward
 {
     private IRewardRepository $repository;
 
@@ -16,9 +18,8 @@ class GetRewardByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Reward
+    public function get(int $id): ?Reward
     {
-        $hero = $this->repository->getbyId($id);
-        return $hero;
+        return $this->repository->get($id);
     }
 }
