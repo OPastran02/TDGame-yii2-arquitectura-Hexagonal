@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace api\Guild\Guild\Domain\ValueObject;
+namespace api\Core\Guild\Guild\Domain\ValueObject;
 
 use api\Shared\Domain\ValueObject\Primitives\IntValueObject;
 

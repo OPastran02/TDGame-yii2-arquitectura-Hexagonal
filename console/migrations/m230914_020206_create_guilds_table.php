@@ -54,14 +54,14 @@ class m230914_020206_create_guilds_table extends Migration
         $this->createIndex(
             '{{%idx-guilds-stash}}',
             '{{%guilds}}',
-            'stash'
+            'idstash'
         );
 
         // add foreign key for table `{{%stash}}`
         $this->addForeignKey(
             '{{%fk-guilds-stash}}',
             '{{%guilds}}',
-            'stash',
+            'idstash',
             '{{%stashes}}',
             'id',
             'CASCADE'
@@ -71,15 +71,15 @@ class m230914_020206_create_guilds_table extends Migration
         $this->createIndex(
             '{{%idx-guilds-metrics}}',
             '{{%guilds}}',
-            'metrics'
+            'idmetrics'
         );
 
         // add foreign key for table `{{%metrics}}`
         $this->addForeignKey(
             '{{%fk-guilds-metrics}}',
             '{{%guilds}}',
-            'metrics',
-            '{{%metrics}}',
+            'idmetrics',
+            '{{%guildmetrics}}',
             'id',
             'CASCADE'
         );

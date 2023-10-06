@@ -21,7 +21,7 @@ final class AddExperience
         $this->getGuild = new GetGuild($repository);
     }
 
-    public function __invoke($guildId, $newExperience): Player
+    public function __invoke($guildId, $newExperience): Guild
     {
         $arr = ($this->getGuild)($guildId)->toPrimitives();
         $newValues= (new CalculateExperience($arr["level"], $arr["experience"],$newExperience))();

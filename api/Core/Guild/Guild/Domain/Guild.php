@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace api\Core\Guild\GuildMetric\Domain;
+namespace api\Core\Guild\Guild\Domain;
 
 use api\Shared\Domain\ValueObject\{
     NID,
@@ -98,8 +98,8 @@ final class Guild
         return [
             'id'                    =>          $this->id->value(),
             'idObject'              =>          $this->idObject->value(),
-            'stash'                 =>          $this->stash->value(),
-            'metrics'               =>          $this->metrics->value(),
+            'idstash'               =>          $this->idstash->value(),
+            'idmetrics'             =>          $this->idmetrics->value(),
             'maxMembers'            =>          $this->maxMembers->value(),
             'experience'            =>          $this->experience->value(),
             'level'                 =>          $this->level->value(),

@@ -70,5 +70,9 @@ final class Stash
             'available'             =>          $this->available->value(),
         ];
     }
-
+    
+    public function id(): UUID
+    {
+        return $this->id;
+    }
 }

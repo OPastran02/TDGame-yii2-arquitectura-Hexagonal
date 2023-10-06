@@ -7,6 +7,7 @@ use api\Core\Guild\Guild\Infrastructure\Ui\Http\Controller\{
     GetGuildController,
     AddExperienceController
 };
+use Yii;
 
 class GuildController extends \yii\web\Controller
 {

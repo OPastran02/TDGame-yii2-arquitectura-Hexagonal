@@ -20,7 +20,7 @@ class GuildRepositoryActiveRecord implements IGuildRepository
         $model = Model::find()
             ->with('object')
             ->with('stash')
-            ->with('metric')
+            ->with('metrics')
             ->where(['id' => $guildId])
             ->one();
 
@@ -28,7 +28,7 @@ class GuildRepositoryActiveRecord implements IGuildRepository
 
         $objeto = Objeto::fromPrimitives(...$model->object->getAttributes());
         $stash = Stash::fromPrimitives(...$model->stash->getAttributes());
-        $metric = GuildMetric::fromPrimitives(...$model->metric->getAttributes());
+        $metric = GuildMetric::fromPrimitives(...$model->metrics->getAttributes());
             
         return Guild::fromPrimitives(
             $model['id'],

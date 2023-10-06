@@ -27,10 +27,10 @@ class GetGuildController
         $this->handler = new GetGuild($repository);
     }
 
-    public function __invoke(int $id)
+    public function __invoke(string $guildId)
     {    
         try {
-            $object = ($this->handler)($id);
+            $object = ($this->handler)($guildId);
             $status = 'ok';
             $hits = ($object !== null) ? [$object->toPrimitives()] : ['no data'];
         } catch (InvalidRequestValueException $e) {

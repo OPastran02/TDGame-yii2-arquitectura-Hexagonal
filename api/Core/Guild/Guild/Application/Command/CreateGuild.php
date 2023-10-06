@@ -51,6 +51,7 @@ class CreateGuild
         $arr['experience']=0;
         $arr['level']=0;
         $arr['available']=1;
-        return $this->repository->create($arr);
+
+        return $this->guildRepository->create($arr);
     }
 }

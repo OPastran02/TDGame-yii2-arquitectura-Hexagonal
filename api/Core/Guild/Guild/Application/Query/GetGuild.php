@@ -18,7 +18,7 @@ class GetGuild
         $this->repository = $repository;
     }
  
-    public function __invoke(int $guildId): ?Guild
+    public function __invoke(string $guildId): ?Guild
     {
         return $this->repository->get($guildId);
     }

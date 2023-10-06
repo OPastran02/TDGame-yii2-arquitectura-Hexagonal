@@ -9,19 +9,19 @@ use Yii;
  *
  * @property string $id
  * @property string $idObject
- * @property string $stash
- * @property string $metrics
+ * @property string $idstash
+ * @property string $idmetrics
  * @property int $maxMembers
  * @property int $experience
  * @property int $level
  * @property int $available
  *
  * @property Objects $idObject0
+ * @property Guildmetrics $idmetrics0
+ * @property Stashes $idstash0
  * @property Instanceconquer $instanceconquer
  * @property Instancemonsters[] $instancemonsters
  * @property Memberships[] $memberships
- * @property Metrics $metrics0
- * @property Stashes $stash0
  * @property Worlds $worlds
  */
 class Guild extends \yii\db\ActiveRecord
@@ -40,15 +40,15 @@ class Guild extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'idObject', 'stash', 'metrics'], 'required'],
+            [['id', 'idObject', 'idstash', 'idmetrics'], 'required'],
             [['maxMembers', 'experience', 'level', 'available'], 'integer'],
-            [['id', 'idObject', 'stash', 'metrics'], 'string', 'max' => 36],
+            [['id', 'idObject', 'idstash', 'idmetrics'], 'string', 'max' => 36],
             [['id'], 'unique'],
-            [['stash'], 'unique'],
-            [['metrics'], 'unique'],
+            [['idstash'], 'unique'],
+            [['idmetrics'], 'unique'],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],
-            [['metrics'], 'exist', 'skipOnError' => true, 'targetClass' => Metrics::class, 'targetAttribute' => ['metrics' => 'id']],
-            [['stash'], 'exist', 'skipOnError' => true, 'targetClass' => Stashes::class, 'targetAttribute' => ['stash' => 'id']],
+            [['idmetrics'], 'exist', 'skipOnError' => true, 'targetClass' => Guildmetric::class, 'targetAttribute' => ['idmetrics' => 'id']],
+            [['idstash'], 'exist', 'skipOnError' => true, 'targetClass' => Stash::class, 'targetAttribute' => ['idstash' => 'id']],
         ];
     }
 
@@ -60,8 +60,8 @@ class Guild extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'idObject' => 'Id Object',
-            'stash' => 'Stash',
-            'metrics' => 'Metrics',
+            'idstash' => 'Idstash',
+            'idmetrics' => 'Idmetrics',
             'maxMembers' => 'Max Members',
             'experience' => 'Experience',
             'level' => 'Level',
@@ -75,7 +75,21 @@ class Guild extends \yii\db\ActiveRecord
         return $this->hasOne(Objects::class, ['id' => 'idObject']);
     }
 
+    public function getmetrics()
+    {
+        return $this->hasOne(Guildmetric::class, ['id' => 'idmetrics']);
+    }
 
+    public function getstash()
+    {
+        return $this->hasOne(Stash::class, ['id' => 'idstash']);
+    }
+
+    /**
+     * Gets query for [[Instanceconquer]].
+     *
+     * @return \yii\db\ActiveQuery|\common\models\query\InstanceconquerQuery
+     */
     public function getInstanceconquer()
     {
         return $this->hasOne(Instanceconquer::class, ['idGuild' => 'id']);
@@ -99,26 +113,6 @@ class Guild extends \yii\db\ActiveRecord
     public function getMemberships()
     {
         return $this->hasMany(Memberships::class, ['idGuild' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Metrics0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\MetricsQuery
-     */
-    public function getMetrics0()
-    {
-        return $this->hasOne(Metrics::class, ['id' => 'metrics']);
-    }
-
-    /**
-     * Gets query for [[Stash0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\StashesQuery
-     */
-    public function getStash0()
-    {
-        return $this->hasOne(Stashes::class, ['id' => 'stash']);
     }
 
     /**
