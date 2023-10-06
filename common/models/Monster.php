@@ -38,7 +38,7 @@ class Monster extends \yii\db\ActiveRecord
             [['stats'], 'string', 'max' => 36],
             [['stats'], 'unique'],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],
-            [['stats'], 'exist', 'skipOnError' => true, 'targetClass' => Stats::class, 'targetAttribute' => ['stats' => 'id']],
+            [['stats'], 'exist', 'skipOnError' => true, 'targetClass' => Stat::class, 'targetAttribute' => ['stats' => 'id']],
         ];
     }
 
@@ -55,40 +55,22 @@ class Monster extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[IdObject0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\ObjectsQuery
-     */
-    public function getIdObject0()
+
+    public function getObject()
     {
         return $this->hasOne(Objects::class, ['id' => 'idObject']);
     }
 
-    /**
-     * Gets query for [[Instancemonsters]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\InstancemonstersQuery
-     */
     public function getInstancemonsters()
     {
         return $this->hasMany(Instancemonsters::class, ['idMonsters' => 'id']);
     }
 
-    /**
-     * Gets query for [[Stats0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\StatsQuery
-     */
-    public function getStats0()
+    public function getStat()
     {
-        return $this->hasOne(Stats::class, ['id' => 'stats']);
+        return $this->hasOne(Stat::class, ['id' => 'stats']);
     }
 
-    /**
-     * {@inheritdoc}
-     * @return \common\models\query\MonsterQuery the active query used by this AR class.
-     */
     public static function find()
     {
         return new \common\models\query\MonsterQuery(get_called_class());

@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace api\Core\Monster\Monster\Application\Query;
 
-use api\Core\Monster\Monster\Domain\Monster;
-use api\Core\Monster\Monster\Domain\Repository\IMonsterRepository;
+use api\Core\Monster\Monster\Domain\{
+    Monster,
+    Repository\IMonsterRepository
+};
 
-class GetMonsterByIdHandler
+class GetMonster
 {
     private IMonsterRepository $repository;
 
@@ -16,9 +18,8 @@ class GetMonsterByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Monster
+    public function __invoke(int $monsterId): ?Monster
     {
-        $hero = $this->repository->getbyId($id);
-        return $hero;
+        return $this->repository->get($monsterId);
     }
 }

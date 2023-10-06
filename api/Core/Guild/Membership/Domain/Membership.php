@@ -16,7 +16,7 @@ use api\Shared\Domain\Aggregate\AggregateRoot;
 final class Membership extends AggregateRoot
 {
     public function __construct(
-        private ?UUID $id,
+        private UUID $id,
         private UUID $idPlayer,
         private UUID $idguild,
         private NID $guildTitle,

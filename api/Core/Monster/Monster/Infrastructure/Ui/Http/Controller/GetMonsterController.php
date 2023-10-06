@@ -4,34 +4,34 @@ declare(strict_types=1);
 
 namespace api\Core\Monster\Monster\Infrastructure\Ui\Http\Controller;
 
+use api\Core\Monster\Monster\Domain\{
+    Monster,
+    Repository\IMonsterRepository
+};
+
+use api\Core\Monster\Monster\Infrastructure\Persistence\ActiveRecord\MonsterRepositoryActiveRecord;
+use api\Core\Monster\Monster\Application\Query\GetMonster;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use api\Core\Monster\Monster\Domain\Monster; 
-use api\Core\Monster\Monster\Domain\Repository\IMonsterRepository;
-use api\Core\Monster\Monster\Infrastructure\Persistence\ActiveRecord\MonsterRepositoryActiveRecord;
-use api\Core\Monster\Monster\Application\Query\GetMonsterByIdHandler;
 use yii\helpers\Json;
 use yii\web\Response;
 use Yii;
 
-class GetMonsteryByIdController
+class GetMonsterController
 {
-    private GetMonsterByIdHandler $handler;
+    private GetMonster $handler;
 
     public function __construct()
     { 
         $repository = new MonsterRepositoryActiveRecord();
-        $this->handler = new GetMonsterByIdHandler($repository);
+        $this->handler = new GetMonster($repository);
     }
 
-    public function __invoke(int $id)
+    public function __invoke(int $monsterId)
     {    
-        $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON;
-    
         try {
-            $object = ($this->handler)($id);
+            $object = ($this->handler)($monsterId);
             $status = 'ok';
             $hits = ($object !== null) ? [$object->toPrimitives()] : ['no data'];
         } catch (InvalidRequestValueException $e) {
@@ -44,9 +44,9 @@ class GetMonsteryByIdController
             'hits' => $hits,
         ];
     
-        $response->data = $data;
-        
-        return $response;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->data = $data;
+        return Yii::$app->response;
     }
 
 }  

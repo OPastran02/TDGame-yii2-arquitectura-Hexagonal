@@ -4,65 +4,74 @@ declare(strict_types=1);
 
 namespace api\Core\Monster\Monster\Domain;
 
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\Available;
+use api\Shared\Domain\ValueObject\{
+    NID,
+    UUID,
+    Available
+};
+use api\Core\General\Object\Domain\Objeto; 
+use api\Core\General\Stat\Domain\Stat; 
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class Monster extends AggregateRoot
+final class Monster
 {
     public function __construct(
         private NID $id,
-        private NID $idObject, 
+        private UUID $idObject, 
         private UUID $stats, 
         private Available $available,
+        private Objeto $objeto,
+        private Stat $stat
     )
     {
     }
 
     public static function create( 
         NID $id,
-        NID $idObject,
+        UUID $idObject,
         UUID $stats, 
-        Available $available
+        Available $available,
+        Objeto $objeto,
+        Stat $stat
     ): self 
     {
         return new self(
             $id,
             $idObject,
             $stats,
-            $available
+            $available,
+            $objeto,
+            $stat
         );
     }
 
     public static function fromPrimitives(
-        ?int $id,
-        int $idObject,
+        int $id,
+        string $idObject,
         string $stats,
         int $available,
+        Objeto $objeto,
+        Stat $stat
     ): self
     {
-        return new Objeto(
-            isset($id) ? new NID($id):   null,
-            new NID($idObject),
+        return new self(
+            new NID($id),
+            new UUID($idObject),
             new UUID($stats),
             new Available($available),
+            $objeto,
+            $stat
         );
     }
 
     public function toPrimitives(): array
     {
         return [
-            'id'                    =>          isset($this->id) ? $this->id->value() : null,
+            'id'                    =>          $this->id->value(),
             'idObject'              =>          $this->idObject->value(),
             'stats'                 =>          $this->stats->value(),
             'available'             =>          $this->available->value(),
+            'objeto'                =>          $this->objeto->toPrimitives(),
+            'stat'                  =>          $this->stat->toPrimitives(),
         ];
-    }
-
-    public function getObjeto(): Objeto
-    {
-        return $this->objetoRepository->findObjetoById($this->idObject);
     }
 }

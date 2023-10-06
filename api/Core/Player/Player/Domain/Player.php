@@ -128,4 +128,21 @@ final class Player
             'land'                  =>          $this->land->toPrimitives(),
         ];
     }
+
+    public function toAbstract(): array
+    {
+        return [
+            'id'                    =>          $this->id->value(),
+            'idwallet'              =>          $this->idwallet->value(),         
+            'idavatar'              =>          $this->idavatar->value(),         
+            'idmetrics'             =>          $this->idmetrics->value(), 
+            'idstatus'              =>          $this->idstatus->value(),         
+            'idland'                =>          $this->idland->value(),           
+            'experience'            =>          $this->experience->value(),       
+            'level'                 =>          $this->level->value(),   
+            'available'             =>          $this->available->value(),
+            'avatar'                =>          $this->avatar->toPrimitives(),
+        ];
+    }
+    
 }

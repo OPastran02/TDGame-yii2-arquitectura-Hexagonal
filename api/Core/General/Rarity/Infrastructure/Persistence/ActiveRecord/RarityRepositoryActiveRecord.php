@@ -20,9 +20,7 @@ class RarityRepositoryActiveRecord implements IRarityRepository
             ->where(['id' => $rarityId])
             ->one();
 
-        if (!$model) {
-            return null;
-        }
+        if (!$model) return null;
 
         $objeto = Objeto::fromPrimitives(...$model["object"]["attributes"]);
 
