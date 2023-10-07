@@ -18,8 +18,8 @@ class GetReward
         $this->repository = $repository;
     }
  
-    public function get(int $id): ?Reward
+    public function __invoke(int $rewardId): ?Reward
     {
-        return $this->repository->get($id);
+        return $this->repository->get($rewardId);
     }
 }

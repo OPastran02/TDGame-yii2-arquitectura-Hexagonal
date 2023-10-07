@@ -4,50 +4,62 @@ declare(strict_types=1);
 
 namespace api\Core\Chapter\Chapter\Domain;
 
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\Available;
+use api\Shared\Domain\ValueObject\{
+    NID,
+    UUID,
+    Available
+};
+use api\Core\General\Object\Domain\Objeto; 
+use api\Core\General\Reward\Domain\Reward; 
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class Chapter extends AggregateRoot
+final class Chapter 
 {
     public function __construct(
         private NID $id,
-        private NID $idObject, 
+        private UUID $idObject, 
         private NID $idReward, 
         private Available $available,
+        private Objeto $objeto,
+        private Reward $reward
     )
     {
     }
 
     public static function create( 
         NID $id,
-        NID $idObject,
+        UUID $idObject,
         NID $idReward, 
-        Available $available
+        Available $available,
+        Objeto $objeto,
+        Reward $reward
     ): self 
     {
         return new self(
             $id,
             $idObject,
             $idReward,
-            $available
+            $available,
+            $objeto,
+            $reward
         );
     }
 
     public static function fromPrimitives(
-        ?int $id,
-        int $idObject,
+        int $id,
+        string $idObject,
         int $idReward,
         int $available,
+        Objeto $objeto,
+        Reward $reward
     ): self
     {
         return new Objeto(
-            isset($id) ? new NID($id):   null,
+            new NID($id),
             new NID($idObject),
             new NID($idReward),
             new Available($available),
+            $objeto,
+            $reward
         );
     }
 
@@ -58,6 +70,8 @@ final class Chapter extends AggregateRoot
             'idObject'              =>          $this->idObject->value(),
             'idReward'              =>          $this->idReward->value(),
             'available'             =>          $this->available->value(),
+            'objeto'                =>          $this->objeto->toPrimitives(),
+            'reward'                =>          $this->reward->toPrimitives()
         ];
     }
 

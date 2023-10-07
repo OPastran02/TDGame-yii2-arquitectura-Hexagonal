@@ -59,30 +59,17 @@ class Reward extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[Chapters]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\ChaptersQuery
-     */
+
     public function getChapters()
     {
         return $this->hasMany(Chapters::class, ['idReward' => 'id']);
     }
 
-    /**
-     * Gets query for [[IdObject0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\ObjectsQuery
-     */
-    public function getIdObject0()
+    public function getObject()
     {
         return $this->hasOne(Objects::class, ['id' => 'idObject']);
     }
 
-    /**
-     * {@inheritdoc}
-     * @return \common\models\query\RewardQuery the active query used by this AR class.
-     */
     public static function find()
     {
         return new \common\models\query\RewardQuery(get_called_class());

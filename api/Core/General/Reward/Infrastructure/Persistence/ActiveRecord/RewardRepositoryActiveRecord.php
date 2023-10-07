@@ -13,18 +13,18 @@ use common\models\Reward as Model;
 
 class RewardRepositoryActiveRecord implements IRewardRepository
 {
-    public function get(int $id): ?Reward
+    public function get(int $rewardId): ?Reward
     {
         $model = Model::find()
             ->with('object') 
-            ->where(['id' => $rarityId])
+            ->where(['id' => $rewardId])
             ->one();
 
         if (!$model) return null;
 
         $objeto = Objeto::fromPrimitives(...$model["object"]["attributes"]);
 
-        return Rarity::fromPrimitives(
+        return Reward::fromPrimitives(
             $model['id'],
             $model['idObject'],
             $model['bronze'],

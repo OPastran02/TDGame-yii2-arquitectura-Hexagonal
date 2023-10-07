@@ -9,7 +9,7 @@ use api\Core\General\Reward\Domain\{
     Repository\IRewardRepository
 };
 use api\Core\General\Reward\Infrastructure\Persistence\ActiveRecord\RewardRepositoryActiveRecord;
-use api\Core\General\Reward\Application\Query\GetRewardByIdHandler;
+use api\Core\General\Reward\Application\Query\GetReward;
 
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

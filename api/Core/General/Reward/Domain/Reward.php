@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace api\Core\General\Object\Domain;
+namespace api\Core\General\Reward\Domain;
 
 use api\Shared\Domain\ValueObject\{
     NID,
@@ -71,7 +71,7 @@ final class Reward
         Objeto $objeto
     ): self
     {
-        return new Objeto(
+        return new self(
             new NID($id),
             new UUID($idObject),
             new Bronze($bronze),
