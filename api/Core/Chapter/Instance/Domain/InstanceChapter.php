@@ -4,16 +4,18 @@ declare(strict_types=1);
 
 namespace api\Core\Chapter\Instance\Domain;
 
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\Available;
-use api\Core\Chapter\Instance\Domain\ValueObject\AmountOfFinished;
-use api\Core\Chapter\Instance\Domain\ValueObject\Finished;
-use api\Core\Chapter\Instance\Domain\ValueObject\MaxStars;
+use api\Shared\Domain\ValueObject\{
+    UUID,
+    NID,
+    Available
+};
+use api\Core\Chapter\Instance\Domain\ValueObject\{
+    AmountOfFinished,
+    Finished,
+    MaxStars
+};
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class InstanceChapter extends AggregateRoot
+final class InstanceChapter 
 {
     public function __construct(
         private NID $id,
@@ -58,7 +60,7 @@ final class InstanceChapter extends AggregateRoot
         int $available,
     ): self
     {
-        return new Objeto(
+        return new self(
             new NID($id),
             new UUID($idPlayer),
             new NID($idChapter), 

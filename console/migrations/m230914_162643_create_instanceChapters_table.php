@@ -57,7 +57,6 @@ class m230914_162643_create_instanceChapters_table extends Migration
                 'id',
                 'CASCADE'
             );
-
     }
 
     /**

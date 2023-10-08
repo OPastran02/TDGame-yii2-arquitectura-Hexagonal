@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace api\Core\Chapter\Instance\Application\Query;
 
-use api\Core\Chapter\Instance\Domain\InstanceChapter;
-use api\Core\Chapter\Instance\Domain\Repository\IInstanceChapterRepository;
+use api\Core\Chapter\Instance\Domain\{
+    InstanceChapter,
+    InstanceChapters,
+    Repository\IInstanceChapterRepository
+};
 
-class GetChapterByIdHandler
+class GetInstanceChapterbyIdPlayer
 {
     private IInstanceChapterRepository $repository;
 
@@ -16,9 +19,8 @@ class GetChapterByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?InstanceChapter
+    public function __invoke(string $idPlayer): array
     {
-        $hero = $this->repository->getbyId($id);
-        return $hero;
+        return $this->repository->getbyIdPlayer($idPlayer);
     }
 }
