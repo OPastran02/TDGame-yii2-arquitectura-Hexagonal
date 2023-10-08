@@ -53,9 +53,9 @@ final class Chapter
         Reward $reward
     ): self
     {
-        return new Objeto(
+        return new self(
             new NID($id),
-            new NID($idObject),
+            new UUID($idObject),
             new NID($idReward),
             new Available($available),
             $objeto,

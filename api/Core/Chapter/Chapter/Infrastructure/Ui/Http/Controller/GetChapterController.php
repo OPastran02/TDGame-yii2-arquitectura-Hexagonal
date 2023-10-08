@@ -4,25 +4,29 @@ declare(strict_types=1);
 
 namespace api\Core\Chapter\Chapter\Infrastructure\Ui\Http\Controller;
 
+
+use api\Core\Chapter\Chapter\Domain\{
+    Chapter,
+    Repository\IChapterRepository
+};
+use api\Core\Chapter\Chapter\Infrastructure\Persistence\ActiveRecord\ChapterRepositoryActiveRecord;
+use api\Core\Chapter\Chapter\Application\Query\GetChapter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use api\Core\Chapter\Chapter\Domain\Chapter; 
-use api\Core\Chapter\Chapter\Domain\Repository\IChapterRepository;
-use api\Core\Chapter\Chapter\Infrastructure\Persistence\ActiveRecord\ChapterRepositoryActiveRecord;
-use api\Core\Chapter\Chapter\Application\Query\GetChapterByIdHandler;
 use yii\helpers\Json;
 use yii\web\Response;
 use Yii;
 
-class GetChapteryByIdController
+
+class GetChapterController
 {
-    private GetChapterByIdHandler $handler;
+    private GetChapter $handler;
 
     public function __construct()
     { 
         $repository = new ChapterRepositoryActiveRecord();
-        $this->handler = new GetChapterByIdHandler($repository);
+        $this->handler = new GetChapter($repository);
     }
 
     public function __invoke(int $id)

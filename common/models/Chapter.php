@@ -37,7 +37,7 @@ class Chapter extends \yii\db\ActiveRecord
             [['idReward', 'available'], 'integer'],
             [['idObject'], 'string', 'max' => 36],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],
-            [['idReward'], 'exist', 'skipOnError' => true, 'targetClass' => Rewards::class, 'targetAttribute' => ['idReward' => 'id']],
+            [['idReward'], 'exist', 'skipOnError' => true, 'targetClass' => Reward::class, 'targetAttribute' => ['idReward' => 'id']],
         ];
     }
 
@@ -64,31 +64,16 @@ class Chapter extends \yii\db\ActiveRecord
         return $this->hasMany(Chapterlands::class, ['idchapter' => 'id']);
     }
 
-    /**
-     * Gets query for [[IdObject0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\ObjectsQuery
-     */
-    public function getIdObject0()
+    public function getObject()
     {
         return $this->hasOne(Objects::class, ['id' => 'idObject']);
     }
 
-    /**
-     * Gets query for [[IdReward0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\RewardsQuery
-     */
-    public function getIdReward0()
+    public function getReward()
     {
-        return $this->hasOne(Rewards::class, ['id' => 'idReward']);
+        return $this->hasOne(Reward::class, ['id' => 'idReward']);
     }
 
-    /**
-     * Gets query for [[Instancechapters]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\InstancechaptersQuery
-     */
     public function getInstancechapters()
     {
         return $this->hasMany(Instancechapters::class, ['idChapter' => 'id']);
