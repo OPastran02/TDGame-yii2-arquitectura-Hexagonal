@@ -26,7 +26,6 @@ class CreateInstanceChapter
         $arr['idPlayer']=$player;
         $arr['idChapter']=$guild;
         $arr['finished']=0;
-        $arr['order']=0;
         $arr['amountOfFinished']=0;
         $arr['maxStars']=0;
         $arr['available']=1;

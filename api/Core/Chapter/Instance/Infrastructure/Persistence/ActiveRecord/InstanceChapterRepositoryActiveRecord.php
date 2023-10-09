@@ -36,4 +36,28 @@ class InstanceChapterRepositoryActiveRecord implements IInstanceChapterRepositor
         $model->attributes = $arr;
         if ($model->save()) return $this->getbyIdPlayer($model["attributes"]["idPlayer"]);
     }
+
+    public function getbyChapter(string $playerId, int $chapterId): array
+    {
+        $models = Model::find()
+            ->where(['idPlayer' => $playerId, 'idChapter' => $chapterId])
+            ->one();
+
+        if (!$models) return null;
+
+        $instances = [];
+    
+        foreach ($models as $model) {
+            $instances[] = InstanceChapter::fromPrimitives(...$model->attributes);
+        }
+
+        return $instances;
+    }
+
+    public function updateChapter($arr): InstanceChapter
+    {
+        $model = Model::findOne($arr['id']);
+        $model->attributes = $arr;
+        if ($model->save()) return $this->get($model["attributes"]["id"]);
+    }
 }
