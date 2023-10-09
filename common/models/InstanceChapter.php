@@ -37,8 +37,8 @@ class InstanceChapter extends \yii\db\ActiveRecord
             [['idPlayer', 'idChapter'], 'required'],
             [['idChapter', 'finished', 'amountOfFinished', 'maxStars', 'available'], 'integer'],
             [['idPlayer'], 'string', 'max' => 36],
-            [['idChapter'], 'exist', 'skipOnError' => true, 'targetClass' => Chapters::class, 'targetAttribute' => ['idChapter' => 'id']],
-            [['idPlayer'], 'exist', 'skipOnError' => true, 'targetClass' => Players::class, 'targetAttribute' => ['idPlayer' => 'id']],
+            [['idChapter'], 'exist', 'skipOnError' => true, 'targetClass' => Chapter::class, 'targetAttribute' => ['idChapter' => 'id']],
+            [['idPlayer'], 'exist', 'skipOnError' => true, 'targetClass' => Player::class, 'targetAttribute' => ['idPlayer' => 'id']],
         ];
     }
 
@@ -58,30 +58,16 @@ class InstanceChapter extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[IdChapter0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\ChaptersQuery
-     */
-    public function getIdChapter0()
+    public function getChapter()
     {
-        return $this->hasOne(Chapters::class, ['id' => 'idChapter']);
+        return $this->hasOne(Chapter::class, ['id' => 'idChapter']);
     }
 
-    /**
-     * Gets query for [[IdPlayer0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\PlayersQuery
-     */
-    public function getIdPlayer0()
+    public function getPlayer()
     {
-        return $this->hasOne(Players::class, ['id' => 'idPlayer']);
+        return $this->hasOne(Player::class, ['id' => 'idPlayer']);
     }
 
-    /**
-     * {@inheritdoc}
-     * @return \common\models\query\InstanceChapterQuery the active query used by this AR class.
-     */
     public static function find()
     {
         return new \common\models\query\InstanceChapterQuery(get_called_class());

@@ -10,7 +10,7 @@ use api\Core\Chapter\Instance\Domain\{
     Repository\IInstanceChapterRepository
 };
 use api\Core\Chapter\Instance\Infrastructure\Persistence\ActiveRecord\InstanceChapterRepositoryActiveRecord;
-use api\Core\Chapter\Instance\Application\Query\GetInstanceChapterbyIdPlayer;
+use api\Core\Chapter\Instance\Application\Command\CreateInstanceChapter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -18,24 +18,24 @@ use yii\helpers\Json;
 use yii\web\Response;
 use Yii;
 
-class GetInstanceChapterbyIdPlayerController
+class CreateInstanceController
 {
-    private GetInstanceChapterbyIdPlayer $handler;
+    private CreateInstanceChapter $handler;
 
     public function __construct()
     { 
         $repository = new InstanceChapterRepositoryActiveRecord();
-        $this->handler = new GetInstanceChapterbyIdPlayer($repository);
+        $this->handler = new CreateInstanceChapter($repository);
     }
 
-    public function __invoke(string $instanceId)
-    {    
+    public function __invoke($idPlayer, $idChapter)
+    {      
         try {
-            $object = ($this->handler)($playerId);
+            $obj = ($this->handler)($idPlayer, $idChapter);
             $status = 'ok';
-            $hits = ($object !== null) ? array_map(function ($instanceId) {
+            $hits = ($obj !== null) ? array_map(function ($instanceId) {
                 return $instanceId->toprimitives();
-            }, $object) : ['no data'];
+            }, $obj) : ['no data'];
         } catch (InvalidRequestValueException $e) {
             $status = 'error';
             $hits = ['no data'];
@@ -50,6 +50,4 @@ class GetInstanceChapterbyIdPlayerController
         Yii::$app->response->data = $data;
         return Yii::$app->response;
     }
-
-}  
-
+}

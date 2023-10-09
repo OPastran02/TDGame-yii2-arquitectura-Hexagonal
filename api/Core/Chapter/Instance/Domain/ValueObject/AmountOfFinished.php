@@ -11,8 +11,8 @@ final class AmountOfFinished extends intvalueObject
 {
     protected int $value;
 
-    private const MIN_VALUE = 1;
-    private const MAX_VALUE = 99;
+    private const MIN_VALUE = 0;
+    private const MAX_VALUE = 999;
 
     public function __construct(int $value)
     {

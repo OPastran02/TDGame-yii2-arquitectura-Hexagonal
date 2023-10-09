@@ -15,7 +15,7 @@ class m230914_162643_create_instanceChapters_table extends Migration
         $table = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
 
         $this->createTable('{{%instanceChapters}}', [
-            'id' => $this->primaryKey(),
+            'id' => $this->integer()->notNull(),
             'idPlayer' => $this->string(36)->notNull(),
             'idChapter' => $this->integer()->notNull(),
             'finished' => $this->integer()->notNull()->defaultValue(0),

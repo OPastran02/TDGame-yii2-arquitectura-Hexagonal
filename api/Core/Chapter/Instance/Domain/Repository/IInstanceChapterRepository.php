@@ -10,4 +10,5 @@ use api\Core\Chapter\Instance\Domain\{
 interface IInstanceChapterRepository
 {
     public function getbyIdPlayer(string $playerId): array;
+    public function create($instanceChapter): array; 
 }

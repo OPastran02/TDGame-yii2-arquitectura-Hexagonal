@@ -26,7 +26,14 @@ class InstanceChapterRepositoryActiveRecord implements IInstanceChapterRepositor
         foreach ($models as $model) {
             $instances[] = InstanceChapter::fromPrimitives(...$model->attributes);
         }
-        
+
         return $instances;
+    }
+
+    public function create($arr): array
+    {
+        $model = new Model();
+        $model->attributes = $arr;
+        if ($model->save()) return $this->getbyIdPlayer($model["attributes"]["idPlayer"]);
     }
 }
