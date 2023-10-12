@@ -8,17 +8,25 @@ use api\Core\General\ChapterLand\Domain\ChapterLand;
 use api\Core\General\ChapterLand\Domain\ChapterLands;
 use api\Core\General\ChapterLand\Domain\Repository\IChapterLandRepository;
 use common\models\ChapterLand as Model;
+use api\Core\General\Object\Domain\Objeto;
+use api\Core\General\Object\Infrastructure\Persistence\ActiveRecord\ObjetoRepositoryActiveRecord;
 
 class ChapterLandRepositoryActiveRecord implements IChapterLandRepository
 {
-    public function getbyId(int $id): ?ChapterLand
+    public function get(int $chapterLandId): ?ChapterLand
     {
-        $model = Model::findOne($id);
+        $objeto = new ObjetoRepositoryActiveRecord();
 
-        if (!$model) {
-            return null;
-        }else{
-            return ChapterLand::fromPrimitives(...$model["attributes"]);
-        }
+        $model = Model::find()
+            ->with('land.object')
+            ->where(['id' => $chapterLandId])
+            ->one();
+
+        if (!$model) return null;
+
+        $objeto = Objeto::fromPrimitives(...$model["land"]["object"]);
+
+
+
     }
 }

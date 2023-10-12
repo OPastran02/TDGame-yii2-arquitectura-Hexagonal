@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace api\Core\Chapter\ChapterLand\Domain;
+namespace api\Core\Chapter\Land\Domain;
 
 use api\Shared\Domain\Collection;
 

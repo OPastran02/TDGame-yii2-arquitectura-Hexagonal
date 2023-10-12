@@ -10,7 +10,7 @@ use api\Core\Chapter\Instance\Domain\{
 interface IInstanceChapterRepository
 {
     public function getbyIdPlayer(string $playerId): array;
-    public function getbyChapter(string $idPlayer,int $idChapter): array;
-    public function updateChapter(string $idPlayer,int $idChapter, int $win, int $stars): array;
+    public function getbyChapter(string $idPlayer,int $idChapter): InstanceChapter;
+    public function updateChapter($instanceChapter): InstanceChapter;
     public function create($instanceChapter): array; 
 }

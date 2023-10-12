@@ -4,7 +4,8 @@ namespace backend\modules\api\controllers;
 
 use api\Core\Chapter\Instance\Infrastructure\Ui\Http\Controller\{
     GetInstanceChapterbyIdPlayerController,
-    CreateInstanceController
+    CreateInstanceController,
+    UpdateInstanceController
 };
 use Yii;
 
@@ -24,5 +25,11 @@ class InstanceChapterController extends \yii\web\Controller
     {
         $data = Yii::$app->request->getBodyParams();
         return (new CreateInstanceController())($data['idPlayer'],$data['idChapter']);
+    }
+
+    public function actionUpdateInstanceChapter()
+    {
+        $data = Yii::$app->request->getBodyParams();
+        return (new UpdateInstanceController())($data['idPlayer'],$data['idChapter'],$data['win'],$data['stars']);
     }
 }

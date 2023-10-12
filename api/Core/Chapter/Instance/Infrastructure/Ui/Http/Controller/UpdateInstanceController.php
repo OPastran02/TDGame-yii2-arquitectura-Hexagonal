@@ -18,9 +18,9 @@ use yii\helpers\Json;
 use yii\web\Response;
 use Yii;
 
-class CreateInstanceController
+class UpdateInstanceController
 {
-    private CreateInstanceChapter $handler;
+    private UpdateInstanceChapter $handler;
 
     public function __construct()
     { 
@@ -33,14 +33,11 @@ class CreateInstanceController
         try {
             $obj = ($this->handler)($idPlayer, $idChapter, $win, $stars);
             $status = 'ok';
-            $hits = ($obj !== null) ? array_map(function ($instanceId) {
-                return $instanceId->toprimitives();
-            }, $obj) : ['no data'];
+            $hits = $obj->toprimitives();
         } catch (InvalidRequestValueException $e) {
             $status = 'error';
             $hits = ['no data'];
         }
-    
         $data = [
             'status' => $status,
             'hits' => $hits,

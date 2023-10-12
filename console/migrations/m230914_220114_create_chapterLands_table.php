@@ -15,7 +15,7 @@ class m230914_220114_create_chapterLands_table extends Migration
         $table = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
 
         $this->createTable('{{%chapterLands}}', [
-            'id' => $this->primaryKey()->notNull()->unique(),
+            'id' => $this->integer()->notNull()->unique(),
             'idchapter' => $this->integer()->notNull(),
             'idland' => $this->string(36)->notNull(),
             'available' => $this->integer(1)->notNull()->defaultValue(1),

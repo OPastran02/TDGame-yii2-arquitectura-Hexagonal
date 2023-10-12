@@ -19,7 +19,7 @@ class GetInstanceChapterByChapter
         $this->repository = $repository;
     }
  
-    public function __invoke(string $idPlayer,int $idChapter): array
+    public function __invoke(string $idPlayer,int $idChapter): InstanceChapter
     {
         return $this->repository->getbyChapter($idPlayer,$idChapter);
     }

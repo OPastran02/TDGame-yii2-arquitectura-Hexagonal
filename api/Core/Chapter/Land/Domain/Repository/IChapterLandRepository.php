@@ -1,18 +1,10 @@
 <?php   
 
-namespace api\Core\General\ChapterLand\Domain\Repository;
+namespace api\Core\Chapter\Land\Domain\Repository;
 
-use api\Core\General\ChapterLand\Domain\ChapterLand;
-use api\Core\General\ChapterLand\Domain\ChapterLands;
+use api\Core\Chapter\Land\Domain\ChapterLand;
 
 interface IChapterLandRepository
 {
-    /*
-    *what can i do with a ChapterLand?
-    *just get, mandatory
-    */
-    
-    public function getbyId(int $id): ?ChapterLand;
-
-
+    public function get(int $ChapterLandId): ?ChapterLand;
 }

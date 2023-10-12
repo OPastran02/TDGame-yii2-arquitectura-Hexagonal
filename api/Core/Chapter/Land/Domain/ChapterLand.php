@@ -2,31 +2,34 @@
 
 declare(strict_types=1);
 
-namespace api\Core\Chapter\ChapterLand\Domain;
+namespace api\Core\Chapter\Land\Domain;
 
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\Available;
+use api\Shared\Domain\ValueObject\{
+    UUID,
+    NID,
+    Available
+};
 use api\Core\Chapter\Land\Domain\Repository\IChapterLandRepository;
+use api\Core\General\Land\Domain\Land;
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class ChapterLand extends AggregateRoot
+final class ChapterLand
 {
     public function __construct(
-        private UUID $id,
+        private NID $id,
         private NID $idchapter,
         private UUID $idland,
         private Available $available,
+        private Land $land
     )
     {
     }
 
     public static function create( 
-        UUID $id,
+        NID $id,
         NID $idchapter,
         UUID $idland,
         Available $available,
+        Land $land
     ): self 
     {
         return new self(
@@ -34,21 +37,24 @@ final class ChapterLand extends AggregateRoot
             $idchapter,
             $idland,
             $available,
+            $land
         );
     }
 
     public static function fromPrimitives(
-        $id,
-        $idchapter,
-        $idland,
-        $available,
+        int $id,
+        int $idchapter,
+        string $idland,
+        int $available,
+        Land $land
     ): self
     {
-        return new Objeto(
-            new UUID($id),
+        return new self(
+            new NID($id),
             new NID($idchapter),
             new UUID($idland),
             new Available($available),
+            $land
         );
     }
 
@@ -59,6 +65,7 @@ final class ChapterLand extends AggregateRoot
             'idchapter'             =>          $this->idchapter->value(),
             'idland'                =>          $this->idland->value(),
             'available'             =>          $this->available->value(),
+            'land'                  =>          $this->land->toPrimitives(),
         ];
     }
 

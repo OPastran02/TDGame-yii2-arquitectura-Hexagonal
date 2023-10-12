@@ -21,9 +21,9 @@ class UpdateInstanceChapter
         $this->getInstanceChapter = new GetInstanceChapterByChapter($repository);
     }
 
-    public function __invoke($playerId, $chapterId, $win, $stars): array
+    public function __invoke($playerId, $chapterId, $win, $stars): InstanceChapter
     {  
-        $arr = ($this->getInstanceChapter)($playerId,$chapterId)->toPrimitives();
+        $arr = ($this->getInstanceChapter)($playerId, $chapterId, $win, $stars)->toPrimitives();
         
         if($win==1){
             $arr['finished']=1;
