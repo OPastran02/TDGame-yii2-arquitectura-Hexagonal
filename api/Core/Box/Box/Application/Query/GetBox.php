@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace api\Core\Box\Box\Application\Query;
 
-use api\Core\Box\Box\Domain\Box;
-use api\Core\Box\Box\Domain\Repository\IBoxRepository;
+use api\Core\Box\Box\Domain\{
+    Box,
+    Repository\IBoxRepository
+};
 
-class GetBoxByIdHandler
+class GetBox
 {
     private IBoxRepository $repository;
 
@@ -16,9 +18,8 @@ class GetBoxByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Box
+    public function __invoke(int $boxId): ?Box
     {
-        $hero = $this->repository->getbyId($id);
-        return $hero;
+        return $this->repository->get($boxId);
     }
 }

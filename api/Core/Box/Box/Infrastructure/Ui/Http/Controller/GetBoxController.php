@@ -4,34 +4,33 @@ declare(strict_types=1);
 
 namespace api\Core\Box\Box\Infrastructure\Ui\Http\Controller;
 
+use api\Core\Box\Box\Domain\{
+    Box,
+    Repository\IBoxRepository
+};
+use api\Core\Box\Box\Infrastructure\Persistence\ActiveRecord\BoxRepositoryActiveRecord;
+use api\Core\Box\Box\Application\Query\GetBox;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use api\Core\Box\Box\Domain\Box; 
-use api\Core\Box\Box\Domain\Repository\IBoxRepository;
-use api\Core\Box\Box\Infrastructure\Persistence\ActiveRecord\BoxRepositoryActiveRecord;
-use api\Core\Box\Box\Application\Query\GetBoxByIdHandler;
 use yii\helpers\Json;
 use yii\web\Response;
 use Yii;
 
-class GetBoxyByIdController
+class GetBoxController
 {
-    private GetBoxByIdHandler $handler;
+    private GetBox $handler;
 
     public function __construct()
     { 
         $repository = new BoxRepositoryActiveRecord();
-        $this->handler = new GetBoxByIdHandler($repository);
+        $this->handler = new GetBox($repository);
     }
 
-    public function __invoke(int $id)
+    public function __invoke(int $boxId)
     {    
-        $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON;
-    
         try {
-            $object = ($this->handler)($id);
+            $object = ($this->handler)($boxId);
             $status = 'ok';
             $hits = ($object !== null) ? [$object->toPrimitives()] : ['no data'];
         } catch (InvalidRequestValueException $e) {
@@ -44,9 +43,9 @@ class GetBoxyByIdController
             'hits' => $hits,
         ];
     
-        $response->data = $data;
-        
-        return $response;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->data = $data;
+        return Yii::$app->response;
     }
 
 }  

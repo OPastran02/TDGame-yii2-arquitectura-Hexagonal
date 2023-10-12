@@ -43,8 +43,8 @@ class Box extends \yii\db\ActiveRecord
             [['idObject'], 'string', 'max' => 36],
             [['booster'], 'string'],
             [['idObject'], 'exist', 'skipOnError' => true, 'targetClass' => Objects::class, 'targetAttribute' => ['idObject' => 'id']],
-            [['idRace'], 'exist', 'skipOnError' => true, 'targetClass' => Races::class, 'targetAttribute' => ['idRace' => 'id']],
-            [['idRequirements'], 'exist', 'skipOnError' => true, 'targetClass' => Requirements::class, 'targetAttribute' => ['idRequirements' => 'id']],
+            [['idRace'], 'exist', 'skipOnError' => true, 'targetClass' => Race::class, 'targetAttribute' => ['idRace' => 'id']],
+            [['idRequirements'], 'exist', 'skipOnError' => true, 'targetClass' => Requirement::class, 'targetAttribute' => ['idRequirements' => 'id']],
         ];
     }
 
@@ -67,40 +67,21 @@ class Box extends \yii\db\ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[IdObject0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\ObjectsQuery
-     */
-    public function getIdObject0()
+    public function getObject()
     {
         return $this->hasOne(Objects::class, ['id' => 'idObject']);
     }
 
-    /**
-     * Gets query for [[IdRace0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\RacesQuery
-     */
-    public function getIdRace0()
+    public function getRace()
     {
-        return $this->hasOne(Races::class, ['id' => 'idRace']);
+        return $this->hasOne(Race::class, ['id' => 'idRace']);
     }
 
-    /**
-     * Gets query for [[IdRequirements0]].
-     *
-     * @return \yii\db\ActiveQuery|\common\models\query\RequirementsQuery
-     */
-    public function getIdRequirements0()
+    public function getRequirements()
     {
-        return $this->hasOne(Requirements::class, ['id' => 'idRequirements']);
+        return $this->hasOne(Requirement::class, ['id' => 'idRequirements']);
     }
 
-    /**
-     * {@inheritdoc}
-     * @return \common\models\query\BoxQuery the active query used by this AR class.
-     */
     public static function find()
     {
         return new \common\models\query\BoxQuery(get_called_class());

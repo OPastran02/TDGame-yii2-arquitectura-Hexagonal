@@ -16,7 +16,7 @@ final class Race
 {
     public function __construct(
         private NID $id,
-        private NID $idObject, 
+        private UUID $idObject, 
         private NID $idBoost, 
         private Available $available,
         private Objeto $objeto,
@@ -26,7 +26,7 @@ final class Race
 
     public static function create( 
         NID $id,
-        NID $idObject, 
+        UUID $idObject, 
         NID $idBoost, 
         Available $available,
         Objeto $objeto,
@@ -45,7 +45,7 @@ final class Race
 
     public static function fromPrimitives(
         ?int $id,
-        int $idObject, 
+        string $idObject, 
         int $idBoost, 
         int $available,
         Objeto $objeto,
@@ -53,8 +53,8 @@ final class Race
     ): self
     {
         return new self(
-            isset($id) ? new NID($id):   null,
-            new NID ($idObject), 
+            new NID($id),
+            new UUID ($idObject), 
             new NID ($idBoost), 
             new Available ($available),
             $objeto,

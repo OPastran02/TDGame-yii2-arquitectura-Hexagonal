@@ -6,5 +6,5 @@ use api\Core\Box\Box\Domain\Box;
 
 interface IBoxRepository
 {
-    public function getbyId(int $id): ?Box;
+    public function get(int $boxId): ?Box;
 }

@@ -16,7 +16,7 @@ final class Booster extends StringValueObject
         $this->value = $value;
     }
 
-    public function value(): int
+    public function value(): string
     {
         return $this->value;
     }
