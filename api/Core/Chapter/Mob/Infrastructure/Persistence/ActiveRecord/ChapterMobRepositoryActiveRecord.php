@@ -4,21 +4,39 @@ declare(strict_types=1);
 
 namespace api\Core\Chapter\Mob\Infrastructure\Persistence\ActiveRecord;
 
-use api\Core\Chapter\Mob\Domain\ChapterMob;
-use api\Core\Chapter\Mob\Domain\ChapterMobs;
-use api\Core\Chapter\Mob\Domain\Repository\IChapterMobRepository;
+use api\Core\Chapter\Mob\Domain\{
+    ChapterMob,
+    Repository\IChapterMobRepository
+};
 use common\models\ChapterMob as Model;
+use api\Core\General\Object\Domain\Objeto; 
+use api\Core\General\Stat\Domain\Stat; 
 
 class ChapterMobRepositoryActiveRecord implements IChapterMobRepository
 {
-    public function getbyId(int $id): ?ChapterMob
+    public function getbyIdLand(string $landId): ?array
     {
-        $model = Model::findOne($id);
+        $models = Model::find()
+            ->with('object')
+            ->with('stats')
+            ->where(['idChapterLand' => $landId])
+            ->all();
 
-        if (!$model) {
-            return null;
-        }else{
-            return ChapterMob::fromPrimitives(...$model["attributes"]);
+        $instances = [];
+        foreach ($models as $model) {
+            $objeto = Objeto::fromPrimitives(...$model["object"]["attributes"]);
+            $stat = Stat::fromPrimitives(...$model["stats"]["attributes"]);
+            $instances[] = ChapterMob::fromPrimitives(
+                $model->id,
+                $model->idObject,
+                $model->idChapterLand,
+                $model->idStats,
+                $model->available,
+                $objeto,
+                $stat
+            );
         }
+        return $instances;
+
     }
 }

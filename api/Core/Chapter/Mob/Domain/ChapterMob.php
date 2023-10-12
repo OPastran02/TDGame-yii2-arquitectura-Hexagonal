@@ -4,59 +4,73 @@ declare(strict_types=1);
 
 namespace api\Core\Chapter\Mob\Domain;
 
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\Available;
-use api\Core\Chapter\Mob\Domain\ValueObject\AmountOfKills;
-use api\Core\Chapter\Mob\Domain\ValueObject\DamageDealt;
-use api\Core\Chapter\Mob\Domain\ValueObject\IsKilled;
-use api\Core\Chapter\Mob\Domain\ValueObject\Week;
+use api\Shared\Domain\ValueObject\{
+    UUID,
+    NID,
+    Available
+};
+use api\Core\Chapter\Mob\Domain\ValueObject\{
+    AmountOfKills,
+    DamageDealt,
+    IsKilled,
+    Week
+};
+use api\Core\General\Object\Domain\Objeto;
+use api\Core\General\Stat\Domain\Stat;
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class ChapterMob extends AggregateRoot
+final class ChapterMob
 {
     public function __construct(
         private NID $id, 
-        private NID $idObject, 
+        private UUID $idObject, 
         private NID $idChapterLand, 
-        private UUID $stats,
+        private UUID $idStats,
         private Available $available,
+        private Objeto $objeto,
+        private Stat $stat
     )
     {
     }
 
     public static function create( 
         NID $id, 
-        NID $idObject, 
+        UUID $idObject, 
         NID $idChapterLand, 
-        UUID $stats,
+        UUID $idStats,
         Available $available,
+        Objeto $objeto,
+        Stat $stat
     ): self 
     {
         return new self(
             $id, 
             $idObject, 
             $idChapterLand, 
-            $stats,
+            $idStats,
             $available,
+            $objeto,
+            $stat
         );
     }
 
     public static function fromPrimitives(
         int $id, 
-        int $idObject, 
+        string $idObject, 
         int $idChapterLand, 
-        string $stats,
+        string $idStats,
         int $available,
+        Objeto $objeto,
+        Stat $stat
     ): self
     {
-        return new Objeto(
+        return new self(
             new NID($id), 
-            new NID($idObject), 
+            new UUID($idObject), 
             new NID($idChapterLand), 
-            new UUID($stats),
+            new UUID($idStats),
             new Available($available),
+            $objeto,
+            $stat
         );
     }
 
@@ -66,8 +80,10 @@ final class ChapterMob extends AggregateRoot
             'id'                    =>          $this->id->value(), 
             'idObject'              =>          $this->idObject->value(), 
             'idChapterLand'         =>          $this->idChapterLand->value(), 
-            'stats'                 =>          $this->stats->value(),
+            'idStats'               =>          $this->idStats->value(),
             'available'             =>          $this->available->value(),
+            'objeto'                =>          $this->objeto->toPrimitives(),
+            'stat'                  =>          $this->stat->toPrimitives(),
         ];
     }
 

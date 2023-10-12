@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace api\Core\Chapter\Mob\Application\Query;
 
-use api\Core\Chapter\Mob\Domain\ChapterMob;
-use api\Core\Chapter\Mob\Domain\Repository\IChapterMobRepository;
+use api\Core\Chapter\Mob\Domain\{
+    ChapterMob,
+    Repository\IChapterMobRepository
+};
 
-class GetChapterMobByIdHandler
+class GetMobsByIdLand
 {
     private IChapterMobRepository $repository;
 
@@ -16,9 +18,8 @@ class GetChapterMobByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?ChapterMob
+    public function __invoke(string $landId): ?array
     {
-        $hero = $this->repository->getbyId($id);
-        return $hero;
+        return $this->repository->getbyIdLand($landId);
     }
 }
