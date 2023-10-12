@@ -4,34 +4,33 @@ declare(strict_types=1);
 
 namespace api\Core\General\Requirement\Infrastructure\Ui\Http\Controller;
 
+use api\Core\General\Requirement\Domain\{
+    Requirement,
+    Repository\IRequirementRepository
+};
+use api\Core\General\Requirement\Infrastructure\Persistence\ActiveRecord\RequirementRepositoryActiveRecord;
+use api\Core\General\Requirement\Application\Query\GetRequirement;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use api\Core\General\Requirement\Domain\Requirement; 
-use api\Core\General\Requirement\Domain\Repository\IRequirementRepository;
-use api\Core\General\Requirement\Infrastructure\Persistence\ActiveRecord\RequirementRepositoryActiveRecord;
-use api\Core\General\Requirement\Application\Query\GetRequirementByIdHandler;
 use yii\helpers\Json;
 use yii\web\Response;
 use Yii;
 
-class GetRequirementByIdController
+class GetRequirementController
 {
-    private GetRequirementByIdHandler $handler;
+    private GetRequirement $handler;
 
     public function __construct()
     { 
         $repository = new RequirementRepositoryActiveRecord();
-        $this->handler = new GetRequirementByIdHandler($repository);
+        $this->handler = new GetRequirement($repository);
     }
 
-    public function __invoke(int $id)
+    public function __invoke(int $requirementId)
     {    
-        $response = Yii::$app->response;
-        $response->format = Response::FORMAT_JSON;
-    
         try {
-            $object = ($this->handler)($id);
+            $object = ($this->handler)($requirementId);
             $status = 'ok';
             $hits = ($object !== null) ? [$object->toPrimitives()] : ['no data'];
         } catch (InvalidRequestValueException $e) {
@@ -44,9 +43,9 @@ class GetRequirementByIdController
             'hits' => $hits,
         ];
     
-        $response->data = $data;
-        
-        return $response;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->data = $data;
+        return Yii::$app->response;
     }
 
 }  

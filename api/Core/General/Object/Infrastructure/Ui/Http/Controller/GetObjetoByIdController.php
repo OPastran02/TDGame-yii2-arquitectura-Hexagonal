@@ -34,6 +34,8 @@ class GetObjetoByIdController
     {        
         try {
             $objeto = ($this->handler)($objetoId);
+            var_dump($objeto);
+            exit();
             $status = 'ok';
             $hits = ($objeto !== null) ? [$objeto->toPrimitives()] : ['no data'];
         } catch (InvalidRequestValueException $e) {

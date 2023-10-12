@@ -4,31 +4,31 @@ declare(strict_types=1);
 
 namespace api\Core\General\Requirement\Domain;
 
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\Available;
+use api\Shared\Domain\ValueObject\{
+    NID,
+    ValueObject\Available
+};
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class Requirement extends AggregateRoot
+final class Requirement
 {
     public function __construct(
-        NID $id,                     
-        int $guildLevel,             
-        int $guildExperience,        
-        int $guildRank,              
-        int $guildWins,              
-        int $guildMonsterKilled,     
-        int $guildBossKilled,        
-        int $playerOnGuildRank,      
-        int $playerOnGuildfights,        
-        int $playerOnGuildWins,      
-        int $playerRank,             
-        int $playerLevel,            
-        int $playerExperience,       
-        int $chapterFinished,        
-        int $battlePass,             
-        int $ultraPass,              
-        int $available,              
+        private NID $id,                     
+        private int $guildLevel,             
+        private int $guildExperience,        
+        private int $guildRank,              
+        private int $guildWins,              
+        private int $guildMonsterKilled,     
+        private int $guildBossKilled,        
+        private int $playerOnGuildRank,      
+        private int $playerOnGuildfights,        
+        private int $playerOnGuildWins,      
+        private int $playerRank,             
+        private int $playerLevel,            
+        private int $playerExperience,       
+        private int $chapterFinished,        
+        private int $battlePass,             
+        private int $ultraPass,              
+        private int $available           
     )
     {
     }
@@ -50,10 +50,10 @@ final class Requirement extends AggregateRoot
         int $chapterFinished,        
         int $battlePass,             
         int $ultraPass,              
-        int $available,   
+        int $available  
     ): self 
     {
-        return $obj = new Requirement(
+        return new self(
             $id,                     
             $guildLevel,             
             $guildExperience,        
@@ -94,24 +94,24 @@ final class Requirement extends AggregateRoot
         int $available,   
     ): self
     {
-        return new Requirement(
-            $id,                     
-            $guildLevel,             
-            $guildExperience,        
-            $guildRank,              
-            $guildWins,              
-            $guildMonsterKilled,     
-            $guildBossKilled,        
-            $playerOnGuildRank,      
-            $playerOnGuildfights,        
-            $playerOnGuildWins,      
-            $playerRank,             
-            $playerLevel,            
-            $playerExperience,       
-            $chapterFinished,        
-            $battlePass,             
-            $ultraPass,              
-            $available, 
+        return new self(
+            new NID($id),                  
+            $guildLevel,          
+            $guildExperience,     
+            $guildRank,           
+            $guildWins,           
+            $guildMonsterKilled,  
+            $guildBossKilled,     
+            $playerOnGuildRank,   
+            $playerOnGuildfights, 
+            $playerOnGuildWins,   
+            $playerRank,          
+            $playerLevel,         
+            $playerExperience,    
+            $chapterFinished,     
+            $battlePass,          
+            $ultraPass,           
+            $available,   
         );
     }
 
