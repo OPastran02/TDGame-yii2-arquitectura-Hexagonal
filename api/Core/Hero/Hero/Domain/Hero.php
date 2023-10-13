@@ -4,38 +4,38 @@ declare(strict_types=1);
 
 namespace api\Core\Hero\Hero\Domain;
 
-use api\Shared\Domain\ValueObject\NID;
-use api\Shared\Domain\ValueObject\UUID;
-use api\Shared\Domain\ValueObject\Available;
+use api\Shared\Domain\ValueObject\{
+    NID,
+    UUID,
+    Available
+};
+use api\Core\Shared\Domain\ValueObject\{
+    Bronze,
+    Silver,
+    Gold,
+    Experience,
+    Level
+};
 use api\Core\Hero\Hero\Domain\ValueObject\IsLanded;
-use api\Core\Shared\Domain\ValueObject\Bronze;
-use api\Core\Shared\Domain\ValueObject\Silver;
-use api\Core\Shared\Domain\ValueObject\Gold;
-use api\Core\Shared\Domain\ValueObject\Experience;
-use api\Core\Shared\Domain\ValueObject\Level;
 
-use api\Shared\Domain\Aggregate\AggregateRoot;
-
-final class Hero extends AggregateRoot
+final class Hero
 {
     public function __construct(
-        NID $id,
-        UUID $idPlayer,
-        NID $idObject,
-        NID $rarity,
-        NID $nature,
-        NID $type,
-        NID $race,
-        NID $abilities,
-        UUID $stats,
-        Experience $experience,
-        Level $level,
-        IsLanded $isLanded,
-        UUID $land,
-        Available $available,
-    )  
-    {
-    }
+        private NID $id,
+        private UUID $idPlayer,
+        private UUID $idObject,
+        private NID $rarity,
+        private NID $nature,
+        private NID $type,
+        private NID $race,
+        private NID $abilities,
+        private UUID $stats,
+        private Experience $experience,
+        private Level $level,
+        private IsLanded $isLanded,
+        private UUID $land,
+        private Available $available,
+    ){}
 
     public static function create( 
         NID $id,
@@ -75,7 +75,7 @@ final class Hero extends AggregateRoot
     public static function fromPrimitives(
         string $id,
         string $idPlayer,
-        int $idObject,
+        string $idObject,
         int $rarity,
         int $nature,
         int $type,
@@ -92,7 +92,7 @@ final class Hero extends AggregateRoot
         return new Objeto(
             new NID($id),
             new UUID($idPlayer),
-            new NID($idObject),
+            new UUID($idObject),
             new NID($rarity),
             new NID($nature),
             new NID($type),

@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace api\Core\Hero\Hero\Application\Query;
 
-use api\Core\Hero\Hero\Domain\Hero;
-use api\Core\Hero\Hero\Domain\Repository\IHeroRepository;
+use api\Core\Hero\Hero\Domain\{
+    Hero,
+    Repository\IHeroRepository
+};
 
-class GetHeroByIdHandler
+class GetHero
 {
     private IHeroRepository $repository;
 
@@ -16,9 +18,8 @@ class GetHeroByIdHandler
         $this->repository = $repository;
     }
  
-    public function __invoke(int $id): ?Hero
+    public function __invoke(int $heroId): ?Hero
     {
-        $obj = $this->repository->getbyId($id);
-        return $obj;
+        return $this->repository->get($heroId);
     }
 }
