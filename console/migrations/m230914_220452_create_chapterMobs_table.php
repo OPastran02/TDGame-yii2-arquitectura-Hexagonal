@@ -62,14 +62,14 @@ class m230914_220452_create_chapterMobs_table extends Migration
         $this->createIndex(
             '{{%idx-chapterMobs-stats}}',
             '{{%chapterMobs}}',
-            'stats'
+            'idStats'
         );
 
         // Add foreign key for table `{{%players}}`
         $this->addForeignKey(
             '{{%fk-chapterMobs-stats}}',
             '{{%chapterMobs}}',
-            'stats',
+            'idStats',
             '{{%stats}}',
             'id',
             'CASCADE'
