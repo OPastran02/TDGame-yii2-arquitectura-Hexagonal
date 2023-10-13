@@ -27,7 +27,7 @@ class m230914_220454_create_heroes_table extends Migration
             'experience' => $this->integer()->notNull()->defaultValue(0),
             'level' => $this->integer()->notNull()->defaultValue(0),
             'isLanded' => $this->tinyInteger(1)->notNull()->defaultValue(0),
-            'isLanded' => $this->tinyInteger(1)->notNull()->defaultValue(0),
+            'isInQueue' => $this->tinyInteger(1)->notNull()->defaultValue(0),
             'land' => $this->string(36),
             'available' => $this->tinyInteger(1)->notNull()->defaultValue(1),
         ],$table);
