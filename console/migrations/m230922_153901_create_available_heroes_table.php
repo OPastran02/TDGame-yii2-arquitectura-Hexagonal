@@ -16,7 +16,7 @@ class m230922_153901_create_available_heroes_table extends Migration
 
         $this->createTable('{{%availableHeroes}}', [
             'id' => $this->integer(),
-            'idRace' => $this->string(36)->notNull(),
+            'idRace' => $this->integer(),
             'value' => $this->integer(),
         ],$table);
 
