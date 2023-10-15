@@ -26,7 +26,7 @@ final class Box
     public function __construct(
         private NID $id,
         private UUID $idObject,
-        private Booster $booster,
+        private Booster $idAvailableRaces,
         private Bronze $bronze,
         private Silver $silver,
         private Gold $gold,
@@ -42,7 +42,7 @@ final class Box
     public static function create( 
         NID $id,
         UUID $idObject,
-        Booster $booster,
+        Booster $idBooster,
         Bronze $bronze,
         Silver $silver,
         Gold $gold,

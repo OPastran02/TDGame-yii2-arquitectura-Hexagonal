@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace api\Core\Hero\Type\Domain;
 
 use api\Shared\Domain\ValueObject\{
+    UUID,
     NID,
     Available,
     GameText
@@ -16,7 +17,7 @@ final class Type
 {
     public function __construct(
         private NID $id,
-        private NID $idObject, 
+        private UUID $idObject, 
         private String $horoscope, 
         private NID $idBoost, 
         private Available $available,
@@ -28,7 +29,7 @@ final class Type
 
     public static function create( 
         NID $id,
-        NID $idObject, 
+        UUID $idObject, 
         String $horoscope, 
         NID $idBoost, 
         Available $available,
@@ -48,8 +49,8 @@ final class Type
     }
 
     public static function fromPrimitives(
-        ?int $id,
-        int $idObject, 
+        int $id,
+        String $idObject, 
         String $horoscope, 
         int $idBoost, 
         int $available,
@@ -58,8 +59,8 @@ final class Type
     ): self
     {
         return new self(
-            isset($id) ? new NID($id):   null,
-            new NID ($idObject), 
+            new NID($id),
+            new UUID ($idObject), 
             $horoscope, 
             new NID ($idBoost), 
             new Available ($available),
@@ -71,7 +72,7 @@ final class Type
     public function toPrimitives(): array
     {
         return [
-            'id'                    =>          isset($this->id) ? $this->id->value() : null,
+            'id'                    =>          $this->id->value(),
             'idObject'              =>          $this->idObject->value(),
             'horoscope'             =>          $this->horoscope, 
             'idBoost'               =>          $this->idBoost->value(), 

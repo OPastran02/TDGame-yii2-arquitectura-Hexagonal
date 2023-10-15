@@ -6,6 +6,7 @@ namespace api\Core\General\Rarity\Domain;
 
 use api\Shared\Domain\ValueObject\{
     NID,
+    UUID,
     Available
 };
 use api\Core\General\Object\Domain\Objeto; 
@@ -15,7 +16,7 @@ final class Rarity
 
     public function __construct(
         private NID $id,
-        private NID $idObject,
+        private UUID $idObject,
         private Available $available,
         private Objeto $objeto
     )
@@ -24,7 +25,7 @@ final class Rarity
     
     public static function create( 
         NID $id,
-        NID $idObject,
+        UUID $idObject,
         Available $available,
         Objeto $objeto 
     ): self 
@@ -39,14 +40,14 @@ final class Rarity
 
     public static function fromPrimitives(
         int $id,
-        int $idObject,
+        string $idObject,
         int $available,
         Objeto $objeto
     ): self
     {
         return new self(
             new NID($id),
-            new NID($idObject),
+            new UUID($idObject),
             new Available($available),
             $objeto
         );

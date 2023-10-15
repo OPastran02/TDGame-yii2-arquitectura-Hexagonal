@@ -14,7 +14,7 @@ use api\Core\Hero\Boost\Domain\Repository\IBoostRepository;
 final class Boost
 {
     public function __construct(
-        private NID   $id,
+        private NID $id,
         private Increment $attack, 
         private Increment $defense, 
         private Increment $towerAttack, 
