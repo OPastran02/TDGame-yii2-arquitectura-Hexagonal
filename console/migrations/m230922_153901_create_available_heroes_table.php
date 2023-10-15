@@ -16,23 +16,41 @@ class m230922_153901_create_available_heroes_table extends Migration
 
         $this->createTable('{{%availableHeroes}}', [
             'id' => $this->integer(),
-            'idRace' => $this->integer(),
+            'idBox' => $this->integer(),
+            'idRarity' => $this->integer(),
             'value' => $this->integer(),
         ],$table);
 
-        // Creates index for column `idRace`
+        // Creates index for column `idBox`
         $this->createIndex(
-            '{{%idx_availableHeroes_idRace}}',
+            '{{%idx_availableHeroes_idBox}}',
             '{{%availableHeroes}}',
-            'idRace'
+            'idBox'
         );
 
-        // Add foreign key for table `{{%players}}`
+        // Add foreign key for table `{{%idBox}}`
         $this->addForeignKey(
-            '{{%fk_availableHeroes_idRace}}',
+            '{{%fk_availableHeroes_idBox}}',
             '{{%availableHeroes}}',
-            'idRace',
-            '{{%races}}',
+            'idBox',
+            '{{%boxes}}',
+            'id',
+            'CASCADE'
+        );
+
+        // Creates index for column `idBox`
+        $this->createIndex(
+            '{{%idx_availableHeroes_idRarity}}',
+            '{{%availableHeroes}}',
+            'idRarity'
+        );
+
+        // Add foreign key for table `{{%idBox}}`
+        $this->addForeignKey(
+            '{{%fk_availableHeroes_idRarity}}',
+            '{{%availableHeroes}}',
+            'idRarity',
+            '{{%rarities}}',
             'id',
             'CASCADE'
         );
@@ -43,7 +61,8 @@ class m230922_153901_create_available_heroes_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropForeignKey('fk_availableHeroes_idRace', 'availableHeroes');
+        $this->dropForeignKey('fk_availableHeroes_idBox', 'availableHeroes');
+        $this->dropForeignKey('fk_availableHeroes_idRarity', 'availableHeroes');
         $this->dropTable('availableHeroes');
     }
 }
