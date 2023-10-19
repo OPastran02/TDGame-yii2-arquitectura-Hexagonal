@@ -18,7 +18,7 @@ class m230922_153901_create_available_heroes_table extends Migration
             'id' => $this->integer(),
             'idBox' => $this->integer(),
             'idRarity' => $this->integer(),
-            'value' => $this->integer(),
+            'percentage' => $this->integer(),
         ],$table);
 
         // Creates index for column `idBox`

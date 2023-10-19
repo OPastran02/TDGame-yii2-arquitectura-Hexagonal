@@ -12,7 +12,7 @@ use api\Shared\Domain\ValueObject\{
 };
 use api\Core\General\Object\Domain\Objeto; 
 use api\Core\Hero\Boost\Domain\Boost; 
-
+/*Tipo de heroe*/
 final class Type
 {
     public function __construct(
