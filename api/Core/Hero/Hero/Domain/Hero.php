@@ -24,6 +24,7 @@ final class Hero
         private NID $id,
         private UUID $idPlayer,
         private UUID $idObject,
+        private UUID $idObjectDefense,
         private NID $rarity,
         private NID $nature,
         private NID $type,
