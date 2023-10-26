@@ -17,8 +17,7 @@ final class Prototype
         private NID $rarity,
         private NID $type,
         private NID $race,
-        private UUID $objectAttack,
-        private UUID $objectDefense,
+        private UUID $object,
         private Available $available,
     )
     {}
@@ -28,8 +27,7 @@ final class Prototype
         NID $rarity,
         NID $type,
         NID $race,
-        UUID $objectAttack,
-        UUID $objectDefense,
+        UUID $object,
         Available $available,
     ): self 
     {
@@ -38,8 +36,7 @@ final class Prototype
             $rarity,
             $type,
             $race,
-            $objectAttack,
-            $objectDefense,
+            $object,
             $available,
         );
     }
@@ -49,8 +46,7 @@ final class Prototype
         int $rarity,
         int $type,
         int $race,
-        string $objectAttack,
-        string $objectDefense,
+        string $object,
         int $available,
     ): self
     {
@@ -59,8 +55,7 @@ final class Prototype
             new NID($rarity),
             new NID($type),
             new NID($race),
-            new UUID($objectAttack),
-            new UUID($objectDefense),
+            new UUID($object),
             new Available($available),
         );
     }
@@ -72,8 +67,7 @@ final class Prototype
             'rarity'                =>          $this->rarity->value(),
             'type'                  =>          $this->type->value(),
             'race'                  =>          $this->race->value(),
-            'objectAttack'          =>          $this->objectAttack->value(),
-            'objectDefense'         =>          $this->objectDefense->value(),
+            'object'                =>          $this->object->value(),
             'available'             =>          $this->available->value(),
         ];
     }

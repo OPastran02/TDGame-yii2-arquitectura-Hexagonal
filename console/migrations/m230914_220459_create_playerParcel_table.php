@@ -12,13 +12,15 @@ class m230914_220459_create_playerParcel_table extends Migration
      */
     public function safeUp()
     {
+        $table = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
+
         $this->createTable('playerParcel', [
             'id' => $this->primaryKey(),
             'idParcel' => $this->integer()->notNull(),
             'idPlayer' => $this->string(36)->notNull()->unique()->comment('uuid'),
             'quantity' => $this->integer()->notNull()->defaultValue(0),
             'available' => $this->tinyInteger(1)->notNull()->defaultValue(1),
-        ]);
+        ],$table);
 
         // Add unique key constraints
         $this->createIndex('idx_playerParcel_idParcel', 'playerParcel', 'idParcel', true);
