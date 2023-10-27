@@ -8,5 +8,5 @@ use api\Core\General\Prototype\Domain\{
 
 interface IPrototypeRepository
 {   
-    public function getByCriteria(string $objetoId): ?Prototype;
+    public function getByCriteria(int $rarity, int $type, int $race): ?Prototype;
 }
