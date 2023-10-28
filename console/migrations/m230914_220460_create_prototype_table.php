@@ -20,9 +20,13 @@ class m230914_220460_create_prototype_table extends Migration
             'nature' => $this->integer()->notNull(),
             'type' => $this->integer()->notNull(),
             'race' => $this->integer()->notNull(),
-            'object' => $this->string(36)->notNull()->defaultValue(0),
+            'idObject' => $this->string(36)->notNull()->defaultValue(0),
             'available' => $this->tinyInteger(1)->notNull()->defaultValue(1),
         ],$table);
+
+        
+        // Add foreign key constraints
+        $this->addForeignKey('fk_prototypes_idObject', 'prototypes', 'idObject', 'objects', 'id');
     }
 
     /**
@@ -30,7 +34,7 @@ class m230914_220460_create_prototype_table extends Migration
      */
     public function safeDown()
     {
-        // Then drop the table
+        $this->dropForeignKey('fk_prototypes_idObject', 'prototypes');
         $this->dropTable('prototypes');
     }
 }

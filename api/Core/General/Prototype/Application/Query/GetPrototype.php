@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace api\Core\General\Object\Application\Query;
+namespace api\Core\General\Prototype\Application\Query;
 
 use api\Core\General\Object\Domain\{
-    Objeto,
-    Repository\IObjetoRepository
+    Prototype,
+    Repository\IPrototypeRepository
 };
 
 class GetPrototype 
 {
-    private IObjetoRepository $repository;
+    private IPrototypeRepository $repository;
 
-    public function __construct(IObjetoRepository $repository)
+    public function __construct(IPrototypeRepository $repository)
     {
         $this->repository = $repository;
     }
  
-    public function __invoke(string $objetoId): ?Objeto
+    public function __invoke(int $rarity, int $type, int $race): ?Prototype
     {
-        return $this->repository->get($objetoId);
+        return $this->repository->getByCriteria($rarity, $type, $race);
     }
 }

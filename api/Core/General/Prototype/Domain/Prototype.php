@@ -17,7 +17,7 @@ final class Prototype
         private NID $rarity,
         private NID $type,
         private NID $race,
-        private UUID $object,
+        private UUID $idObject,
         private Available $available,
     )
     {}
@@ -27,7 +27,7 @@ final class Prototype
         NID $rarity,
         NID $type,
         NID $race,
-        UUID $object,
+        UUID $idObject,
         Available $available,
     ): self 
     {
@@ -36,7 +36,7 @@ final class Prototype
             $rarity,
             $type,
             $race,
-            $object,
+            $idObject,
             $available,
         );
     }
@@ -46,7 +46,7 @@ final class Prototype
         int $rarity,
         int $type,
         int $race,
-        string $object,
+        string $idObject,
         int $available,
     ): self
     {
@@ -55,7 +55,7 @@ final class Prototype
             new NID($rarity),
             new NID($type),
             new NID($race),
-            new UUID($object),
+            new UUID($idObject),
             new Available($available),
         );
     }
@@ -67,7 +67,7 @@ final class Prototype
             'rarity'                =>          $this->rarity->value(),
             'type'                  =>          $this->type->value(),
             'race'                  =>          $this->race->value(),
-            'object'                =>          $this->object->value(),
+            'object'                =>          $this->idObject->value(),
             'available'             =>          $this->available->value(),
         ];
     }
