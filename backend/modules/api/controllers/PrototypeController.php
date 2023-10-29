@@ -17,7 +17,7 @@ class PrototypeController extends \yii\web\Controller
     public function actionGetByCriteria()
     {
         $data = Yii::$app->request->getBodyParams();
-        return (new AddExperienceController())($data['id'],$data['newExperience']);
+        return (new GetPrototypeController())($data['rarity'],$data['type'],$data['race']);
     }
 
 }

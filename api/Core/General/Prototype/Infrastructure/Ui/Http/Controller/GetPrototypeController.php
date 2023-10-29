@@ -28,10 +28,10 @@ class GetPrototypeController
         $this->handler = new GetPrototype($repository);
     }
 
-    public function __invoke(int $rarityId)
+    public function __invoke(int $rarity, int $type, int $race)
     {    
         try {
-            $obj = ($this->handler)($rarityId);
+            $obj = ($this->handler)($rarity,$type,$race);
             $status = 'ok';
             $hits = ($obj !== null) ? [$obj->toPrimitives()] : ['no data'];
         } catch (InvalidRequestValueException $e) {

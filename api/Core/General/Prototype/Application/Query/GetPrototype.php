@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace api\Core\General\Prototype\Application\Query;
 
-use api\Core\General\Object\Domain\{
+use api\Core\General\Prototype\Domain\{
     Prototype,
     Repository\IPrototypeRepository
 };
