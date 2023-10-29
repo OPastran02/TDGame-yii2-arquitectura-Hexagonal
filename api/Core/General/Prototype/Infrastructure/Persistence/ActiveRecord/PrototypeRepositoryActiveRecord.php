@@ -28,6 +28,10 @@ class PrototypeRepositoryActiveRecord implements IPrototypeRepository
 
         return Prototype::fromPrimitives(
             $model['id'],
+            $model['rarity'],
+            $model['nature'],
+            $model['type'],
+            $model['race'],
             $model['idObject'],
             $model['available'],
             $objeto
