@@ -11,6 +11,43 @@ Table User{
   password text [not null]
 }
 
+Table User{
+  id varchar(36) [pk, unique, not null, ref: - players.id]
+  username varchar(16) [not null, unique]
+  password_hash varchar(50)
+  password_reset_token varchar(50)
+  verification_token varchar(50)
+  mail varchar(50) [not null, unique]
+  auth_key varchar(50) 
+  status integer(2)
+  password text [not null]
+}
+
+Table User{
+  id varchar(36) [pk, unique, not null, ref: - players.id]
+  username varchar(16) [not null, unique]
+  password_hash varchar(50)
+  password_reset_token varchar(50)
+  verification_token varchar(50)
+  mail varchar(50) [not null, unique]
+  auth_key varchar(50) 
+  status integer(2)
+  password text [not null]
+}
+
+Table User{
+  id varchar(36) [pk, unique, not null, ref: - players.id]
+  username varchar(16) [not null, unique]
+  password_hash varchar(50)
+  password_reset_token varchar(50)
+  verification_token varchar(50)
+  mail varchar(50) [not null, unique]
+  auth_key varchar(50) 
+  status integer(2)
+  password text [not null]
+}
+
+
 Table players{
   id varchar(36) [pk,unique, not null, note: 'uuid']
   idwallet varchar(36) [not null, ref: - wallets.id]
