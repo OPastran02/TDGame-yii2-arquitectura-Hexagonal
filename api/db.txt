@@ -11,24 +11,6 @@ Table User{
   password text [not null]
 }
 
-
-Table players{
-  id varchar(36) [pk,unique, not null, note: 'uuid']
-  idwallet varchar(36) [not null, ref: - wallets.id]
-  idavatar varchar(36) [not null, ref: - avatars.id]
-  idmetrics varchar(36) [not null, ref: - metrics.id]
-  idrankedMetrics varchar(36) [not null, ref: - rankedMetrics.id]
-  idstatus varchar(36) [not null, ref: - status.id]
-  idland varchar (36) [not null, ref: - lands.id]
-  experience integer [not null, default: 0]
-  level integer [not null, default: 0]
-  available integer(1) [not null, default: 1]
-  createdAt timestamp
-  updatedAt timestamp
-  createdBy varchar(36) [note: 'relacion con usuario']
-  updatedBy varchar(36) [note: 'relacion con usuario']
-}
-
 Table status {
   id varchar(36) [pk,unique, not null, note: 'uuid']
   honor integer [not null, default: 0]
