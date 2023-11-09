@@ -18,6 +18,7 @@ use api\Core\General\Object\Domain\Objeto;
 
 use api\Core\General\Object\Infrastructure\Persistence\ActiveRecord\ObjetoRepositoryActiveRecord;
 
+// no me estaría funcionando esta clase:
 class PlayerRepositoryActiveRecord implements IPlayerRepository
 {
     public function get(string $playerId): ?Player
