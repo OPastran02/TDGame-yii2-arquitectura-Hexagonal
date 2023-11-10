@@ -21,7 +21,7 @@ Este juego de Tower Defense ha sido desarrollado en Yii2 con PHP 8.2 y sigue una
       
 - **Arquitectura Hexagonal y DDD:** El proyecto se basa en una arquitectura hexagonal que permite separar la lógica del negocio de los detalles de implementación. Además, se han aplicado algunos principios del Domain-Driven Design (DDD), particularmente el uso de Value Objects para mantener la integridad de los datos.
 ![Estructura](/Assets/Img/structure.png)
-
+```
 |--api
     |--Core
         |--BundleContext
@@ -36,6 +36,7 @@ Este juego de Tower Defense ha sido desarrollado en Yii2 con PHP 8.2 y sigue una
                 |-----Infrastructure
                         |----Persistencia (donde se comunica con la base de datos)
                         |----UI (donde devuelve al usuario los datos, en este caso, es un JSON)
+```
                 
 ## Estructura del repositorio
 
