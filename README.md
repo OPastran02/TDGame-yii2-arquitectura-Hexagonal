@@ -1,26 +1,31 @@
 # Tower Defense Game
 
-Este juego de Tower Defense ha sido desarrollado en Yii2 con PHP 8.2 y sigue una arquitectura hexagonal, incorporando elementos del Domain-Driven Design (DDD) como los Value Objects. Este es un proyecto en constante evolución, y estoy aprendiendo sobre la arquitectura hexagonal, por lo que cualquier ayuda, corrección o sugerencia es bienvenida.
+This Tower Defense game has been developed using Yii2 with PHP 8.2 and follows a hexagonal architecture, integrating elements from Domain-Driven Design (DDD) such as Value Objects. This project is continually evolving, and as I'm in the process of learning about hexagonal architecture, any help, corrections, or suggestions are greatly appreciated.
 
-## Características principales
+## Key Features
 
-- **Base de datos detallada:** La base de datos del juego consta de más de 40 tablas que incluyen entidades principales como:
-    ![](/Assets/Img/table.png)
+### Detailed Database
+The game's database comprises over 40 tables, encompassing core entities:
 
-    - **Heroe:** Se hace énfasis en las características individuales de cada héroe, desde sus habilidades hasta sus atributos únicos.
+![Tables](/Assets/Img/table.png)
 
-    - **Land:** Las tierras generadas son fundamentales en el juego. Estas se crean mediante un archivo JSON que representa una cuadrícula de 0 y 1. Los usuarios pueden diseñar y configurar su propio terreno, permitiendo la creación de lands competitivas y personalizadas desde el juego.
+- **Heroe:** Emphasizes individual characteristics of each hero, spanning from unique abilities to distinct attributes.
 
-    - **User:** Representa a los usuarios y abarca todas las acciones que pueden realizar en el juego.
+- **Land:** These dynamically generated lands are crucial in the game. Users can design and configure their own terrain using a JSON file that represents a grid of 0s and 1s, enabling the creation of competitive and personalized lands within the game.
 
-    - **Chapters:** Ofrece campañas para un solo jugador, desplegando distintos escenarios y desafíos.
+- **User:** Represents players, encompassing all actions they can perform within the game.
 
-    - **Monsters:** Permite raids o incursiones de varios jugadores, presentando desafíos conjuntos para la comunidad.
+- **Chapters:** Offers single-player campaigns, featuring various scenarios and challenges.
 
-    - **Guild:** Permite a los jugadores crear gremios y worlds, que son conjuntos de lands de distintos usuarios, creando así vastos mundos colaborativos.
-      
-- **Arquitectura Hexagonal y DDD:** El proyecto se basa en una arquitectura hexagonal que permite separar la lógica del negocio de los detalles de implementación. Además, se han aplicado algunos principios del Domain-Driven Design (DDD), particularmente el uso de Value Objects para mantener la integridad de los datos.
-![Estructura](/Assets/Img/structure.png)
+- **Monsters:** Allows for raids or incursions involving multiple players, presenting communal challenges.
+
+- **Guild:** Enables players to create guilds and worlds, which are sets of lands contributed by various users, creating vast collaborative gaming environments.
+
+### Hexagonal Architecture and DDD
+The project is based on a hexagonal architecture, separating business logic from implementation details. Some Domain-Driven Design (DDD) principles have been applied, especially the utilization of Value Objects to maintain data integrity.
+
+![Structure](/Assets/Img/structure.png)
+
 ```
 |--api
     |--Core
@@ -37,32 +42,31 @@ Este juego de Tower Defense ha sido desarrollado en Yii2 con PHP 8.2 y sigue una
                         |----Persistencia (donde se comunica con la base de datos)
                         |----UI (donde devuelve al usuario los datos, en este caso, es un JSON)
 ```
-                
-## Estructura del repositorio
 
-La lógica específica del juego se encuentra principalmente en un middleware para no exponer todo el código en este repositorio. Sin embargo, se proporcionan ejemplos y guías sobre la implementación de la arquitectura hexagonal y otros aspectos relevantes del juego.
+## Repository Structure
 
-## Contribuciones
+The game's specific logic primarily resides in middleware to avoid exposing all the code in this repository. However, examples and guides are provided regarding the implementation of the hexagonal architecture and other essential game aspects.
 
-Cualquier contribución, consejo o corrección es bienvenida. Si estás interesado en contribuir, por favor, siéntete libre de hacer una solicitud de extracción (pull request) o reportar problemas en la sección de *Issues*.
+## Contributions
 
-## Instalación y ejecución
+Any contributions, advice, or corrections are welcome. If interested in contributing, please feel free to make a pull request or report issues in the 'Issues' section.
 
-Para ejecutar este juego localmente, sigue estos pasos:
+## Installation and Execution
 
-1. Clona este repositorio.
-2. Instala las dependencias utilizando Composer.
-3. Configura la base de datos con el script proporcionado en el directorio `database`.
-4. Inicia el servidor de desarrollo.
+To run this game locally, follow these steps:
 
-## Notas adicionales
+1. Clone this repository.
+2. Install dependencies using Composer.
+3. Set up the database using the script provided in the 'database' directory.
+4. Start the development server.
 
-Este juego está en constante evolución y aprendizaje, por lo que la lógica del juego no se mostrará por completo en este repositorio. Sin embargo, se proveerán ejemplos y guías para comprender los aspectos más importantes de la arquitectura y diseño del juego.
+## Additional Notes
 
-## Licencia
+This game is constantly evolving and learning. Thus, the entire game logic will not be displayed within this repository. However, examples and guides will be provided to understand the most critical aspects of the game's architecture and design.
 
-Este proyecto se distribuye bajo la licencia [especificada en el archivo LICENSE](link-to-license).
+## License
 
+feel free to use it, if you need help to understand, please email me to opastran02@gmail.com
 database:
 
 The c
