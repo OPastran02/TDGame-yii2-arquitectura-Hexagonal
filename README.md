@@ -4,10 +4,8 @@ Este juego de Tower Defense ha sido desarrollado en Yii2 con PHP 8.2 y sigue una
 
 ## Características principales
 
-- **Arquitectura Hexagonal y DDD:** El proyecto se basa en una arquitectura hexagonal que permite separar la lógica del negocio de los detalles de implementación. Además, se han aplicado algunos principios del Domain-Driven Design (DDD), particularmente el uso de Value Objects para mantener la integridad de los datos.
-
 - **Base de datos detallada:** La base de datos del juego consta de más de 40 tablas que incluyen entidades principales como:
-    ![Descripción de la imagen](/Assets/Img/table.png)
+    ![](/Assets/Img/table.png)
 
     - **Heroe:** Se hace énfasis en las características individuales de cada héroe, desde sus habilidades hasta sus atributos únicos.
 
@@ -20,7 +18,9 @@ Este juego de Tower Defense ha sido desarrollado en Yii2 con PHP 8.2 y sigue una
     - **Monsters:** Permite raids o incursiones de varios jugadores, presentando desafíos conjuntos para la comunidad.
 
     - **Guild:** Permite a los jugadores crear gremios y worlds, que son conjuntos de lands de distintos usuarios, creando así vastos mundos colaborativos.
-
+      
+- **Arquitectura Hexagonal y DDD:** El proyecto se basa en una arquitectura hexagonal que permite separar la lógica del negocio de los detalles de implementación. Además, se han aplicado algunos principios del Domain-Driven Design (DDD), particularmente el uso de Value Objects para mantener la integridad de los datos.
+![Estructura](/Assets/Img/structure.png)
 ## Estructura del repositorio
 
 La lógica específica del juego se encuentra principalmente en un middleware para no exponer todo el código en este repositorio. Sin embargo, se proporcionan ejemplos y guías sobre la implementación de la arquitectura hexagonal y otros aspectos relevantes del juego.
