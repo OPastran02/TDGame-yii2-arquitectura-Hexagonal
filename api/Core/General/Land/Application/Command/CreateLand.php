@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace api\Core\General\Land\Application\Command;
 
+use api\Shared\Application\Command\Command;
 use api\Core\General\Land\Domain\{
     Land,
     Repository\ILandRepository
@@ -15,7 +16,7 @@ use api\Core\General\Land\Application\Helpers\EmptyGridCreator;
 use api\Core\General\Object\Application\Command\CreateObjeto;
 use Ramsey\Uuid\Uuid;
 
-final class CreateLand
+final class CreateLand implements Command
 {
     private ILandRepository $repository;
     private IObjetoRepository $objRepository;

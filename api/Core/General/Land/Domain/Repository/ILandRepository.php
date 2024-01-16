@@ -6,6 +6,8 @@ use api\Core\General\Land\Domain\Land;
 
 interface ILandRepository
 {
+    public function create(Land $land): void;
     public function get(string $id): ?Land;
-    public function create($land): Land; 
 }
+
+
