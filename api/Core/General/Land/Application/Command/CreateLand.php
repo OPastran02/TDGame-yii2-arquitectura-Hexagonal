@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace api\Core\General\Land\Application\Command;
 
-use api\Shared\Application\Command\Command;
 use api\Core\General\Land\Domain\{
     Land,
-    Repository\ILandRepository
+    Repository\ILandWriteRepository
 };
 use api\Core\General\Object\Domain\{
     Repository\IObjetoRepository
@@ -16,12 +15,12 @@ use api\Core\General\Land\Application\Helpers\EmptyGridCreator;
 use api\Core\General\Object\Application\Command\CreateObjeto;
 use Ramsey\Uuid\Uuid;
 
-final class CreateLand implements Command
+final class CreateLand 
 {
-    private ILandRepository $repository;
+    private ILandWriteRepository $repository;
     private IObjetoRepository $objRepository;
 
-    public function __construct(ILandRepository $repository, IObjetoRepository $objRepository){
+    public function __construct(ILandWriteRepository $repository, IObjetoRepository $objRepository){
         $this->repository = $repository;
         $this->objRepository = $objRepository;
     }

@@ -2,16 +2,15 @@
 
 declare(strict_types=1);
 
+// Implementación del repositorio de lectura
 namespace api\Core\General\Land\Infrastructure\Persistence\ActiveRecord;
 
-use api\Core\General\Land\Domain\{
-    Land,
-    Repository\ILandRepository
-};
-use api\Core\General\Object\Domain\Objeto; 
+use api\Core\General\Land\Domain\Land;
+use api\Core\General\Land\Domain\Repository\ILandReadRepository;
 use common\models\Land as Model;
+use api\Core\General\Object\Domain\Objeto;
 
-class LandRepositoryActiveRecord implements ILandRepository
+class LandReadRepositoryActiveRecord implements ILandReadRepository
 {
     public function get(string $landId): ?Land
     {
@@ -37,10 +36,4 @@ class LandRepositoryActiveRecord implements ILandRepository
         );
     }
 
-    public function create($arr): Land
-    {
-        $model = new Model();
-        $model->attributes = $arr;
-        if ($model->save()) return $this->get($model["attributes"]["id"]);
-    }
 }

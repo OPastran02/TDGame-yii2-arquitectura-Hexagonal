@@ -6,14 +6,14 @@ namespace api\Core\General\Land\Application\Query;
 
 use api\Core\General\Land\Domain\{
     Land,
-    Repository\ILandRepository
+    Repository\ILandReadRepository
 };
 
 class GetLandByIdHandler
 {
-    private ILandRepository $repository;
+    private ILandReadRepository $repository;
 
-    public function __construct(ILandRepository $repository)
+    public function __construct(ILandReadRepository $repository)
     {
         $this->repository = $repository;
     }
